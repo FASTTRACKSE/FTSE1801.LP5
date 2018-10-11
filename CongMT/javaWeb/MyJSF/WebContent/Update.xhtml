@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core"
+	  xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+>
+    <h:head>
+        <title><h:outputText value="#{msg['title']}" /></title>
+        <style>
+            body{margin: auto; width: 30%;
+            background-image: url("images/css2.jpg");}
+          
+        </style>
+    </h:head>
+    <h:body >
+        <f:view >
+            <h:form >
+                <br><h1><h:outputText value="#{msg['TieuDe']}" /></h1></br>
+               
+               <h:outputText value="#{msg['TenDangNhap']}" />:<br>
+               <h:inputText value="#{student.name}"></h:inputText></br>
+               <h:outputText value="#{msg['Tuoi']}" />:<br>
+               <h:inputText value="#{student.old}"></h:inputText></br>
+                <h:outputText value="#{msg['DiaChi']}" />:<br>
+                <h:inputTextarea value="#{student.adress}"></h:inputTextarea></br>
+                <h:outputText value="#{msg['Sdt']}" />:<br>
+                <h:inputTextarea value="#{student.numberPhone}"></h:inputTextarea></br>
+                <h:commandButton value="#{msg['Sua']}" actionListener="#{student.updateStudent}" action="index"></h:commandButton>
+                <h:commandButton value="#{msg['TroLai']}" action="index"></h:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
