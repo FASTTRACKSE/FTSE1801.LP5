@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Insert title here</title>
+    </h:head>
+    <h:body>
+        <h1>Quản lý sinh viên </h1>
+        <h:form>
+        	<h:inputHidden value="#{students.id}"/>
+	        Name: <h:inputText value="#{students.name}"/>
+	        Age: <h:inputText value="#{students.age}"/>
+	        Address: <h:inputText value="#{students.address}"/>
+	        <h:commandButton value="Update" actionListener="#{students.updateSV()}" action="Students"/>
+        </h:form>
+        
+    </h:body>
+</html>
