@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="#{localeBean.language}" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<style>
+		body{
+			text-align: center;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<h1>LOGIN</h1>
+	<h:form>
+			<h:outputLabel value="Username "/>
+			<h:inputText value="#{loginBean.username}"/><br/><br/>
+			<h:outputLabel value="Password "/>
+			<h:inputText value="#{loginBean.password}"/><br/><br/>
+			<h:commandButton value="Login" action="#{loginBean.checkLogin}"/>
+	</h:form>
+</h:body>
+</html>
