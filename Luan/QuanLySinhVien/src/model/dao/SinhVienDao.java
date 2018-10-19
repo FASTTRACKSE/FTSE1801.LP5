@@ -41,7 +41,6 @@ public class SinhVienDao {
 			try {
 				statement.close();
 			} catch (Exception e2) {
-				// TODO: handle exception
 			}
 		}
 		DatabaseUntil.closeConnection(conn);
@@ -179,7 +178,6 @@ public class SinhVienDao {
 		DatabaseUntil.closeConnection(conn);
 		
 		return sinhVien;
-		// TODO Auto-generated method stub
 
 	}
 	

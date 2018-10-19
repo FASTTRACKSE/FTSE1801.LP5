@@ -47,6 +47,10 @@ li{
 					<h:outputText value="#{user.id}" />
 				</h:column>
 				<h:column>
+					<f:facet name="header">#{lang['id']}</f:facet>
+					<h:graphicImage width="40" url="/upload/#{user.id}/#{user.image}"/>
+				</h:column>
+				<h:column>
 					<f:facet name="header">#{lang['name']}</f:facet>
 					<h:outputText value="#{user.name}" />
 				</h:column>
@@ -88,6 +92,9 @@ li{
 		<br />
 		<h:form>
 			<h:commandButton value="#{lang['search']}" action="search" />
+		</h:form>
+		<h:form>
+			<h:commandButton value="Log Out" action="#{userBean.loguot}"/>
 		</h:form>
 	</h:body>
 </f:view>

@@ -45,18 +45,19 @@ public class UserDao {
 		DatabaseUntil.closeConnection(conn);
 		return list;
 	}
-	public boolean addUser(String id, String name, String pass, String age, String add) {
+	public boolean addUser(String id, String img, String name, String pass, String age, String add) {
 		boolean kiemTra =false;
 		conn = DatabaseUntil.getConnect();
-		String sql = "INSERT INTO nguoi_dung VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO nguoi_dung VALUES(?,?,?,?,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = conn.prepareStatement(sql);
 			statement.setString(1, id);
-			statement.setString(2, name);
-			statement.setString(3, pass);
-			statement.setString(4, age);
-			statement.setString(5, add);
+			statement.setString(2, img);
+			statement.setString(3, name);
+			statement.setString(4, pass);
+			statement.setString(5, age);
+			statement.setString(6, add);
 			if (statement.executeUpdate() > 0) {
 				kiemTra = true;
 			}
@@ -169,6 +170,7 @@ public class UserDao {
 			while (resultSet.next()) {
 				userBean = new UserBean();
 				userBean.setId(resultSet.getString("nguoi_dung.id"));
+				userBean.setImage(resultSet.getString("nguoi_dung.image"));
 				userBean.setName(resultSet.getString("nguoi_dung.userName"));
 				userBean.setPass(resultSet.getString("nguoi_dung.passWord"));
 				userBean.setAge(resultSet.getString("nguoi_dung.age"));
@@ -209,7 +211,31 @@ public class UserDao {
 		}
 		DatabaseUntil.closeConnection(conn);
 		return  total;
-		
-		
+	}
+
+	public boolean getUser(String userName, String pass) {
+		boolean kiemtra = false;
+		conn= DatabaseUntil.getConnect();
+		PreparedStatement statement = null;
+		String sql = "SELECT userName, passWord FROM nguoi_dung WHERE userName =? and passWord =?";
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, userName);
+			statement.setString(2, pass);
+			ResultSet resultSet = statement.executeQuery();
+			while(resultSet.next()) {
+				kiemtra = true;
+			}
+		} catch (Exception e) {
+		}finally {
+			try {
+				if (statement != null) {
+					statement.close();
+				}
+			} catch (Exception e2) {
+			}
+		}
+		DatabaseUntil.closeConnection(conn);
+		return kiemtra;
 	}
 }

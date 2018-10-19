@@ -17,14 +17,12 @@ public class ListStudents extends HttpServlet {
      */
     public ListStudents() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String[] students = {"luan", "manh", "cong", "hoi"};
 		request.setAttribute("myStudents", students);
 		request.getRequestDispatcher("DemoJSTL.jsp").forward(request, response);
@@ -34,7 +32,6 @@ public class ListStudents extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

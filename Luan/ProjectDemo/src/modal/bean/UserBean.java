@@ -1,5 +1,7 @@
 package modal.bean;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -8,6 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import modal.dao.UserDao;
 
@@ -20,20 +24,73 @@ public class UserBean {
 	private String age;
 	private String add;
 	private String search;
-	@ManagedProperty(value="#{userDao}")
+	@ManagedProperty(value = "#{userDao}")
 	private UserDao userDao;
-	
-	private int p =1;
+
+	private int p = 1;
 	private int totalPage = 1;
 	private int totalRows;
-	private int range=3;
+	private int range = 3;
 	private int last;
 	private int limit = 1;
 	private int start = 1;
 	private int end = 1;
-	
-	
-	
+
+	private Part uploadFile;
+	private String image;
+	private long fileSize;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public long getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
+
+	public Part getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(Part uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
+	public void uploadFile() {
+		try {
+			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+			File file = new File(dirPath);
+			String folder = dirPath + "/" + id;
+
+			if (!file.exists()) {
+				file.mkdirs();
+				File file1 = new File(folder);
+				if (file1.mkdirs()) {
+					image = uploadFile.getSubmittedFileName();
+					fileSize = uploadFile.getSize();
+					uploadFile.write(folder + "/" + image);
+				}
+			} else {
+				File file1 = new File(folder);
+				if (file1.mkdirs()) {
+					image = uploadFile.getSubmittedFileName();
+					fileSize = uploadFile.getSize();
+					uploadFile.write(folder + "/" + image);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -155,35 +212,40 @@ public class UserBean {
 		this.end = end;
 	}
 
-	public ArrayList<UserBean> getShowAll(){
+	public ArrayList<UserBean> getShowAll() {
 		return userDao.showAllUser();
 	}
-	
-	public boolean addUser() {
-		return userDao.addUser(id, name, pass, age, add);
+
+	public String addUser() {
+		if (userDao.addUser(id, image, name, pass, age, add)) {
+			return "index";
+		}else {
+			return "addUser";
+		}
 		
+
 	}
-	
+
 	public boolean updateUser() {
 		return userDao.updateUser(id, name, pass, age, add);
 	}
-	
+
 	public void giveUser(String id, String name, String pass, String age, String add) {
 		this.id = id;
 		this.name = name;
 		this.pass = pass;
-		this.age= age;
-		this.add= add;
+		this.age = age;
+		this.add = add;
 	}
-	
+
 	public boolean delUser(String id) {
-		 return userDao.delUser(id);
+		return userDao.delUser(id);
 	}
-	
+
 	public ArrayList<UserBean> getSearchUser() {
 		return userDao.searchUser(search);
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		link();
@@ -192,14 +254,14 @@ public class UserBean {
 
 	public ArrayList<UserBean> getAll() {
 		ArrayList<UserBean> list = new ArrayList<>();
-		list = userDao.showAllUserInPage((p-1)*limit, limit);
+		list = userDao.showAllUserInPage((p - 1) * limit, limit);
 		return list;
 	}
 
 	public void paging() {
 		totalRows = userDao.showAllUser().size();
 
-		totalPage = totalRows / limit +(totalRows%limit==0?0:1);
+		totalPage = totalRows / limit + (totalRows % limit == 0 ? 0 : 1);
 		if (totalPage < 0) {
 			totalPage = 1;
 		}
@@ -208,13 +270,13 @@ public class UserBean {
 			end = totalPage;
 		} else {
 			start = p - 1;
-			end = p +  1;
+			end = p + 1;
 		}
 		if (start < 1) {
 			start = 1;
 			end = range;
 		} else if (end > totalPage) {
-			end = totalPage ;
+			end = totalPage;
 			start = totalPage - 2;
 		}
 	}
@@ -225,8 +287,24 @@ public class UserBean {
 		String param = parameterMap.get("p");
 
 		if (param != null) {
-			this.p=Integer.parseInt(param.toString());
+			this.p = Integer.parseInt(param.toString());
 		}
 	}
+	
+	public String checkLogin() {
+		
+		if (userDao.getUser(name, pass)) {
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			session.setAttribute("name", name);;
+			return "index";
+		}else {
+			return "login";
+		}
+	}
+	
+	public String loguot() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.invalidate();
+		return "login";
+	}
 }
-
