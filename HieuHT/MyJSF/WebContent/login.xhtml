@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h:form>
+		<h3>Đăng Nhập</h3>
+		<b>#{userLogin.message}</b>
+		<br />
+		<br />
+		<h:form id="loginForm">
+			<h:outputLabel value="User Name:" />
+			<h:inputText value="#{userLogin.username}" />
+			<br/><br/>
+			<h:outputLabel value="Password:" />
+			<h:inputSecret value="#{userLogin.password}"></h:inputSecret>
+			<br/><br/>
+			<h:commandButton value="Login" action="#{userLogin.login}" ></h:commandButton>
+		</h:form>
+		</h:form>
+</body>
+</html>

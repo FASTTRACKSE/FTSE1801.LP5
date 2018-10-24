@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+	body{
+	text-align: center;
+	background-color: gray;
+	}
+	table, tr, th, td {
+		border: solid 1px;
+	}
+	table{
+		border-collapse: collapse;
+		margin-left: 35%;
+	}
+	a{
+		text-decoration: none;
+		
+	}
+	.a{
+		background-color: lightgray;
+	}
+	.b{
+		background-color: yellow;
+	}
+	.c{
+		background-color: green;
+	}
