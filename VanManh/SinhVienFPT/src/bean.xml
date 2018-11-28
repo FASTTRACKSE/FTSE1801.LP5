@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="SvIT1" class="di.impl.SinhVienIT">
+		<constructor-arg value="5" type="double"/>
+		<constructor-arg value="6" type="double"/>
+		<constructor-arg value="8" type="double"/>
+		<constructor-arg value="Manh"/>
+	</bean>
+	<bean id="SvIT2" class="di.impl.SinhVienIT">
+		<constructor-arg value="6" type="double"/>
+		<constructor-arg value="7" type="double"/>
+		<constructor-arg value="9" type="double"/>
+		<constructor-arg value="Luan"/>
+	</bean>
+	<bean id="SvIT3" class="di.impl.SinhVienIT">
+		<constructor-arg value="9" type="double"/>
+		<constructor-arg value="8" type="double"/>
+		<constructor-arg value="7" type="double"/>
+		<constructor-arg value="Hieu"/>
+	</bean>
+	<bean id="SvBiz1" class="di.impl.SinhVienBiz">
+		<constructor-arg value="6" type="double"/>
+		<constructor-arg value="6" type="double"/>
+		<constructor-arg value="Hoi"/>
+	</bean>
+	<bean id="SvBiz2" class="di.impl.SinhVienBiz">
+		<constructor-arg value="7" type="double"/>
+		<constructor-arg value="7" type="double"/>
+		<constructor-arg value="Son"/>
+	</bean>
+	<bean id="list" class="di.impl.ListSV">
+		<constructor-arg>
+			<list>
+				<ref bean="SvIT1"/>
+				<ref bean="SvIT2"/>
+				<ref bean="SvIT3"/>
+				<ref bean="SvBiz1"/>
+				<ref bean="SvBiz2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>
