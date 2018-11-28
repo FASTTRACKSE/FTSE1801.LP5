@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<style>
+form, h1 {
+	text-align: center;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form enctype="multipart/form-data">
+		<h1>Thêm8 Thông Tin Sinh Viên</h1>
+  <h:outputText value="#{ngonngu['maSV']}:"/><h:inputText id="ma" value="#{sinhVien.maSinhVien}" label=" " required="true" requiredMessage="bắt buộc nhập">
+  <f:validateLength minimum="5" maximum="8"></f:validateLength>
+  </h:inputText>
+  <h:message for="ma" style="color: red"/>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['tenSV']}:"/><h:inputText id="ten" value="#{sinhVien.tensinhVien}" required="true" requiredMessage="Bắt buộc nhập" validatorMessage="Chữ cái đầu viết hoa và không được nhâp số" >
+  
+  </h:inputText>
+  <h:message for="ten" style="color: red"></h:message>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['pass']}:"/><h:inputText id="mk" value="#{sinhVien.password}"></h:inputText>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['tuoiSV']}:"/><h:inputText id="old" value="#{sinhVien.tuoi}"></h:inputText>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['monhoc']}:"/><h:inputText id="mh" value="#{sinhVien.diem.monHoc}"></h:inputText>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['diem']}:"/><h:inputText id="poin" value="#{sinhVien.diem.diem}"></h:inputText>
+		<br></br>
+		<br></br>
+		<h:inputFile value="#{sinhVien.file}" />
+		<h:commandButton value="#{ngonngu['them']}" actionListener="#{sinhVien.uploadFile()}"
+			action="#{sinhVien.Insert()}"></h:commandButton>
+	</h:form>
+</h:body>
+</html>
