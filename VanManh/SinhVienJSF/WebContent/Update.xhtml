@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<style>
+		table,tr,th,td {
+			border: solid 1px;
+		}
+		table {
+			border-collapse: collapse;
+		}
+	</style>
+</h:head>
+<h:body>
+		<h:form>
+			<h:inputHidden value="#{sinhVien.maSV}"/>
+			<h:outputText value="#{lang['ten']}"/> : <h:inputText value="#{sinhVien.name}"/>
+			<h:outputText value="#{lang['tuoi']}"/>  : <h:inputText value="#{sinhVien.age}"/> 
+		    <h:commandButton value="Update SV" action="#{sinhVien.updateSV}"/>
+		</h:form>
+		<h:form>
+			<h:inputHidden value="#{sinhVien.maSV}"/>
+			<h:outputText value="#{lang['monHoc']}"/> : <h:inputText value="#{sinhVien.monHoc.tenMonHoc}"/>
+			<h:outputText value="#{lang['diem']}"/> : <h:inputText value="#{sinhVien.monHoc.diem}"/>
+			<h:commandButton value="Update Diem" action="#{sinhVien.updateDiem}"/>
+		</h:form>
+		<h:form>
+			<h:commandLink action="index">
+				<h:outputText value="Ve lai trang chu"/>
+			</h:commandLink>
+		</h:form>
+</h:body>
+</html>

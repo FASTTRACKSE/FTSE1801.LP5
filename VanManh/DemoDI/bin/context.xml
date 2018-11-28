@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="DAO" class="model.dao.SinhVienDAO"></bean>
+	<bean id="SV" class="di.impl.SinhVienImpl">
+		<property name="iTFDao" ref="DAO"></property>
+	</bean>
+	<bean id="sinhVien" class="di.impl.SinhVienIJT">
+		<property name="sinhVienITF" ref="SV"></property>
+	</bean>
+</beans>

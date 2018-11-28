@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>UpDate</title>
+	<style>
+	 form,h1 {
+	   text-align: center;
+     }
+	</style>
+</h:head>
+<h:body>
+	<h:form>
+		<h1> <h:outputText value="#{ngonngu['sua']}"/></h1>
+		<h:inputHidden id="ID" value="#{sinhVien.maSinhVien}"></h:inputHidden>
+  <h:outputText value="#{ngonngu['tenSV']}:"/><h:inputText id="tenSV" value="#{sinhVien.tensinhVien}"></h:inputText>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['pass']}:"/><h:inputText id="pass" value="#{sinhVien.password}"></h:inputText>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['tuoiSV']}:"/><h:inputText id="tuoiSV" value="#{sinhVien.tuoi}"></h:inputText>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['monhoc']}:"/><h:inputText id="monHocSV"
+			value="#{sinhVien.diem.monHoc}"></h:inputText>
+		<br></br>
+		<br></br>
+  <h:outputText value="#{ngonngu['diem']}:"/><h:inputText id="diemSV" value="#{sinhVien.diem.diem}"></h:inputText>
+		<br></br>
+		<br></br>
+		<h:commandButton value="#{ngonngu['sua']}" actionListener="#{sinhVien.upDate()}"
+			action="index"></h:commandButton>
+	</h:form>
+</h:body>
+</html>

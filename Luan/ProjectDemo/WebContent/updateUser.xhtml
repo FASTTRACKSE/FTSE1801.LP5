@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta charset="UTF-8"/>
+	<style>
+	body {
+		text-align: center;
+	}
+	</style>
+</h:head>
+<h:body>
+	<h1>Update User</h1>
+	<h:form>
+	<h:outputText value="Id: " style="font-size: 25px;"/><h:inputText id="id" value="#{userBean.id}"/><br/>
+	<h:outputText value="Name: " style="font-size: 25px;"/><h:inputText id="name" value="#{userBean.name}"/><br/>
+	<h:outputText value="PassWord: " style="font-size: 25px;"/><h:inputText id="pass" value="#{userBean.pass}"/><br/>
+	<h:outputText value="Age: " style="font-size: 25px;"/><h:inputText id="age" value="#{userBean.age}"/><br/>
+	<h:outputText value="Address: " style="font-size: 25px;"/><h:inputText id="add" value="#{userBean.add}"/><br/>
+	<h:commandButton value="Insert" actionListener="#{userBean.updateUser}" action="index"/>
+	</h:form>
+</h:body>
+
+</html>

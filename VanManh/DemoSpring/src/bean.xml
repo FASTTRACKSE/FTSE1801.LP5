@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean scope="" id="hcn" class="Demo123.HinhChuNhat">
+		<constructor-arg value="5" type="double"></constructor-arg>
+		<constructor-arg value="3" type="double"></constructor-arg>
+	</bean>
+	<bean id="hv" class="Demo123.HinhVuong">
+		<constructor-arg value="5" type="double"></constructor-arg>
+	</bean>
+	<bean id="listHinh" class="Demo123.ListHinh">
+		<property name="list">
+			<list>
+				<ref bean="hcn"/>
+				<ref bean="hv"/>
+			</list>
+		</property>
+	</bean>
+</beans>
