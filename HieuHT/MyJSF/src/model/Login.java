@@ -1,30 +1,44 @@
 package model;
 
+import java.io.IOException;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
-@ManagedBean(name = "userLogin", eager = true)
+@ManagedBean
 @RequestScoped
 public class Login {
-	private String message;
+
 	private String username;
 	private String password;
 
-	public String login() {
-		if ("a".equalsIgnoreCase(username) && "a".equalsIgnoreCase(password)) {
-			return "index";
+	public void getLogin() {
+
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		if (this.username.equals("admin") && this.password.equals("admin")) {
+			context.getExternalContext().getSessionMap().put("user", username);
+			try {
+				context.getExternalContext().redirect("index.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		} else {
-			message = "Đăng nhập không chính xác, vui lòng nhập lại.";
-			return "login";
+			context.addMessage(null, new FacesMessage("Nhập sai vui lòng nhập lại."));
+
 		}
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
+	public void logout() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().invalidateSession();
+		try {
+			context.getExternalContext().redirect("Login.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getUsername() {

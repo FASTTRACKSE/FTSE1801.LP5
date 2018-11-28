@@ -25,18 +25,20 @@ table {
 form, h1 {
 	text-align: center;
 }
+
 li {
 	float: left;
 	margin-right: 7px;
 }
+
 ul {
 	list-style-type: none;
 	margin-left: 600px;
 }
+
 a {
 	text-decoration: none;
 }
-
 </style>
 
 </h:head>
@@ -49,6 +51,9 @@ a {
 	</h1>
 	<h:form>
 		<h:commandButton value="#{MSG['login']}" action="login"></h:commandButton>
+	</h:form>
+	<h:form>
+		<h:commandButton value="#{MSG['logout']}" action="logout"></h:commandButton>
 	</h:form>
 	<h:form>
 		<h:inputText id="Id" value="#{sinhVien.id}" />
@@ -110,16 +115,18 @@ a {
 				<h:commandButton value="#{MSG['xoa']}"
 					actionListener="#{sinhVien.deleteSV(item.id)}" action="index"></h:commandButton>
 			</h:column>
+			<h:column>
+				<h:graphicImage url="/upload/#{item.id}/#{item.img}" width="50px" />
+			</h:column>
 		</h:dataTable>
-		<div class="row">
-			<ul class="pagination modal">
-				<li><a href="index.xhtml?pages=1">«</a></li>
-				<c:forEach begin="#{sinhVien.starf}" end="#{sinhVien.end}" var="val">
-					<li><a href="index.xhtml?pages=#{val}">#{val}</a></li>
-				</c:forEach>
-				<li><a href="index.xhtml?pages=#{sinhVien.last}">»</a></li>
-			</ul>
-		</div>
+
+		<ul class="pagination pagination-sm no-margin pull-right">
+			<li><a href="index.xhtml?pages=1">«</a></li>
+			<c:forEach begin="#{sinhVien.starf}" end="#{sinhVien.end}" var="val">
+				<li><a href="index.xhtml?pages=#{val}">#{val}</a></li>
+			</c:forEach>
+			<li><a href="index.xhtml?pages=#{sinhVien.last}">»</a></li>
+		</ul>
 	</h:form>
 </h:body>
 </html>

@@ -13,5 +13,17 @@
 			<base-name>i18n.Language</base-name>
 			<var>MSG</var>
 		</resource-bundle>
+		<message-bundle>
+		Messages.Messages
+		</message-bundle>
 	</application>
+	<navigation-rule>
+		<description>Loging Page</description>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{loginBean.Check}</from-action>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
