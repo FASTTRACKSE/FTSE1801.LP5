@@ -11,7 +11,7 @@
 		<h1>Upload file in servlet</h1>
 		<form action="UploadFile" method="post" enctype="multipart/form-data" >
 			<label>Upload file : </label>
-			<input type="file" value="Upload file" name="hinhanh"  multiple> <br />
+			<input type="file" value="Upload file" name="hinhanh"  > <br />
 			<input type="submit" value="Thực hiện" name="thuchien"  />
 		</form>
 	</div>

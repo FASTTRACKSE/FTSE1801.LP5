@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="chuNhat" class="bean.ChuNhat">
+		<constructor-arg value="5" type="double"/>
+		<constructor-arg value="4" type="double"/>
+	</bean>
+	<bean id="vuong" class="bean.HinhVuong">
+		<constructor-arg value="5" type="double"/>
+	</bean>
+	
+	<bean id="list" class="bean.ListHinh">
+		<constructor-arg>
+			<list>
+			<ref bean="chuNhat" />
+			<ref bean="vuong" />
+			</list>
+		</constructor-arg>
+	</bean>
+</beans> 

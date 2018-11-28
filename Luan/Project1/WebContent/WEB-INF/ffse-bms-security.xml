@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security.xsd">
+	<http auto-config="true">
+		<intercept-url pattern="/login**" access="permitAll"/>
+		<intercept-url pattern="/logout**" access="permitAll"/>
+		<intercept-url pattern="/home**" access="permitAll"/>
+		<intercept-url pattern="/QuanTriHeThong/phong_ban/**" access="hasRole('ROLE_PITTPP') or hasRole('ROLE_PGD')" />
+		<intercept-url pattern="/QuanTriHeThong/chuc_danh/**" access="hasAnyRole('ROLE_PNSTPP','ROLE_PGD')" />
+		<intercept-url pattern="/QuanTriHeThong/tai-khoan/**" access="hasAnyRole('ROLE_SADM')" />
+		<intercept-url pattern="/QuanTriHeThong/phan-quyen/**" access="hasAnyRole('ROLE_SADM')" />
+		
+
+		<intercept-url pattern="/Quanlyvangnghi1703004/soandonmoi**" access="permitAll" />
+		<intercept-url pattern="/Quanlyvangnghi1703004/taodonmoi/nhap**" access="permitAll" />
+		<intercept-url pattern="/Quanlyvangnghi1703004/taodonmoi/choduyet**" access="permitAll" />
+		<intercept-url pattern="/Quanlyvangnghi1703004/danhsachduyet" access=" hasRole('ROLE_PNSNV') or hasRole('ROLE_PNSTPP') or hasRole('ROLE_PGD') or hasRole('ROLE_PDTTPP') or hasRole('ROLE_PDATPP')  or hasRole('ROLE_PITTPP') " />
+		<intercept-url pattern="/Quanlyvangnghi1703004/**" access="hasRole('ROLE_PNSTPP') or hasRole('ROLE_PGD') or hasRole('ROLE_PDATPP') or hasRole('ROLE_PDTTPP') or hasRole('ROLE_PITTPP') "/>
+		
+		<!-- Phân quyền Quản trị nhân sự pikalong -->
+		<intercept-url pattern="/quantrinhansu/hosonhanvien/**"  access="hasRole('ROLE_PNSTPP') or hasRole('ROLE_PGD')"/>
+		<!-- Phân quyền module QLVN - HuongVTL :: START -->
+		
+		
+		
+		<intercept-url pattern="/QuanLyVangNghi/duyetvong1/**"  access="hasRole('ROLE_PNSTPP')  "/>
+		<intercept-url pattern="/QuanLyVangNghi/duyetvong2/**"  access="hasRole('ROLE_PGD')"/>
+
+		<!-- Phân quyền module QLVN - HuongVTL :: END -->
+		
+		<!-- Phân quyền module QLDA - Team Black ::  -->
+		<intercept-url pattern="/qlda/Database/**" access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/qlda/khachhang/**" access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/qlda/domain/**" access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/qlda/vendor/**" access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/qlda/Framework/**" access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/QuanLyDuAn/Language/**" access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/QuanLyDuAn/VaiTro/**"  access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/qlda/trangthai/**" access="hasAnyRole('ROLE_PITTPP')" />
+		<intercept-url pattern="/qlda/Technical/**" access="hasAnyRole('ROLE_PITTPP')" />
+		
+		
+		<intercept-url pattern="/qlda/DuAn/**" access="hasAnyRole('ROLE_PDANV','ROLE_PITNV','ROLE_PITTPP','ROLE_PDATPP')" />
+		
+		
+		
+		
+		<!-- Phân quyền module QTNS - PIKALONG :: START -->
+		<intercept-url pattern="/quantrinhansu/thongtincanhan/**" access="permitAll"/>
+		<intercept-url pattern="/quantrinhansu/hosonhanvien/**" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PGD')" />
+		<intercept-url pattern="/QuanTriNhanSu/quanlihopdong/**" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PGD')" />
+				
+		<intercept-url pattern="/quantrinhansu/nhanvienphongban/PGD" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/nhanvienphongban/PDT" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PDTTPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/nhanvienphongban/PDA" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PDATPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/nhanvienphongban/PIT" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PITTPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/nhanvienphongban/PKT" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PKTTPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/nhanvienphongban/PNS" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PNSTPP', 'ROLE_PGD')" />
+		
+		
+		<intercept-url pattern="/quantrinhansu/hopdongphongban/PGD" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/hopdongphongban/PDT" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PDTTPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/hopdongphongban/PDA" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PDATPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/hopdongphongban/PIT" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PITTPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/hopdongphongban/PKT" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PKTTPP', 'ROLE_PGD')" />
+		<intercept-url pattern="/quantrinhansu/hopdongphongban/PNS" access="hasAnyRole('ROLE_PNSTPP', 'ROLE_PNSNV', 'ROLE_PNSTPP', 'ROLE_PGD')" />
+		
+		<!-- Phân quyền module QTNS - PIKALONG :: END -->
+		
+		
+		
+		
+		
+		<!-- Phân quyền quản lý nhiệm vụ :: START -->
+			<intercept-url pattern="/QuanLyNhiemVuMinhHQ/delete/**" access="hasRole('ROLE_PGD') or hasRole('ROLE_PNSTPP') or hasRole('ROLE_PDATPP') or hasRole('ROLE_PDTTPP') or hasRole('ROLE_PITTPP') or hasRole('ROLE_PKTTPP')" />
+			<intercept-url pattern="/HieuLP/delete/**" access="hasRole('ROLE_PGD') or hasRole('ROLE_PNSTPP') or hasRole('ROLE_PDATPP') or hasRole('ROLE_PDTTPP') or hasRole('ROLE_PITTPP') or hasRole('ROLE_PKTTPP')" />
+			<intercept-url pattern="/QuanLyNhiemVuNghiaBT/delete/**" access="hasRole('ROLE_PGD') or hasRole('ROLE_PNSTPP') or hasRole('ROLE_PDATPP') or hasRole('ROLE_PDTTPP') or hasRole('ROLE_PITTPP') or hasRole('ROLE_PKTTPP')" />
+		<!-- Phân quyền quản lý nhiệm vụ :: END -->
+		
+		<!-- Phân quyền quản trị dự án :: START -->
+			<intercept-url pattern="/quantridanhgia/truongphong/**" access="hasAnyRole('ROLE_PGDTPP','ROLE_PNSTPP','ROLE_PDATPP','ROLE_PDTTPP','ROLE_PITTPP','ROLE_PKTTPP')" />
+			<intercept-url pattern="/quantridanhgia/phongnhansu/**" access="hasAnyRole('ROLE_PNSNV','ROLE_PNSTPP')" />
+			<intercept-url pattern="/quantridanhgia/nhanvien/**" access="hasAnyRole('ROLE_PDANV','ROLE_PNSNV','ROLE_PDTNV','ROLE_PITNV')" />
+		<!-- Phân quyền quản trị dự án :: END -->
+		
+		<access-denied-handler error-page="/403"/>		
+		<logout logout-url="/j_spring_security_logout"
+			logout-success-url="/login" delete-cookies="JSESSIONID" />
+		<form-login login-page="/login"
+			login-processing-url="/j_spring_security_login"
+			default-target-url="/" authentication-failure-url="/login?error"
+			username-parameter="username" password-parameter="password"
+			authentication-failure-handler-ref="customAuthenticationFailureHandler" />
+		<session-management
+			invalid-session-url="/login?message=timeout"
+			session-fixation-protection="newSession">
+			<concurrency-control
+				error-if-maximum-exceeded="false"
+				expired-url="/login?message=max_session" max-sessions="1" />
+		</session-management>
+	</http>
+	<beans:bean id="myUserDetailsService"
+		class="fasttrackse.ffse1703.fbms.service.security.UserServiceImpl"></beans:bean>
+	<beans:bean id="customAuthenticationFailureHandler"
+		class="fasttrackse.ffse1703.fbms.controller.security.CustomAuthenticationFailureHandler"></beans:bean>
+	<authentication-manager>
+		<authentication-provider
+			user-service-ref="myUserDetailsService">
+			 <password-encoder hash="bcrypt" /> 
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>

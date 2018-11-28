@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="sinhVienBiz" class="sinhVien.SinhVienBiz">
+		<constructor-arg value="Tran Duy Luan"/>
+		<constructor-arg value="Biz"/>
+		<constructor-arg value="7" type="double"/>
+		<constructor-arg value="6" type="double"/>
+	</bean>
+	<bean id="sinhVienBiz1" class="sinhVien.SinhVienBiz">
+		<constructor-arg value="Vũ Văn Mạnh"/>
+		<constructor-arg value="Biz"/>
+		<constructor-arg value="8" type="double"/>
+		<constructor-arg value="9" type="double"/>
+	</bean>
+	<bean id="sinhVienBiz2" class="sinhVien.SinhVienBiz">
+		<constructor-arg value="Mai Thành Công"/>
+		<constructor-arg value="Biz"/>
+		<constructor-arg value="7" type="double"/>
+		<constructor-arg value="8" type="double"/>
+	</bean>
+	<bean id="sinhVienIT" class="sinhVien.SinhVienIT">
+		<constructor-arg value="Pham Ngoc Hoi"/>
+		<constructor-arg value="IT"/>
+		<constructor-arg value="7" type="double"/>
+		<constructor-arg value="8" type="double"/>
+		<constructor-arg value="9" type="double"/>
+	</bean>
+	<bean id="sinhVienIT1" class="sinhVien.SinhVienIT">
+		<constructor-arg value="Pham Ngoc Thiên"/>
+		<constructor-arg value="IT"/>
+		<constructor-arg value="10" type="double"/>
+		<constructor-arg value="8" type="double"/>
+		<constructor-arg value="9" type="double"/>
+	</bean>
+	<bean id="list" class="sinhVien.ListSinhVien">
+		<constructor-arg>
+			<list>
+				<ref bean="sinhVienBiz"/>
+				<ref bean="sinhVienBiz1"/>
+				<ref bean="sinhVienBiz2"/>
+				<ref bean="sinhVienIT"/>
+				<ref bean="sinhVienIT1"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+</beans> 
