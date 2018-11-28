@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	 <bean id="greetingVn" class="id.impl.VietNamGreetinglmp"/>
+	
+	<bean id="greeting" class="id.impl.EnglishGreetinglmp"/>
+	
+	<bean id="greetingClient" class="id.impl.EnglishGreetingClient">
+		<property name="greeting" ref="greetingVn"/>
+	</bean>
+	
+	<bean id="slist" class="id.impl.showListImp" />
+	<bean id="data" class="id.impl.showListClient">
+		<property name="showList" ref="slist"></property>
+	</bean>
+	
+	<bean id="e" class="model.entity.Employee">
+		<constructor-arg value="10" type="int"></constructor-arg>
+		<constructor-arg value="Sonoo"></constructor-arg>
+		<constructor-arg> <ref bean="a1"/> </constructor-arg>
+	</bean>
+	
+	<bean id="a1" class="model.entity.Address">
+		<constructor-arg value="Ghazia"></constructor-arg>
+		<constructor-arg value="Up"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+	
+	<!-- <bean id="q" class="model.entity.Question">
+		<constructor-arg value="111"></constructor-arg>
+		<constructor-arg value="what is java?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>Java is a program</value>
+				<value>Java is a platform</value>
+				<value>Java is an island</value>
+			</list>
+		</constructor-arg>
+	</bean> -->
+	
+	<bean id="ans1" class="model.entity.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Java is a programming language"></constructor-arg>
+		<constructor-arg value="John"></constructor-arg>
+	</bean>
+	<bean id="ans2" class="model.entity.Answer">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Java is a platform"></constructor-arg>
+		<constructor-arg value="Ravi"></constructor-arg>
+	</bean>
+	<bean id="qq" class="model.entity.Question">
+		<constructor-arg value="111"></constructor-arg>
+		<constructor-arg value="What is java?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="ans1"/>
+				<ref bean="ans2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="cn" class="model.entity.HinhChuNhat">
+		<constructor-arg value="7"></constructor-arg>
+		<constructor-arg value="5"></constructor-arg>
+	</bean>
+		
+	<bean id="v" class="model.entity.HinhVuong">
+		<constructor-arg value="8"></constructor-arg>
+	</bean>
+	
+	<bean id="h" class="model.entity.ListHinh">
+		<constructor-arg>
+			<list>
+				<ref bean="cn"/>
+				<ref bean="v"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- <bean id="svfpt" class="model.entity.ListSinhVienFpt">
+		<constructor-arg>
+			<list>
+				<ref bean="sv1"/>
+				<ref bean="sv2"/>
+				<ref bean="sv3"/>
+				<ref bean="sv4"/>
+				<ref bean="sv5"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="sv1" class="model.entity.SinhVienIT">
+		<constructor-arg value="Thiên ml"></constructor-arg>
+		<constructor-arg value="IT"></constructor-arg>
+		<constructor-arg value="7"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+		<constructor-arg value="4"></constructor-arg>
+	</bean>
+	
+	<bean id="sv2" class="model.entity.SinhVienIT">
+		<constructor-arg value="Thiên ml"></constructor-arg>
+		<constructor-arg value="IT"></constructor-arg>
+		<constructor-arg value="7"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+		<constructor-arg value="7"></constructor-arg>
+	</bean>
+	
+	<bean id="sv3" class="model.entity.SinhVienIT">
+		<constructor-arg value="Thiên ml"></constructor-arg>
+		<constructor-arg value="IT"></constructor-arg>
+		<constructor-arg value="9"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+		<constructor-arg value="7"></constructor-arg>
+	</bean>
+	
+	<bean id="sv4" class="model.entity.SinhVienBiz">
+		<constructor-arg value="Thiên ml"></constructor-arg>
+		<constructor-arg value="Biz"></constructor-arg>
+		<constructor-arg value="7"></constructor-arg>
+		<constructor-arg value="3"></constructor-arg>
+	</bean>
+	
+	<bean id="sv5" class="model.entity.SinhVienBiz">
+		<constructor-arg value="Thiên ml"></constructor-arg>
+		<constructor-arg value="Biz"></constructor-arg>
+		<constructor-arg value="7"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+	</bean> -->
+	
+	<bean id="svbiz" class="model.entity.SinhVienBiz">
+		<property name="hoTen"> <value>A</value> </property>
+		<property name="nganh"> <value>Biz</value> </property>
+		<property name="diemMarketing"> <value>6</value> </property>
+		<property name="diemSales"> <value>9</value> </property>
+	</bean>
+
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd"> 
+ 
+<hibernate-mapping>
+    <class name="demo.hibernate.model.entity.Diem" table="diem">
+        <meta attribute="class-description">
+            Lớp này chưa thông tin chi tiết về adress.
+        </meta>
+        <id name="maSv" type="string" column="MASV">
+            <generator class="native" />
+        </id>
+        <property name="html" column="Html" type="float" />
+        <property name="javaCore" column="JavaCore" type="float" />
+        <property name="javaWeb" column="JavaWeb" type="float" />
+    </class>
+</hibernate-mapping>
