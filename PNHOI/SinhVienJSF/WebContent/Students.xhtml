@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<style>
+tr, th, td {
+	border: solid 1px
+}
+
+table {
+	width: 70%;
+	margin: auto;
+}
+
+form, h1 {
+	text-align: center
+}
+
+tr, th, td {
+	border: solid 1px
+}
+
+table {
+	width: 70%;
+	margin: auto;
+}
+
+form, h1 {
+	text-align: center
+}
+</style>
+</h:head>
+<h:body>
+	<f:view locale="#{language.locale}">
+		<h:form>
+			<h:commandButton action="login" value="#{msg['submit']}" />
+			<h:panelGrid columns="2">
+				<h:selectOneMenu value="#{language.locale}" onchange="submit()"
+					valueChangeListener="#{language.localeChanged}">
+					<f:selectItems value="#{language.countries}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+			<h1>
+				<h:outputText value="#{msg['tieuDe']}" />
+			</h1>
+			<h:dataTable value="#{students.allSinhVien}" var="Sv">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['id']}" />
+					</f:facet>
+					<h:outputText id="id" value="#{Sv.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Avatar" />
+					</f:facet>
+					<h:graphicImage width="50px" height="50px" url="/upload/${Sv.id}/${Sv.imageName}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['name']}" />
+					</f:facet>
+					<h:outputText id="name" value="#{Sv.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['age']}" />
+					</f:facet>
+					<h:outputText id="age" value="#{Sv.age}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['address']}" />
+					</f:facet>
+					<h:outputText id="address" value="#{Sv.address}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:commandLink value="#{msg['add']}"
+							actionListener="#{students.resetValue()}" action="add" />
+					</f:facet>
+					<h:commandButton action="update"
+						actionListener="#{students.getAllByIDShow(Sv.id, Sv.name,Sv.age, Sv.address)}"
+						value="#{msg['ins']}" />
+					<h:commandButton action="Students"
+						actionListener="#{students.deleteSV(Sv.id)}" value="#{msg['del']}" />
+				</h:column>
+
+			</h:dataTable>
+			<div class="row margin-row-right">
+				<ul class="pagination pagination-sm no-margin pull-right">
+					<li><a href="Students.xhtml?p=1">«</a></li>
+					<c:forEach begin="#{students.start}" end="#{students.end}"
+						var="val">
+						<li><a href="Students.xhtml?p=#{val}">#{val}</a></li>
+						<f:param name="p" value="#{val}"></f:param>
+					</c:forEach>
+					<li><a href="Students.xhtml?p=#{students.last}">»</a></li>
+				</ul>
+			</div>
+
+		</h:form>
+	</f:view>
+</h:body>
+</html>

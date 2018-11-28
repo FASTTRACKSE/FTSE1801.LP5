@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="greeting" class="Demo.service.Engligh" />
+	<bean id="greetingClient" class="Demo.service.LoiChaoMauDo">
+		<property name="sendLoiChao" ref="greeting"></property>
+	</bean>
+
+	<bean id="list" class="Demo.service.SinhVien" />
+	<bean id="listClient" class="Demo.service.SinhVienClient">
+		<property name="showList" ref="list"></property>
+	</bean>
+
+	<bean id="e" class="constructor.Employee">
+		<constructor-arg value="10" type="int"></constructor-arg>
+		<constructor-arg value="Hoi"></constructor-arg>
+	</bean>
+
+	<!-- <bean id="e" class="constructor.Employee"> <constructor-arg value="10" 
+		type="int"></constructor-arg> </bean> <bean id="e" class="constructor.Employee"> 
+		<constructor-arg value="Hoi"></constructor-arg> </bean> -->
+
+	<bean id="a1" class="object.Address">
+		<constructor-arg value="Nghệ An"></constructor-arg>
+		<constructor-arg value="Tỉnh"></constructor-arg>
+		<constructor-arg value="Việt Nam"></constructor-arg>
+	</bean>
+
+
+	<bean id="employee" class="object.Employee">
+		<constructor-arg value="1" type="int"></constructor-arg>
+		<constructor-arg value="Hoi"></constructor-arg>
+		<constructor-arg>
+			<ref bean="a1" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="q" class="collection.Question">
+		<constructor-arg value="111"></constructor-arg>
+		<constructor-arg value="What is java?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>Java is a J</value>
+				<value>Java is a A</value>
+				<value>Java is a V</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="ans1" class="collection.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg
+			value="Java is a programming language"></constructor-arg>
+		<constructor-arg value="John"></constructor-arg>
+	</bean>
+
+	<bean id="ans2" class="collection.Answer">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Java is a Platform"></constructor-arg>
+		<constructor-arg value="Ravi"></constructor-arg>
+	</bean>
+
+	<bean id="q1" class="collection.Question1">
+		<constructor-arg value="111"></constructor-arg>
+		<constructor-arg value="What is java?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="ans1" />
+				<ref bean="ans2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="q2" class="map.Question2">
+		<constructor-arg value="11"></constructor-arg>
+		<constructor-arg value="What is Java?"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key="Java is a Programming Language" value="Ajay Kumar"></entry>
+				<entry key="Java is a Platform" value="John Smith"></entry>
+				<entry key="Java is an Island" value="Raj Kumar"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+	<bean id="e1" class="inheriting.Employee1">
+		<constructor-arg value="101"></constructor-arg>
+		<constructor-arg value="Sachin"></constructor-arg>
+	</bean>
+
+	<bean id="address1" class="inheriting.Address">
+		<constructor-arg value="21,Lohianagar"></constructor-arg>
+		<constructor-arg value="Ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="USA"></constructor-arg>
+	</bean>
+
+	<bean id="e2" class="inheriting.Employee1" parent="e1">
+		<constructor-arg ref="address1"></constructor-arg>
+	</bean>
+	
+	<bean id="SV" class="setter.SinhVien">
+		<property name="id" value="1"/>
+		<property name="name" value="Hoi"/>
+	</bean>
+	
+	<bean id="It" class="sinhvien.It">
+		<property name="hoTen" value="Hoi1"/>
+		<property name="nganh" value="it"/>
+		<property name="java" value="5"/>
+		<property name="css" value="6"/>
+		<property name="html" value="7"/>
+	</bean>
+	
+	<bean id="It1" class="sinhvien.It">
+		<property name="hoTen" value="Hoi2"/>
+		<property name="nganh" value="it"/>
+		<property name="java" value="5"/>
+		<property name="css" value="6"/>
+		<property name="html" value="7"/>
+	</bean>
+	
+	<bean id="It2" class="sinhvien.It">
+		<property name="hoTen" value="Hoi3"/>
+		<property name="nganh" value="it"/>
+		<property name="java" value="5"/>
+		<property name="css" value="6"/>
+		<property name="html" value="7"/>
+	</bean>
+	
+	<bean id="biz" class="sinhvien.Biz">
+		<property name="hoTen" value="Thien1"/>
+		<property name="nganh" value="biz"/>
+		<property name="diemSales" value="5"/>
+		<property name="diemMaketing" value="6"/>
+	</bean>
+	
+	<bean id="biz1" class="sinhvien.Biz">
+		<property name="hoTen" value="Thien2"/>
+		<property name="nganh" value="biz"/>
+		<property name="diemSales" value="5"/>
+		<property name="diemMaketing" value="6"/>
+	</bean>
+	
+	<bean id="listSv" class="sinhvien.ListSinhVien" >
+		<property name="list" >
+			<list>
+				<ref bean="It"/>
+				<ref bean="It1"/>
+				<ref bean="It2"/>
+				<ref bean="biz"/>
+				<ref bean="biz1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id = "hello" class = "scope.HelloWord" scope = "prototype">
+   	</bean>
+
+</beans>
