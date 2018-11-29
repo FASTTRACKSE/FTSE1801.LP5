@@ -9,14 +9,11 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import model.DatabaseUtil;
 import myJSF.SinhVien;
 
 @ManagedBean(name = "sinhVienDao")
 public class SinhVienDao {
 	private Connection conn;
-	private PreparedStatement statement;
-	private ResultSet result;
 
 	public ArrayList<SinhVien> getAllSinhVien1(int page, int soDong) {
 		String sql = "SELECT * FROM quanlysv LIMIT ?,?";
@@ -36,6 +33,7 @@ public class SinhVienDao {
 				sinhVien.setTuoi(result.getString("Tuoi"));
 				sinhVien.setDiachi(result.getString("Diachi"));
 				sinhVien.setLop(result.getString("Lop"));
+				sinhVien.setImg(result.getString("img"));
 
 				listQg.add(sinhVien);
 			}
@@ -64,6 +62,7 @@ public class SinhVienDao {
 				sinhVien.setTuoi(result.getString("Tuoi"));
 				sinhVien.setDiachi(result.getString("Diachi"));
 				sinhVien.setLop(result.getString("Lop"));
+				sinhVien.setImg(result.getString("img"));
 
 				listQg.add(sinhVien);
 			}
@@ -129,7 +128,7 @@ public class SinhVienDao {
 	/* Sửa thông tin sinh viên */
 	public boolean UpdateSinhVien(SinhVien sinhvien, String id) {
 		boolean statusExecute = false;
-		String sql = "UPDATE `quanlysv` SET `Ten`=?,`Tuoi`=?,`Diachi`=?,`Lop`=? WHERE `id` =?";
+		String sql = "UPDATE `quanlysv` SET `Ten`=?,`Tuoi`=?,`Diachi`=?,`Lop`=?, `img`=? WHERE `id` =?";
 		conn = DatabaseUtil.getConnect();
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -140,7 +139,9 @@ public class SinhVienDao {
 			statement.setString(4, sinhvien.getLop());
 			statement.setString(5, id);
 			int result = statement.executeUpdate();
-
+			if (result>0) {
+				statusExecute=true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -150,18 +151,18 @@ public class SinhVienDao {
 	}
 	/* Thêm thành viên */
 
-	public boolean addSinhVien(SinhVien sinhVien) {
+	public boolean addSinhVien(String ten, String tuoi, String diachi, String lop, String img) {
 		boolean statusExecute = false;
-		String sql = "INSERT INTO `quanlysv`(`Ten`, `Tuoi`, `Diachi`, `Lop`) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO `quanlysv`(`Ten`, `Tuoi`, `Diachi`, `Lop`, `img`) VALUES (?,?,?,?,?)";
 		conn = DatabaseUtil.getConnect();
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
-
-			statement.setString(1, sinhVien.getTen());
-			statement.setString(2, sinhVien.getTuoi());
-			statement.setString(3, sinhVien.getDiachi());
-			statement.setString(4, sinhVien.getLop());
-
+			
+			statement.setString(1, ten);
+			statement.setString(2, tuoi);
+			statement.setString(3, diachi);
+			statement.setString(4, lop);
+			statement.setString(5, img);
 			if (statement.executeUpdate() > 0) {
 				statusExecute = true;
 			}
@@ -174,7 +175,6 @@ public class SinhVienDao {
 	}
 
 	public SinhVien getAllSvById(String id) {
-		boolean statusExecute = false;
 		String sql = "SELECT * FROM `quanlysv` WHERE `id` =?";
 		conn = DatabaseUtil.getConnect();
 
@@ -191,7 +191,7 @@ public class SinhVienDao {
 				sinhvien.setTuoi(result.getString("tuoi"));
 				sinhvien.setDiachi(result.getString("diachi"));
 				sinhvien.setLop(result.getString("lop"));
-
+				sinhvien.setImg(result.getString("img"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -201,11 +201,31 @@ public class SinhVienDao {
 
 		return sinhvien;
 	}
+	
+
+	public int getId() {
+		String sql = "SELECT * FROM `quanlysv` ORDER BY `quanlysv`.`id` DESC LIMIT 1" ;
+		conn = DatabaseUtil.getConnect();
+		int i =0;
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+				i = result.getInt("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.disConnect(conn);
+		}
+
+		return i;
+	}
 
 	public List<SinhVien> getAllSinhVien11(int first, int pageSize) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	
 }

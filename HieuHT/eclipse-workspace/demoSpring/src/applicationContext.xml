@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- <bean id="s" class="demo.Employee"> <constructor-arg value="10" type="int"></constructor-arg> 
+		<constructor-arg value="Sonoo"></constructor-arg> </bean> -->
+
+	<!-- <bean id="s" class="demo.Question"> <constructor-arg value="1 "/> <constructor-arg 
+		value="Java la gi?"/> <constructor-arg> <list> <value>Java là ngôn ngữ lập 
+		trình</value> <value>Java là một nền tảng</value> </list> </constructor-arg> 
+		</bean> -->
+
+	<bean id="ans1" class="demo.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg
+			value="Java là ngôn ngữ lập trình "></constructor-arg>
+		<constructor-arg value="John"></constructor-arg>
+	</bean>
+
+	<bean id="ans2" class="demo.Answer">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Java là một nền tảng "></constructor-arg>
+		<constructor-arg value="Ravi"></constructor-arg>
+	</bean>
+
+	<bean id="s" class="demo.Question">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Java là gì?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="ans1" />
+				<ref bean="ans2" />
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>  

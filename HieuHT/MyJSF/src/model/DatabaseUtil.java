@@ -8,12 +8,12 @@ import com.mysql.cj.jdbc.Driver;
 
 /**
  * 
- * @author TGDD
+ * @author 
  *
  */
 
 public class DatabaseUtil {
-	private static final String URL = "jdbc:mysql://localhost/quanly_sinhvien";
+	private static final String URL = "jdbc:mysql://localhost/hieuht";
 	private static final String USER = "root";
 	private static final String PASS = "";
 

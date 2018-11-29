@@ -10,19 +10,14 @@
 </head>
 <body>
 	<h:form>
-		<h3>Đăng Nhập</h3>
-		<b>#{userLogin.message}</b>
-		<br />
-		<br />
-		<h:form id="loginForm">
-			<h:outputLabel value="User Name:" />
-			<h:inputText value="#{userLogin.username}" />
-			<br/><br/>
-			<h:outputLabel value="Password:" />
-			<h:inputSecret value="#{userLogin.password}"></h:inputSecret>
-			<br/><br/>
-			<h:commandButton value="Login" action="#{userLogin.login}" ></h:commandButton>
-		</h:form>
-		</h:form>
+  
+    <h:messages globalOnly="true" style="color:red;margin:8px;" />
+  
+    <h:outputText value="Username: "/>
+    <h:inputText label="Username" value="#{login.username}" /><br/><br/>
+    <h:outputText value="Password: "/>
+    <h:inputSecret value="#{login.password}" /><br/><br/>
+    <h:commandButton value="login" action="#{login.getLogin}" />
+</h:form>
 </body>
 </html>

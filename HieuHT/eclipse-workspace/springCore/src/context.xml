@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- <bean id="greeting" class="id.impl.EnglishGreetinglmp"></bean> <bean 
+		id="greetingVn" class="id.impl.VietNamGreetinglmp"></bean> <bean id="greetingClient" 
+		class="id.impl.EnglishGreetingClient"> <property name="greeting" ref="greetingVn"></property> 
+		</bean> -->
+	<bean id="greeting12" class="id.impl.VietNamGreetinglmp" />
+	<bean id="greetingClient" class="id.impl.VietNamGreetingClient">
+		<property name="greeting" ref="greeting12"></property>
+	</bean>
+	<bean id="sList" class="id.impl.showListlmp" />
+	<bean id="data" class="id.impl.showListClient">
+		<property name="showList" ref="sList"></property>
+	</bean>
+</beans>

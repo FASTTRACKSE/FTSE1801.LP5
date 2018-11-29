@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="svBiz" class="demoSV.SinhVienBiz">
+		<constructor-arg value="Nguyễn Hoàng Duy" />
+		<constructor-arg value="Biz" />
+		<constructor-arg value="7" />
+		<constructor-arg value="8" />
+	</bean>
+	<bean id="svBiz1" class="demoSV.SinhVienBiz">
+		<constructor-arg value="Nguyễn Hoàng Duyên" />
+		<constructor-arg value="Biz" />
+		<constructor-arg value="7" />
+		<constructor-arg value="8" />
+	</bean>
+	<bean id="svIt" class="demoSV.SinhVienIT">
+		<constructor-arg value="Phạm Thanh Hải" />
+		<constructor-arg value="IT" />
+		<constructor-arg value="10" />
+		<constructor-arg value="8" />
+		<constructor-arg value="9" />
+	</bean>
+	<bean id="svIt1" class="demoSV.SinhVienIT">
+		<constructor-arg value="Hồ Thanh Tài" />
+		<constructor-arg value="IT" />
+		<constructor-arg value="5" />
+		<constructor-arg value="4" />
+		<constructor-arg value="4" />
+	</bean>
+	<bean id="svIt2" class="demoSV.SinhVienIT">
+		<constructor-arg value="Lê Thanh Tiên" />
+		<constructor-arg value="IT" />
+		<constructor-arg value="6" />
+		<constructor-arg value="7" />
+		<constructor-arg value="8" />
+	</bean>
+	<bean id="list" class="demoSV.ListSv">
+		<constructor-arg>
+			<list>
+				<ref bean="svBiz" />
+				<ref bean="svBiz1" />
+				<ref bean="svIt" />
+				<ref bean="svIt1" />
+				<ref bean="svIt2" />
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>

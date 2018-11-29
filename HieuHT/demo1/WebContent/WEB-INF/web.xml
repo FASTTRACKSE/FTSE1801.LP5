@@ -5,12 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>demo1</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>PTbac1</servlet-name>
@@ -19,5 +14,21 @@
 	<servlet-mapping>
 		<servlet-name>PTbac1</servlet-name>
 		<url-pattern>/PTbac1</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>indexDemo</servlet-name>
+		<servlet-class>demoHello</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>recivceDataFormClient</servlet-name>
+		<servlet-class>webdemo.RecivceData</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>indexDemo</servlet-name>
+		<url-pattern>/demo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>recivceDataFormClient</servlet-name>
+		<url-pattern>/demoPostGet</url-pattern>
 	</servlet-mapping>
 </web-app>
