@@ -146,3 +146,9 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/eclipse,windows,macos
 Project/FBMS/.classpath
+Project/Servers2/Tomcat v9.0 Server at localhost-config/catalina.policy
+Project/Servers2/Tomcat v9.0 Server at localhost-config/catalina.properties
+Project/Servers2/Tomcat v9.0 Server at localhost-config/context.xml
+Project/Servers2/Tomcat v9.0 Server at localhost-config/server.xml
+Project/Servers2/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
+Project/Servers2/Tomcat v9.0 Server at localhost-config/web.xml
