@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.UserBean1" table="nguoi_dung"
+        schema="onlinetutorialspoint">
+        <id name="id" column="id">
+           <!--  <generator class="increment" /> auto -->
+        </id>
+        <property name="name" column="userName" />
+        <property name="pass" column="passWord" />
+        <property name="age" column="age" />
+        <property name="add" column="address" />
+        <property name="img" column="image" />
+    </class>
+</hibernate-mapping>

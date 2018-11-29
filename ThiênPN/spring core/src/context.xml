@@ -6,8 +6,50 @@
  <bean id="greetingClient" class="di.elm.VietNamGreetingClient">
     <property name="greeting" ref="greeting12"></property>
  </bean>
- <bean id="sList" class="di.elm.showListImp"/>
+ <bean id="sList" class="di.elm.showImp"/>
  <bean id="data" class="di.elm.showListClient">
    <property name="showList" ref="sList"></property>
  </bean>
+ <bean id="a" class="model.Address">
+ <constructor-arg value="đà nẵng"></constructor-arg>
+ <constructor-arg value="việt nam"></constructor-arg>
+ </bean>
+ <bean id="e" class="model.Employee">
+ <constructor-arg value="20" type="int"></constructor-arg>
+ <constructor-arg value="SÁADADA"></constructor-arg>
+ <constructor-arg> <ref bean="a"/></constructor-arg>
+ </bean>
+ <bean id="a1" class="model.Address">
+ <constructor-arg value="Quảng nam"></constructor-arg>
+ <constructor-arg value="Việt nam"></constructor-arg>
+ </bean>
+ <bean id="collec" class="model.Collection">
+ <constructor-arg value="20"></constructor-arg>
+ <constructor-arg value="Where are you?"></constructor-arg>
+ <constructor-arg>
+ <list>
+<ref bean="a"/>
+<ref bean="a1"/> 
+ </list>
+ </constructor-arg>
+ </bean>
+ <bean id="u1" class="model.User">
+  <constructor-arg value="hoi123@gmail.com"></constructor-arg>
+  <constructor-arg value="1233455"></constructor-arg>
+ </bean>
+ <bean id="u2" class="model.User">
+  <constructor-arg value="hung@gmail.com"></constructor-arg>
+  <constructor-arg value="0000000"></constructor-arg>
+ </bean>
+ <bean id="collec2" class="model.Collection2">
+ <constructor-arg value="11"></constructor-arg>
+ <constructor-arg value="thiên"></constructor-arg>
+ <constructor-arg>
+ <map>
+ <entry key-ref="a" value-ref="u1"></entry>
+ <entry key-ref="a1" value-ref="u2"></entry>
+ </map>
+ </constructor-arg>
+ </bean>
+ 
 </beans>

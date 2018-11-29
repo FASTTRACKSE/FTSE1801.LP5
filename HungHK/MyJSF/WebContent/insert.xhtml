@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>Thêm sinh viên</title>
+	<style>
+body {
+	margin: auto;
+	width: 30%;
+}
+
+textarea {
+	width: 298px;
+	height: 111px;
+}
+</style>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form enctype="multipart/form-data">
+			Masv:<br />
+			<h:inputText id="masv" value="#{sinhVien.maSv}" required="true"
+				requiredMessage="Khong dc de trong">
+				<f:validateLength minimum="2" maximum="10" />
+			</h:inputText>
+			<h:message for="masv" style="color: red" />
+			<br />
+				
+			Tên:<br />
+			<h:inputText id="name" value="#{sinhVien.name}" required="true"
+				requiredMessage="Khong dc de trong">
+				<!-- <f:validateRegex pattern="([A-Z][a-z]*)(\\s[A-Z][a-z]*)+"/> -->
+			</h:inputText>
+			<h:message for="name" />
+			<br />
+				
+			Tuổi:<br>
+			<h:inputText value="#{sinhVien.age}"></h:inputText></br>
+			
+			File:<br />
+			<h:inputFile value="#{sinhVien.file}" />
+			<br />
+			<br />
+			<h:commandButton value="Add" actionListener="#{sinhVien.upload}"
+				action="#{sinhVien.addSinhVien}"></h:commandButton>
+		</h:form>
+	</f:view>
+</h:body>
+
+</html>

@@ -18,7 +18,7 @@ public class MyClass1 {
 		GreetingClient greetingClient =(GreetingClient) context.getBean("greetingClient");
 		greetingClient.loiChao();
 		showList sList =(showList) context.getBean("sList");
-		System.out.println(sList.listSV());
+		
 		showListData data =(showListData) context.getBean("data");
 		data.show();
 	}

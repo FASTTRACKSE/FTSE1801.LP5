@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ <bean id="hcn" class="di.elm.HinhChuNhat">
+	<constructor-arg value="4" type="double"></constructor-arg>
+	<constructor-arg value="3" type="double"></constructor-arg>
+ </bean>
+ <bean id="hv1" class="di.elm.HinhVuong">
+ <constructor-arg value="2"></constructor-arg>
+ </bean>
+ <bean id="biz" class="di.elm.SinhVienBiz">
+ <constructor-arg value="ten"></constructor-arg> 
+ <constructor-arg value="biz"></constructor-arg>
+ <constructor-arg value="8" type="double"></constructor-arg>
+ <constructor-arg value="8" type="double"></constructor-arg>
+ </bean>
+ <bean id="biz1" class="di.elm.SinhVienBiz">
+ <constructor-arg value="hợi"></constructor-arg> 
+ <constructor-arg value="biz"></constructor-arg>
+ <constructor-arg value="7" type="double"></constructor-arg>
+ <constructor-arg value="7" type="double"></constructor-arg>
+ </bean>
+ 
+ <bean id="it" class="di.elm.SinhVienIT" >
+ <constructor-arg value="ho"></constructor-arg> 
+ <constructor-arg value="IT"></constructor-arg>
+ <constructor-arg value="4" type="double"></constructor-arg>
+ <constructor-arg value="4" type="double"></constructor-arg>
+ <constructor-arg value="4" type="double"></constructor-arg>
+ </bean>
+  <bean id="it1" class="di.elm.SinhVienIT" >
+ <constructor-arg value="heo"></constructor-arg> 
+ <constructor-arg value="IT"></constructor-arg>
+ <constructor-arg value="5" type="double"></constructor-arg>
+ <constructor-arg value="5" type="double"></constructor-arg>
+ <constructor-arg value="5" type="double"></constructor-arg>
+ </bean>
+  <bean id="it2" class="di.elm.SinhVienIT" >
+ <constructor-arg value="bò"></constructor-arg> 
+ <constructor-arg value="IT"></constructor-arg>
+ <constructor-arg value="6" type="double"></constructor-arg>
+ <constructor-arg value="6" type="double"></constructor-arg>
+ <constructor-arg value="6" type="double"></constructor-arg>
+ </bean>
+ <bean id="list" class="di.elm.ListSinhVien">
+ <constructor-arg>
+ <list>
+ <ref bean="biz"/>
+ <ref bean="biz1"/>
+ <ref bean="it"/>
+ <ref bean="it1"/>
+ <ref bean="it2"/>
+ </list>
+ </constructor-arg>
+ </bean>
+</beans>

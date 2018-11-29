@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
+  
+ <hibernate-mapping>
+    <class name="demo.hibernate.model.entity.SinhVien" table="sinhvien2">
+        <meta attribute="class-description">
+            Lớp này chưa thông tin chi tiết về employee.
+        </meta>
+        <id name="maSv" type="string" column="MASV">
+            <generator class="native" />
+        </id>
+        <property name="name" column="TEN" type="string" />
+        <property name="age" column="Age" type="int" />
+        <many-to-one name="diem" column="Diem" unique="true"
+            class="demo.hibernate.model.entity.Diem" not-null="true" />
+    </class>
+</hibernate-mapping>
