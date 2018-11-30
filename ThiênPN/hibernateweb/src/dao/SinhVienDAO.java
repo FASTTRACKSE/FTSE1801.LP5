@@ -6,7 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import entity.SinhVien;
+import ftse1801.demo.spring.model.entity.SinhVien;
+
 
 public class SinhVienDAO {
 	@SuppressWarnings("unchecked")

@@ -6,7 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import entity.SinhVien;
+import ftse1801.demo.spring.model.entity.SinhVien;
+
 
 public class SinhVienUtil {
 	static SessionFactory factory = null;

@@ -20,7 +20,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ftse1801.demo.spring.model.dao.SinhVienDAOIML;
-import ftse1801.demo.spring.model.entity.Diem;
 import ftse1801.demo.spring.model.entity.SinhVien;
 
 @Controller
