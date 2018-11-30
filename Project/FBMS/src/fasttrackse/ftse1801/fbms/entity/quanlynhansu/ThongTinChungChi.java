@@ -1,4 +1,4 @@
-package ftse1801.project.entity.quan_ly_nhan_su;
+package fasttrackse.ftse1801.fbms.entity.quanlynhansu;
 
 import java.util.Date;
 
@@ -17,32 +17,26 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "thong_tin_bang_cap")
-public class ThongTinBangCap {
+@Table(name="thong_tin_chung_chi")
+public class ThongTinChungChi {
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ma_chung_chi")
 	private int id;
-
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ma_nhan_vien")
+	@JoinColumn(name = "ma_nhan_vien", nullable = false)
 	private HoSoNhanVien hoSoNhanVien;
-
-	@Column(name = "ten_bang_cap")
-	private String tenBangCap;
-
-	@Column(name = "loai_bang_cap")
-	private String loaiBangCap;
-
-	@Column(name = "don_vi_cap")
+	
+	@Column(name="ten_chung_chi")
+	private String tenChungChi;
+	
+	@Column(name = "don_vi_cap", nullable = false)
 	private String donViCap;
-
-	@Column(name = "noi_cap")
-	private String noiCap;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "ngay_cap")
+	@Column(name = "ngay_cap", nullable = false)
 	private Date ngayCap;
 
 	public int getId() {
@@ -61,20 +55,12 @@ public class ThongTinBangCap {
 		this.hoSoNhanVien = hoSoNhanVien;
 	}
 
-	public String getTenBangCap() {
-		return tenBangCap;
+	public String getTenChungChi() {
+		return tenChungChi;
 	}
 
-	public void setTenBangCap(String tenBangCap) {
-		this.tenBangCap = tenBangCap;
-	}
-
-	public String getLoaiBangCap() {
-		return loaiBangCap;
-	}
-
-	public void setLoaiBangCap(String loaiBangCap) {
-		this.loaiBangCap = loaiBangCap;
+	public void setTenChungChi(String tenChungChi) {
+		this.tenChungChi = tenChungChi;
 	}
 
 	public String getDonViCap() {
@@ -85,14 +71,6 @@ public class ThongTinBangCap {
 		this.donViCap = donViCap;
 	}
 
-	public String getNoiCap() {
-		return noiCap;
-	}
-
-	public void setNoiCap(String noiCap) {
-		this.noiCap = noiCap;
-	}
-
 	public Date getNgayCap() {
 		return ngayCap;
 	}
@@ -100,5 +78,6 @@ public class ThongTinBangCap {
 	public void setNgayCap(Date ngayCap) {
 		this.ngayCap = ngayCap;
 	}
-
+	
+	
 }

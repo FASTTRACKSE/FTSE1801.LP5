@@ -25,24 +25,21 @@ public class ThongTinBangCap {
 	private int id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ma_nhan_vien")
+	@JoinColumn(name = "ma_nhan_vien", nullable = false)
 	private HoSoNhanVien hoSoNhanVien;
 
-	@Column(name = "ten_bang_cap")
+	@Column(name = "ten_bang_cap", nullable = false)
 	private String tenBangCap;
 
-	@Column(name = "loai_bang_cap")
+	@Column(name = "loai_bang_cap", nullable = false)
 	private String loaiBangCap;
 
-	@Column(name = "don_vi_cap")
+	@Column(name = "don_vi_cap", nullable = false)
 	private String donViCap;
-
-	@Column(name = "noi_cap")
-	private String noiCap;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "ngay_cap")
+	@Column(name = "ngay_cap", nullable = false)
 	private Date ngayCap;
 
 	public int getId() {
@@ -83,14 +80,6 @@ public class ThongTinBangCap {
 
 	public void setDonViCap(String donViCap) {
 		this.donViCap = donViCap;
-	}
-
-	public String getNoiCap() {
-		return noiCap;
-	}
-
-	public void setNoiCap(String noiCap) {
-		this.noiCap = noiCap;
 	}
 
 	public Date getNgayCap() {
