@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,58 +24,62 @@ import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 @Table(name = "ho_so_nhan_vien")
 public class HoSoNhanVien {
 	@Id
-	@Column(name = "ma_nhan_vien")
-	private String maNhanVien;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ma_nhan_vien", nullable = false)
+	private int maNhanVien;
 
 	@ManyToOne
-	@JoinColumn(name = "ma_phong_ban")
+	@JoinColumn(name = "ma_phong_ban", nullable = false)
 	private PhongBan maPhongBan;
 
 	@ManyToOne
-	@JoinColumn(name = "ma_chuc_danh")
+	@JoinColumn(name = "ma_chuc_danh", nullable = false)
 	private ChucDanh maChucDanh;
 
-	@Column(name = "ho_ten")
-	private String hoTen;
+	@Column(name = "ho_dem", nullable = false)
+	private String hoDem;
 
-	@Column(name = "anh_dai_dien")
+	@Column(name = "ten", nullable = false)
+	private String ten;
+
+	@Column(name = "anh_dai_dien", nullable = false)
 	private String avatar;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "nam_sinh")
+	@Column(name = "nam_sinh", nullable = false)
 	private Date namSinh;
 
-	@Column(name = "gioi_tinh")
+	@Column(name = "gioi_tinh", nullable = false)
 	private String gioiTinh;
 
-	@Column(name = "tinh_trang_hon_nhan")
+	@Column(name = "tinh_trang_hon_nhan", nullable = false)
 	private String tinhTrangHonNhan;
 
-	@Column(name = "que_quan")
+	@Column(name = "que_quan", nullable = false)
 	private String queQuan;
 
-	@Column(name = "dan_toc")
+	@Column(name = "dan_toc", nullable = false)
 	private String danToc;
 
-	@Column(name = "noi_tam_tru")
+	@Column(name = "noi_tam_tru", nullable = false)
 	private String noiTamTru;
 
-	@Column(name = "so_dien_thoai")
+	@Column(name = "so_dien_thoai", nullable = false)
 	private int soDienThoai;
 
-	@Column(name = "email")
+	@Column(name = "email", nullable = false)
 	private String email;
 
-	@Column(name = "so_cmnd")
+	@Column(name = "so_cmnd", nullable = false)
 	private int soCMND;
 
-	@Column(name = "noi_cap")
+	@Column(name = "noi_cap", nullable = false)
 	private String noiCap;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "ngay_cap")
+	@Column(name = "ngay_cap", nullable = false)
 	private Date ngayCap;
 
 	// ket noi 2 chieu @ManyToOne voi class ThongTinGiaDinh
@@ -84,7 +90,43 @@ public class HoSoNhanVien {
 	@OneToMany(mappedBy = "hoSoNhanVien")
 	private List<ThongTinBangCap> thongTinBangCap;
 
+	// ket noi 2 chieu @ManyToOne voi class ThongTinChungChi
+	@OneToMany(mappedBy = "hoSoNhanVien")
+	private List<ThongTinChungChi> thongTinChungChi;
+
+	// ket noi 2 chieu @ManyToOne voi class KyNang
+	@OneToMany(mappedBy = "hoSoNhanVien")
+	private List<KyNang> kyNang;
+
+	// ket noi 2 chieu @ManyToOne voi class HopDong
+	@OneToMany(mappedBy = "hoSoNhanVien")
+	private List<HopDong> hopDong;
+
 	public HoSoNhanVien() {
+	}
+
+	public List<KyNang> getKyNang() {
+		return kyNang;
+	}
+
+	public void setKyNang(List<KyNang> kyNang) {
+		this.kyNang = kyNang;
+	}
+
+	public List<HopDong> getHopDong() {
+		return hopDong;
+	}
+
+	public void setHopDong(List<HopDong> hopDong) {
+		this.hopDong = hopDong;
+	}
+
+	public List<ThongTinChungChi> getThongTinChungChi() {
+		return thongTinChungChi;
+	}
+
+	public void setThongTinChungChi(List<ThongTinChungChi> thongTinChungChi) {
+		this.thongTinChungChi = thongTinChungChi;
 	}
 
 	public List<ThongTinBangCap> getThongTinBangCap() {
@@ -103,11 +145,11 @@ public class HoSoNhanVien {
 		this.thongTinGiaDinh = thongTinGiaDinh;
 	}
 
-	public String getMaNhanVien() {
+	public int getMaNhanVien() {
 		return maNhanVien;
 	}
 
-	public void setMaNhanVien(String maNhanVien) {
+	public void setMaNhanVien(int maNhanVien) {
 		this.maNhanVien = maNhanVien;
 	}
 
@@ -127,12 +169,20 @@ public class HoSoNhanVien {
 		this.maChucDanh = maChucDanh;
 	}
 
-	public String getHoTen() {
-		return hoTen;
+	public String getHoDem() {
+		return hoDem;
 	}
 
-	public void setHoTen(String hoTen) {
-		this.hoTen = hoTen;
+	public void setHoDem(String hoDem) {
+		this.hoDem = hoDem;
+	}
+
+	public String getTen() {
+		return ten;
+	}
+
+	public void setTen(String ten) {
+		this.ten = ten;
 	}
 
 	public String getAvatar() {
