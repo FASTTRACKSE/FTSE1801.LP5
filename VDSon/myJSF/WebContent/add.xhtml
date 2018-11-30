@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Thêm sinh viên</title>
+	<style>
+body {
+	margin: auto;
+	width: 21%;
+}
+
+textarea {
+	width: 298px;
+	height: 111px;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form id="form" enctype="multipart/form-data">
+		<center>
+			<h1>
+				<h:outputText value="#{lang['themthongtin']}" />
+			</h1>
+		</center>
+                File:<br />
+		<h:inputFile value="#{sinhVien.file}" />
+		<br />
+		<br />
+		<h:outputText value="#{lang['masv']}:" />
+		<h:inputText value="#{sinhVien.MASV}" style="float:right" />
+		<br />
+		<br />
+		<h:outputText value="#{lang['ten']}:" />
+		<h:inputText id="id" value="#{sinhVien.NAME}" style="float:right" />
+		<br />
+		<br />
+		<h:outputText value="#{lang['tuoi']}:" />
+		<h:inputText value="#{sinhVien.AGE}" style="float:right" />
+		<br />
+		<br />
+		<center>
+			<h:commandButton value="#{lang['them']}" action="#{sinhVien.add}" />
+			<h:outputText value="&#160;" />
+			<h:commandButton value="#{lang['quayve']}" action="index" />
+		</center>
+	</h:form>
+</h:body>
+</html>
