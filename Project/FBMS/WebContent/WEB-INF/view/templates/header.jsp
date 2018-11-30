@@ -268,6 +268,16 @@
 					href="<c:url value = "/QuanTriHeThong/tai-khoan/"/>"><i
 						class="fa fa-briefcase"></i><span data-i18n="" class="menu-title">Thông
 							tin kinh nghiệm dự án</span></a></li>
+				<!-- Quản lý dự án  -->
+				<li class=" navigation-header"><span>Quản lý dự án</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Apps" class=" ft-minus"></i></li>
+				<li class=" nav-item QuanTriHeThongphong_ban"><a
+					href="<c:url value = ""/>"><i class="fa fa-th-list"></i><span
+						data-i18n="" class="menu-title">Quản lý danh mục</span></a></li>
+				<li class=" nav-item QuanTriHeThongchuc_danh"><a
+					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
+						data-i18n="" class="menu-title">Quản lý thông tin dự án</span></a></li>
 			</ul>
 		</div>
 	</div>
