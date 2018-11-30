@@ -21,7 +21,7 @@ import fasttrackse.ftse1801.fbms.entity.security.ChucDanh;
 import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Entity
-@Table(name = "ho_so_nhan_vien")
+@Table(name = "ho_so_nhan_su")
 public class HoSoNhanVien {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,10 +51,10 @@ public class HoSoNhanVien {
 	private Date namSinh;
 
 	@Column(name = "gioi_tinh", nullable = false)
-	private String gioiTinh;
+	private int gioiTinh;
 
 	@Column(name = "tinh_trang_hon_nhan", nullable = false)
-	private String tinhTrangHonNhan;
+	private int tinhTrangHonNhan;
 
 	@Column(name = "que_quan", nullable = false)
 	private String queQuan;
@@ -76,6 +76,9 @@ public class HoSoNhanVien {
 
 	@Column(name = "noi_cap", nullable = false)
 	private String noiCap;
+
+	@Column(name = "trang_thai", nullable = false)
+	private int trangThai;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -201,20 +204,28 @@ public class HoSoNhanVien {
 		this.namSinh = namSinh;
 	}
 
-	public String getGioiTinh() {
+	public int getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(String gioiTinh) {
+	public void setGioiTinh(int gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public String getTinhTrangHonNhan() {
+	public int getTinhTrangHonNhan() {
 		return tinhTrangHonNhan;
 	}
 
-	public void setTinhTrangHonNhan(String tinhTrangHonNhan) {
+	public void setTinhTrangHonNhan(int tinhTrangHonNhan) {
 		this.tinhTrangHonNhan = tinhTrangHonNhan;
+	}
+
+	public int getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(int trangThai) {
+		this.trangThai = trangThai;
 	}
 
 	public String getQueQuan() {
