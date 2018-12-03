@@ -19,7 +19,7 @@ public class DanhMucTaiLieu implements Serializable{
 	private String tenDanhMuc;
 
 	@Column(name = "isDelete")
-	private Integer isDelete;
+	private int isDelete;
 
 	public String getMaDanhMuc() {
 		return maDanhMuc;
@@ -37,12 +37,14 @@ public class DanhMucTaiLieu implements Serializable{
 		this.tenDanhMuc = tenDanhMuc;
 	}
 
-	public Integer getIsDelete() {
+	public int getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(Integer isDelete) {
+	public void setIsDelete(int isDelete) {
 		this.isDelete = isDelete;
 	}
+
+	
 
 }

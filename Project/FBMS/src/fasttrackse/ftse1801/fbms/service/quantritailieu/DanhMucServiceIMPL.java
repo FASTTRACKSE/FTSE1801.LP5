@@ -3,13 +3,14 @@ package fasttrackse.ftse1801.fbms.service.quantritailieu;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fasttrackse.ftse1801.fbms.dao.quantritailieu.DanhMucDao;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.DanhMucTaiLieu;
-
+@Service
 public class DanhMucServiceIMPL implements DanhMucService {
 	@Autowired
-	DanhMucDao danhMucDao;
+	private DanhMucDao danhMucDao;
 
 	@Override
 	public List<DanhMucTaiLieu> getAllDanhMuc() {
