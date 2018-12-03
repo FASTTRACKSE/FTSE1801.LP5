@@ -278,6 +278,23 @@
 				<li class=" nav-item QuanTriHeThongchuc_danh"><a
 					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
 						data-i18n="" class="menu-title">Quản lý thông tin dự án</span></a></li>
+				<!-- Quản trị tài liệu  -->
+				<li class=" navigation-header"><span>Quản trị tài liệu</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Apps" class=" ft-minus"></i></li>
+				<li class=" nav-item QuanTriTaiLieudanh_muc"><a
+					href="<c:url value = "/QuanTriTaiLieu/danh_muc/"/>"><i
+						class="fa fa-th-list"></i><span data-i18n="" class="menu-title">Quản
+							lý danh mục</span></a></li>
+				<li class=" nav-item QuanTriTaiLieuicon"><a
+					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
+						data-i18n="" class="menu-title">Icon tài liệu</span></a></li>
+				<li class=" nav-item QuanTriTaiLieutai_lieu"><a
+					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
+						data-i18n="" class="menu-title">Quản lý tài liệu</span></a></li>
+				<li class=" nav-item QuanTriTaiLieutrang_thai"><a
+					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
+						data-i18n="" class="menu-title">Quản lý trạng thái</span></a></li>
 				<!-- Quản lý nhiệm vụ -->
 				<li class=" navigation-header"><span>Quản lý nhiệm vụ</span><i
 					data-toggle="tooltip" data-placement="right"

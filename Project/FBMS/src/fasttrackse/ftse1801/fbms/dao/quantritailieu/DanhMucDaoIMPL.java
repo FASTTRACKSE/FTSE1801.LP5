@@ -6,9 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.DanhMucTaiLieu;
-
+@Repository
 public class DanhMucDaoIMPL implements DanhMucDao {
 	@Autowired
 	private SessionFactory sessionFactory;
