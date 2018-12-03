@@ -5,9 +5,9 @@ import java.util.List;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.TrangThaiTaiLieu;
 
 public interface TrangThaiService {
-	public List<TrangThaiTaiLieu> getAllTrangThai();
+	public List<TrangThaiTaiLieu> getAllTrangThaiDel0();
 
-	public List<TrangThaiTaiLieu> getAllTrangThai(int page, int record);
+	public List<TrangThaiTaiLieu> getAllTrangThaiDel1();
 
 	public void insertTrangThai(TrangThaiTaiLieu trangThai);
 

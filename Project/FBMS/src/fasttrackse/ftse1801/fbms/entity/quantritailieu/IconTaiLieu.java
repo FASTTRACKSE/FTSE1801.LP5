@@ -21,8 +21,6 @@ public class IconTaiLieu implements Serializable{
 	@Column(name = "link_File")
 	private String linkIcon;
 
-	@Column(name = "isDelete")
-	private Integer isDelete;
 
 	public String getMaIcon() {
 		return maIcon;
@@ -48,12 +46,5 @@ public class IconTaiLieu implements Serializable{
 		this.linkIcon = linkIcon;
 	}
 
-	public Integer getIsDelete() {
-		return isDelete;
-	}
-
-	public void setIsDelete(Integer isDelete) {
-		this.isDelete = isDelete;
-	}
 
 }

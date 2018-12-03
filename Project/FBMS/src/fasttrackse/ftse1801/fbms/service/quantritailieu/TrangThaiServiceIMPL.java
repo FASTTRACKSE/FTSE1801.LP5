@@ -12,13 +12,13 @@ public class TrangThaiServiceIMPL implements TrangThaiService {
 	TrangThaiDao trangThaiDao;
 
 	@Override
-	public List<TrangThaiTaiLieu> getAllTrangThai() {
-		return trangThaiDao.getAllTrangThai();
+	public List<TrangThaiTaiLieu> getAllTrangThaiDel0() {
+		return trangThaiDao.getAllTrangThaiDel0();
 	}
 
 	@Override
-	public List<TrangThaiTaiLieu> getAllTrangThai(int page, int record) {
-		return trangThaiDao.getAllTrangThai(page, record);
+	public List<TrangThaiTaiLieu> getAllTrangThaiDel1() {
+		return trangThaiDao.getAllTrangThaiDel1();
 	}
 
 	@Override
