@@ -14,8 +14,5 @@
       <base-name>resources.language</base-name>
       <var>msg</var>
     </resource-bundle>
-    <message-bundle>
-    	resources.Messages
-    </message-bundle>
   </application>
 </faces-config>

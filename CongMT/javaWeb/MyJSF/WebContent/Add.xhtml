@@ -17,37 +17,19 @@
     </h:head>
     <h:body>
         <f:view >
-            <h:form enctype="multipart/form-data">
+            <h:form >
                 <br><h1><h:outputText value="#{msg['TieuDe']}" /></h1></br>
-                <h:outputText value="#{msg['id']}" />:<br/>
-                <h:inputText id="id" value="#{student.id}"  label="id" required="true" requiredMessage="Id không được để trống" />
-                <h:message for="id"/><br/>
-                <h:outputText value="#{msg['TenDangNhap']}" />:<br/>
-                <h:inputText id="name" value="#{student.name}"  label="name" required="true" requiredMessage="Tên không được để trống" >
-               <f:validateLength minimum="5" maximum="10"/>
-                </h:inputText>
-                <h:message for="name"/><br/>
-               	<h:outputText value="#{msg['Tuoi']}"  />:<br/>
-               	<h:inputText id="old" value="#{student.old}" validatorMessage="Chỉ được nhập 18-50 tuổi" required="true" requiredMessage="Tuổi không được để trống">
-                 <f:validateDoubleRange minimum="18" maximum="50" />
-               	</h:inputText>
-               	<h:message for="old"/><br/>
-               <h:outputText value="#{msg['DiaChi']}" />:<br/>
-               <h:inputText id="adress" value="#{student.adress}" validatorMessage="Chỉ được nhập ít nhất từ 5-10 ký tự.Không được nhập số!" required="true" requiredMessage="Địa chỉ không được để trống">
-                <f:validateLength minimum="5" maximum="20"/>
-               </h:inputText>
-               	<h:message for="adress"/><br/>
-               <h:outputText value="#{msg['Sdt']}" />:<br/>
-               
-               <h:inputText id="sdt" value="#{student.numberPhone}" validatorMessage="Chỉ được nhập 10 số" required="true" requiredMessage="Số điện thoại không được để trống">
-               <f:validateRegex pattern="0[0-9]{9,10}" />
-               </h:inputText>
-                <h:message for="sdt"/><br/>
-                <h:outputText value="Img" />:<br/>
-                 <h:inputFile value="#{student.file}"/>
-                <br/>
                 
-               <h:commandButton value="#{msg['Them']}" actionListener="#{student.upload}" action="#{student.addStudent}"></h:commandButton>
+                <h:outputText value="#{msg['TenDangNhap']}" />:<br>
+                <h:inputText value="#{student.name}"></h:inputText></br>
+               	<h:outputText value="#{msg['Tuoi']}" />:<br>
+               	<h:inputText value="#{student.old}"></h:inputText></br>
+               <h:outputText value="#{msg['DiaChi']}" />:<br>
+               <h:inputText value="#{student.adress}"></h:inputText></br>
+               <h:outputText value="#{msg['Sdt']}" />:<br>
+               <h:inputText value="#{student.numberPhone}"></h:inputText></br>
+                
+               <h:commandButton value="#{msg['Them']}" actionListener="#{student.addStudent}" action="index"></h:commandButton>
                 <h:commandButton value="#{msg['TroLai']}" action="index"></h:commandButton>
             </h:form>
         </f:view>

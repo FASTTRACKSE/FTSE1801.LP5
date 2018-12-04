@@ -50,7 +50,7 @@ body {
 				<f:selectItem itemValue="vi" itemLabel="Tiếng việt" />
 			</h:selectOneMenu>
 			<h:commandLink value="#{msg['DangNhap']}" action="login"></h:commandLink>
-			<h:commandLink value="#{msg['DangXuat']}" action="login"></h:commandLink>
+			<h:commandLink value="#{msg['DangXuat']}" action="index"></h:commandLink>
 		</h:panelGrid>
 
 	</h:form>
@@ -61,7 +61,7 @@ body {
 		<h1 align="center">
 			<h:outputText value="#{msg['TieuDe1']}" />
 		</h1>
-		<h:form >
+		<h:form>
 			<p:dataTable value="#{student.allStudent}" var="item" rows="5"
 				paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -99,18 +99,12 @@ body {
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Img"></h:outputText>
-					</f:facet>
-					 <h:graphicImage url="/upload/#{item.id}/#{item.img}" width="100px"/>
-				</p:column>
-				<p:column>
-					<f:facet name="header">
 						<h:outputText value="#{msg['ChucNang']}"></h:outputText>
 					</f:facet>
 					<h:commandButton value="#{msg['Them']}" action="Add"
 						actionListener="#{student.addStudent}"> --- </h:commandButton>
 					<h:commandButton value="#{msg['Sua']}"
-						actionListener="#{student.getSvById(item.id,item.name,item.old,item.adress,item.numberPhone, item.img)}"
+						actionListener="#{student.getSvById(item.id,item.name,item.old,item.adress,item.numberPhone)}"
 						action="Update"> --- </h:commandButton>
 					<h:commandButton value="#{msg['Xoa']}"
 						actionListener="#{student.deleteStudent(item.id)}" action="index"></h:commandButton>
@@ -123,7 +117,6 @@ body {
 			<h:commandButton action="Search" value="#{msg['TimKiem']}"></h:commandButton>
 		</h:form>
 	</f:view>
-	
 
 </h:body>
 </html>
