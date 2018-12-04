@@ -14,7 +14,7 @@ public class TrangThaiDaoImpl implements TrangThaiDao{
 	@Override
 	public List<TrangThai> findAll() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from TrangThai where status = 1", TrangThai.class).list();
+		return session.createQuery("from TrangThai where isDelete = 1", TrangThai.class).list();
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class TrangThaiDaoImpl implements TrangThaiDao{
 	@Override
 	public int checkNameTrangThai(String tenTrangThai) {
 		Session session = sessionFactory.getCurrentSession();
-		List<TrangThai> dm = session.createQuery("from TrangThai where tenTrangThai = '"+tenTrangThai+"' and status = 1", TrangThai.class).list();
+		List<TrangThai> dm = session.createQuery("from TrangThai where tenTrangThai = '"+tenTrangThai+"' and isDelete = 1", TrangThai.class).list();
 		
 		return  dm.size();
 	}
@@ -56,7 +56,7 @@ public class TrangThaiDaoImpl implements TrangThaiDao{
 	@Override
 	public List<TrangThai> listTrangThai(int start, int maxRows) {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<TrangThai> list = (List<TrangThai>) session.createQuery("FROM TrangThai where status = 1").setFirstResult(start)
+		List<TrangThai> list = (List<TrangThai>) session.createQuery("FROM TrangThai where isDelete = 1").setFirstResult(start)
 				.setMaxResults(maxRows).list();
 		
 		return list;
@@ -65,7 +65,7 @@ public class TrangThaiDaoImpl implements TrangThaiDao{
 	@Override
 	public int countTrangThai() {
 		Session session = sessionFactory.getCurrentSession();
-		List<TrangThai> dm = session.createQuery("from TrangThai where status = 1", TrangThai.class).list();
+		List<TrangThai> dm = session.createQuery("from TrangThai where isDelete = 1", TrangThai.class).list();
 		return  dm.size();
 	}
 

@@ -15,7 +15,7 @@ public class CongNgheDaoImpl implements CongNgheDao{
 	@Override
 	public List<CongNghe> findAll() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from CongNghe where status = 1", CongNghe.class).list();
+		return session.createQuery("from CongNghe where isDelete = 1", CongNghe.class).list();
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class CongNgheDaoImpl implements CongNgheDao{
 	@Override
 	public int checkNameCongNghe(String nameCongNghe) {
 		Session session = sessionFactory.getCurrentSession();
-		List<CongNghe> dm = session.createQuery("from CongNghe where nameCongNghe = '"+nameCongNghe+"' and status = 1", CongNghe.class).list();
+		List<CongNghe> dm = session.createQuery("from CongNghe where nameCongNghe = '"+nameCongNghe+"' and isDelete = 1", CongNghe.class).list();
 		
 		return  dm.size();
 	}
@@ -64,7 +64,7 @@ public class CongNgheDaoImpl implements CongNgheDao{
 	@Override
 	public List<CongNghe> listTechnical(int start, int maxRows) {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<CongNghe> list = (List<CongNghe>) session.createQuery("FROM CongNghe where status = 1").setFirstResult(start)
+		List<CongNghe> list = (List<CongNghe>) session.createQuery("FROM CongNghe where isDelete = 1").setFirstResult(start)
 				.setMaxResults(maxRows).list();
 		
 		return list;
@@ -73,7 +73,7 @@ public class CongNgheDaoImpl implements CongNgheDao{
 	@Override
 	public int countTechnical() {
 		Session session = sessionFactory.getCurrentSession();
-		List<CongNghe> dm = session.createQuery("from CongNghe where status = 1", CongNghe.class).list();
+		List<CongNghe> dm = session.createQuery("from CongNghe where isDelete = 1", CongNghe.class).list();
 		return  dm.size();
 	}
 

@@ -2,73 +2,90 @@ package fasttrackse.ftse1801.fbms.dao.quanlyduan;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.NhiemVu;
 
-public class NhiemVuDaoImpl implements NhiemVuDao{
+public class NhiemVuDaoImpl implements NhiemVuDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
 	public void add(NhiemVu nhiemVu) {
-		// TODO Auto-generated method stub
-		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(nhiemVu);
+
 	}
 
 	@Override
 	public NhiemVu getByID(String maDuAn) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public NhiemVu getByid(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.get(NhiemVu.class, maDuAn);
 	}
 
 	@Override
 	public List<NhiemVu> getByDuAn(String maDuAn) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from NhiemVu where isDelete =1 and duAn.maDuAn='" + maDuAn + "'", NhiemVu.class)
+				.list();
 	}
 
 	@Override
-	public List<NhiemVu> getByDuAn(String maDuAn, String search, int start, int maxRows) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NhiemVu> getByMaNhanVien(String maNhanVien) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from NhiemVu where isDelete =1 and hoSoNhanVien.maNhanVien='" + maNhanVien + "'",
+				NhiemVu.class).list();
 	}
 
 	@Override
 	public void update(NhiemVu nhiemVu) {
-		// TODO Auto-generated method stub
-		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(nhiemVu);
+
 	}
 
 	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(int maNhiemVu) {
+		Session session = sessionFactory.getCurrentSession();
+		NhiemVu nhiemVu = session.get(NhiemVu.class, maNhiemVu);
+		nhiemVu.setIsDelete(0);
+		session.update(nhiemVu);
 	}
 
 	@Override
-	public List<NhiemVu> getByMaNhanVien(String idNv) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NhiemVu> getByDuAn(String maDuAn, String search, int start, int maxRows) {
+		Session session = this.sessionFactory.getCurrentSession();
+
+		return session
+				.createQuery("from NhiemVu where isDelete =1 and duAn.maDuAn='" + maDuAn + "' " + search, NhiemVu.class)
+				.setFirstResult(start).setMaxResults(maxRows).list();
 	}
 
 	@Override
 	public int countNhiemvu(String maDuAn, String search) {
-		// TODO Auto-generated method stub
-		return 0;
+		Session session = sessionFactory.getCurrentSession();
+		List<NhiemVu> nv = session
+				.createQuery("from NhiemVu where isDelete = 1 and duAn.maDuAn='" + maDuAn + "' " + search, NhiemVu.class)
+				.list();
+		return nv.size();
 	}
 
 	@Override
-	public int checkVaiTro(String maNv, int idRole, String maDuAn) {
-		// TODO Auto-generated method stub
-		return 0;
+	public NhiemVu getByid(int maNhiemVu) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.get(NhiemVu.class, maNhiemVu);
 	}
 
+	@Override
+	public int checkVaiTro(String maNhanVien, int maVaiTro, String maDuAn) {
+		Session session = sessionFactory.getCurrentSession();
+		List<NhiemVu> nv = session
+				.createQuery("from NhiemVu where duAn.maDuAn = '" + maDuAn + "' and vaiTroThanhVien.maVaiTro = '"
+						+ maVaiTro + "' and hoSoNhanVien.maNhanVien= '" + maNhanVien + "' ", NhiemVu.class)
+				.list();
+
+		return nv.size();
+	}
 }

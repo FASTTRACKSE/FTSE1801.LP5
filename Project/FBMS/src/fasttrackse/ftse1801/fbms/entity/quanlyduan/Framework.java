@@ -63,5 +63,9 @@ public class Framework implements Serializable{
 		this.duAn = duAn;
 	}
 	
+	@Override
+	public String toString() {
+		return "Framework [maFrameWork=" + maFramework + ", tenFramework=" + tenFramework + ", status=" + isDelete + "]";
+	}
 	
 }

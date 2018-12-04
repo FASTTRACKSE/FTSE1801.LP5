@@ -14,7 +14,7 @@ public class NgonNguDaoImpl implements NgonNguDao{
 	@Override
 	public List<NgonNgu> getAll() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from NgonNgu where status = 1", NgonNgu.class).list();
+		return session.createQuery("from NgonNgu where isDelete = 1", NgonNgu.class).list();
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class NgonNguDaoImpl implements NgonNguDao{
 	@Override
 	public int checkNameLanguage(String tenNgonNgu) {
 		Session session = sessionFactory.getCurrentSession();
-		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where nameLanguage = '"+tenNgonNgu+"' and status = 1", NgonNgu.class).list();
+		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where tenNgonNgu = '"+tenNgonNgu+"' and isDelete = 1", NgonNgu.class).list();
 		
 		return  ngonNgu	.size();
 	}
@@ -55,7 +55,7 @@ public class NgonNguDaoImpl implements NgonNguDao{
 	@Override
 	public List<NgonNgu> listNgonNgu(int start, int maxRows) {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<NgonNgu> list = (List<NgonNgu>) session.createQuery("FROM NgonNgu where status = 1").setFirstResult(start)
+		List<NgonNgu> list = (List<NgonNgu>) session.createQuery("FROM NgonNgu where isDelete = 1").setFirstResult(start)
 				.setMaxResults(maxRows).list();
 		
 		return list;
@@ -64,14 +64,14 @@ public class NgonNguDaoImpl implements NgonNguDao{
 	@Override
 	public int countNgonNgu() {
 		Session session = sessionFactory.getCurrentSession();
-		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where status = 1", NgonNgu.class).list();
+		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where isDelete = 1", NgonNgu.class).list();
 		return  ngonNgu.size();
 	}
 
 	@Override
 	public int checkMa(String maNgonNgu) {
 		Session session = sessionFactory.getCurrentSession();
-		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where idLanguage = '"+maNgonNgu+"'", NgonNgu.class).list();
+		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where maNgonNgu = '"+maNgonNgu+"'", NgonNgu.class).list();
 		
 		return  ngonNgu.size();
 	}

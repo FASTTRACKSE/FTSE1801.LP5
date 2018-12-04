@@ -8,7 +8,7 @@ public interface NhiemVuDao {
 	public void add(NhiemVu nhiemVu);
 
 	public NhiemVu getByID(String maDuAn);
-	public NhiemVu getByid(int id);
+	public NhiemVu getByid(int maNhiemVu);
 
 	public List<NhiemVu> getByDuAn(String maDuAn);
 	
@@ -16,11 +16,11 @@ public interface NhiemVuDao {
 
 	public void update(NhiemVu nhiemVu);
 
-	public void delete(int id);
+	public void delete(int maNhiemVu);
 	
-	public List<NhiemVu> getByMaNhanVien(String idNv);
+	public List<NhiemVu> getByMaNhanVien(String maNhanVien);
 	 
 	public int countNhiemvu(String maDuAn, String search);
 	
-	public int checkVaiTro(String maNv,int idRole,String maDuAn);
+	public int checkVaiTro(String maNhanVien,int maVaiTro,String maDuAn);
 }

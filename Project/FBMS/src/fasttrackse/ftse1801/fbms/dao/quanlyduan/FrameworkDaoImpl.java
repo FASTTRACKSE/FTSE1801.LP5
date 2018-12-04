@@ -15,7 +15,7 @@ public class FrameworkDaoImpl implements FrameworkDao{
 	@Override
 	public List<Framework> getAll() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Framework where status = 1", Framework.class).list();
+		return session.createQuery("from Framework where isDelete = 1", Framework.class).list();
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class FrameworkDaoImpl implements FrameworkDao{
 	@Override
 	public int checkNameFramework(String tenFramework) {
 		Session session = sessionFactory.getCurrentSession();
-		List<Framework> framework = session.createQuery("from Framework where tenFramework = '"+ tenFramework +"' and status = 1", Framework.class).list();
+		List<Framework> framework = session.createQuery("from Framework where tenFramework = '"+ tenFramework +"' and isDelete = 1", Framework.class).list();
 		
 		return  framework.size();
 	}
@@ -56,7 +56,7 @@ public class FrameworkDaoImpl implements FrameworkDao{
 	@Override
 	public List<Framework> listFramework(int start, int maxRows) {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Framework> list = (List<Framework>) session.createQuery("FROM Framework where status = 1").setFirstResult(start)
+		List<Framework> list = (List<Framework>) session.createQuery("FROM Framework where isDelete = 1").setFirstResult(start)
 				.setMaxResults(maxRows).list();
 		
 		return list;
@@ -65,7 +65,7 @@ public class FrameworkDaoImpl implements FrameworkDao{
 	@Override
 	public int countFramework() {
 		Session session = sessionFactory.getCurrentSession();
-		List<Framework> framework = session.createQuery("from Framework where status = 1", Framework.class).list();
+		List<Framework> framework = session.createQuery("from Framework where isDelete = 1", Framework.class).list();
 		return  framework.size();
 	}
 

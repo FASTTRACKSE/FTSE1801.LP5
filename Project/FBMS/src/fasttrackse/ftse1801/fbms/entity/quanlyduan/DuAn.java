@@ -13,11 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,12 +31,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 		private static final long serialVersionUID = 1L;
 
 		@Id
-		@NotEmpty(message="Không được để trống")
+		@NotEmpty(message="Mã Dự án bắt buộc nhập")
+		@Size(min=6,max=10,message="Mã dự án 6 đến 10 kí tự")
 		@Column(name="ma_du_an")
 		private String maDuAn;
 		
 		@Column(name="ten_du_an")
-		@NotEmpty(message="Không được để trống")
+		@NotEmpty(message="Tên Dự án bắt buộc nhập")
 		private String tenDuAn;
 		
 		@Column(name="mo_ta_du_an")
@@ -48,13 +51,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 		@Column (name="start_date")
 		@DateTimeFormat(pattern="yyyy-MM-dd")
 		@Temporal(TemporalType.DATE)
-		@NotNull(message="Không được để trống")
+		@NotNull(message="thời gian Dự án bắt buộc nhập")
 		private Date startDate;
 		
 		@Column (name="end_date")
 		@Temporal(TemporalType.DATE)
 		@DateTimeFormat(pattern="yyyy-MM-dd")
-		@NotNull(message="Không được để trống")
+		@NotNull(message="thời gian Dự án bắt buộc nhập")
 		private Date endDate;
 		
 		@ManyToMany(targetEntity = Database.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -89,13 +92,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 		private Set<Contact> contact;
 		
 		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_tinh_trang",referencedColumnName="ma_tinh_trang", insertable=true, updatable=true)
-		@NotNull
+		@JoinColumn(name="ma_trang_thai",referencedColumnName="ma_trang_thai", insertable=true, updatable=true)
+		@NotNull(message="Bạn chưa chọn Trạng thái")
 		private TrangThai trangThai;
 		
 		@ManyToOne(fetch = FetchType.EAGER)
 		@JoinColumn(name="ma_nghiep_vu",referencedColumnName="ma_nghiep_vu", insertable=true, updatable=true)
-		@NotNull(message="Không được để trống")
+		@NotNull(message="Bạn chưa chọn nghiệp vụ")
 		private Domain domain;
 		
 		@ManyToOne(fetch = FetchType.EAGER)
@@ -104,21 +107,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 		private PhongBan phongBan;
 		
 		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_nhan_vien",referencedColumnName="ma_nhan_vien", insertable=true, updatable=true)
-		@NotNull(message="Không được để trống")
+		@JoinColumn(name="ma_pm",referencedColumnName="ma_nhan_vien", insertable=true, updatable=true)
+		@NotNull(message="Bạn chưa chon PM")
 		private HoSoNhanVien pM;
 		
-		@ManyToMany(targetEntity = HoSoNhanVien.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "nhiem_vu", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", nullable = true, updatable = false,insertable=true) })
-		private Set<HoSoNhanVien> nhiemVu;
+		@OneToMany(mappedBy = "duAn")
+		private Set<NhiemVu> nhiemVu;
 		
-		public Set<HoSoNhanVien> getNhiemVu() {
+		
+
+		public Set<NhiemVu> getNhiemVu() {
 			return nhiemVu;
 		}
 
-		public void setNhiemVu(Set<HoSoNhanVien> nhiemVu) {
+		public void setNhiemVu(Set<NhiemVu> nhiemVu) {
 			this.nhiemVu = nhiemVu;
 		}
 

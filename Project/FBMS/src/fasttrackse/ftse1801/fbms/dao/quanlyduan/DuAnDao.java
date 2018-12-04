@@ -8,7 +8,7 @@ import fasttrackse.ftse1801.fbms.entity.security.UserAccount;
 
 public interface DuAnDao {
 	public List<DuAn> findAll();
-	public DuAn findById(String id);
+	public DuAn findById(String maDuAn);
 	public void addNew(DuAn duAn);
 	public void update(DuAn duAn);
 	public void delete(DuAn duAn);
