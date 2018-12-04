@@ -26,7 +26,7 @@ public class HopDong {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
-	private HoSoNhanVien hoSoNhanVien;
+	private HoSoNhanSu hoSoNhanVien;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_loai_hop_dong", nullable = false)
@@ -36,17 +36,17 @@ public class HopDong {
 	private String luongThang13;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_ky", nullable = false)
 	private Date ngayKy;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "hop_dong_tu_ngay", nullable = false)
 	private Date hopDongTuNgay;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "hop_dong_den_ngay", nullable = false)
 	private Date hopDongdenNgay;
 
@@ -58,11 +58,11 @@ public class HopDong {
 		this.maHopDong = maHopDong;
 	}
 
-	public HoSoNhanVien getHoSoNhanVien() {
+	public HoSoNhanSu getHoSoNhanVien() {
 		return hoSoNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanVien hoSoNhanVien) {
+	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
 		this.hoSoNhanVien = hoSoNhanVien;
 	}
 

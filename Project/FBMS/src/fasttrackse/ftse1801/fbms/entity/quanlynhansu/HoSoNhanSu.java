@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,17 +23,17 @@ import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "ho_so_nhan_su")
-public class HoSoNhanVien {
+public class HoSoNhanSu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ma_nhan_vien", nullable = false)
 	private int maNhanVien;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_phong_ban", nullable = false)
 	private PhongBan maPhongBan;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_chuc_danh", nullable = false)
 	private ChucDanh maChucDanh;
 
@@ -46,7 +47,7 @@ public class HoSoNhanVien {
 	private String avatar;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "nam_sinh", nullable = false)
 	private Date namSinh;
 
@@ -66,13 +67,13 @@ public class HoSoNhanVien {
 	private String noiTamTru;
 
 	@Column(name = "so_dien_thoai", nullable = false)
-	private int soDienThoai;
+	private String soDienThoai;
 
 	@Column(name = "email", nullable = false)
 	private String email;
 
 	@Column(name = "so_cmnd", nullable = false)
-	private int soCMND;
+	private String soCMND;
 
 	@Column(name = "noi_cap", nullable = false)
 	private String noiCap;
@@ -81,7 +82,7 @@ public class HoSoNhanVien {
 	private int trangThai;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_cap", nullable = false)
 	private Date ngayCap;
 
@@ -105,7 +106,7 @@ public class HoSoNhanVien {
 	@OneToMany(mappedBy = "hoSoNhanVien")
 	private List<HopDong> hopDong;
 
-	public HoSoNhanVien() {
+	public HoSoNhanSu() {
 	}
 
 	public List<KyNang> getKyNang() {
@@ -252,11 +253,11 @@ public class HoSoNhanVien {
 		this.noiTamTru = noiTamTru;
 	}
 
-	public int getSoDienThoai() {
+	public String getSoDienThoai() {
 		return soDienThoai;
 	}
 
-	public void setSoDienThoai(int soDienThoai) {
+	public void setSoDienThoai(String soDienThoai) {
 		this.soDienThoai = soDienThoai;
 	}
 
@@ -268,11 +269,11 @@ public class HoSoNhanVien {
 		this.email = email;
 	}
 
-	public int getSoCMND() {
+	public String getSoCMND() {
 		return soCMND;
 	}
 
-	public void setSoCMND(int soCMND) {
+	public void setSoCMND(String soCMND) {
 		this.soCMND = soCMND;
 	}
 
@@ -290,6 +291,12 @@ public class HoSoNhanVien {
 
 	public void setNgayCap(Date ngayCap) {
 		this.ngayCap = ngayCap;
+	}
+
+	public String toString() {
+		return "HoSoNhanVien [maNhanVien=" + maNhanVien + ", anhDaiDien=" + avatar + ", email=" + email + ", gioiTinh="
+				+ gioiTinh + ", hoDem=" + hoDem + ", namSinh=" + namSinh + ", soDienThoai=" + soDienThoai + ", ten="
+				+ ten + ", trangThai=" + trangThai + ", phongBan=" + maPhongBan + ", chucDanh=" + maChucDanh + "]";
 	}
 
 }

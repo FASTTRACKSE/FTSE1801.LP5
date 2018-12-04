@@ -20,7 +20,7 @@ public class KyNang {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
-	private HoSoNhanVien hoSoNhanVien;
+	private HoSoNhanSu hoSoNhanVien;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_loai_ky_nang", nullable = false)
@@ -40,11 +40,11 @@ public class KyNang {
 		this.maKyNang = maKyNang;
 	}
 
-	public HoSoNhanVien getHoSoNhanVien() {
+	public HoSoNhanSu getHoSoNhanVien() {
 		return hoSoNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanVien hoSoNhanVien) {
+	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
 		this.hoSoNhanVien = hoSoNhanVien;
 	}
 

@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanVien;
+import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
 import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Entity
@@ -45,7 +45,7 @@ public class QuanLyNhiemVu {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_nhan_vien")
-	private HoSoNhanVien idNhanVien;
+	private HoSoNhanSu idNhanVien;
 
 	@Column(name = "tg_du_kien_hoan_thanh")
 	private int thoiGianDuKienHoanThanh;
@@ -120,11 +120,11 @@ public class QuanLyNhiemVu {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
-	public HoSoNhanVien getIdNhanVien() {
+	public HoSoNhanSu getIdNhanVien() {
 		return idNhanVien;
 	}
 
-	public void setIdNhanVien(HoSoNhanVien idNhanVien) {
+	public void setIdNhanVien(HoSoNhanSu idNhanVien) {
 		this.idNhanVien = idNhanVien;
 	}
 
@@ -169,7 +169,7 @@ public class QuanLyNhiemVu {
 	}
 
 	public QuanLyNhiemVu(int id, int maDuAn, LoaiCongViec idLoaiCongVien, String tenCongViec, String moTa,
-			Date thoiGianBatDau, Date thoiGianKetThuc, HoSoNhanVien idNhanVien, int thoiGianDuKienHoanThanh,
+			Date thoiGianBatDau, Date thoiGianKetThuc, HoSoNhanSu idNhanVien, int thoiGianDuKienHoanThanh,
 			TrangThai idTrangThai, int isDelete, PhongBan idPhongBan, String maVaiTro) {
 		this.id = id;
 		this.maDuAn = maDuAn;

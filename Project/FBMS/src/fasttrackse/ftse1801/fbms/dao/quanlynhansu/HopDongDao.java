@@ -2,18 +2,18 @@ package fasttrackse.ftse1801.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
-import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinChungChi;
+import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HopDong;
 
 public interface HopDongDao {
-	public List<HopDongDao> getAll();
+	public List<HopDong> getAll();
 
-	public List<HopDongDao> getByPaging(int fistResult, int maxResult);
+	public List<HopDong> getByPaging(int fistResult, int maxResult);
 	
-	public HopDongDao findByMaNhanVien(int maNhanVien);
+	public HopDong findByMaNhanVien(int maNhanVien);
 
-	public void addNew(ThongTinChungChi bangCap);
+	public void addNew(HopDong hopDong);
 
-	public void update(ThongTinChungChi bangCap);
+	public void update(HopDong hopDong);
 
 	public void delete(int id);
 }

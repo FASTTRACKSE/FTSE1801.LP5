@@ -259,15 +259,15 @@
 					data-toggle="tooltip" data-placement="right"
 					data-original-title="Apps" class=" ft-minus"></i></li>
 				<li class=" nav-item QuanTriHeThongphong_ban"><a
-					href="<c:url value = ""/>"><i class="fa fa-files-o"></i><span
-						data-i18n="" class="menu-title">Quản lý hồ sơ nhân viên</span></a></li>
+					href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/"/>"><i
+						class="fa fa-files-o"></i><span data-i18n="" class="menu-title">Quản
+							lý hồ sơ nhân viên</span></a></li>
 				<li class=" nav-item QuanTriHeThongchuc_danh"><a
 					href="<c:url value = ""/>"><i class="fa fa-file-text-o"></i><span
 						data-i18n="" class="menu-title">Quản lý hợp đồng lao động</span></a></li>
 				<li class=" nav-item QuanTriHeThongtai-khoan"><a
-					href="<c:url value = "/QuanTriHeThong/tai-khoan/"/>"><i
-						class="fa fa-briefcase"></i><span data-i18n="" class="menu-title">Thông
-							tin kinh nghiệm dự án</span></a></li>
+					href="<c:url value = ""/>"><i class="fa fa-briefcase"></i><span
+						data-i18n="" class="menu-title">Thông tin kinh nghiệm dự án</span></a></li>
 				<!-- Quản lý dự án  -->
 				<li class=" navigation-header"><span>Quản lý dự án</span><i
 					data-toggle="tooltip" data-placement="right"

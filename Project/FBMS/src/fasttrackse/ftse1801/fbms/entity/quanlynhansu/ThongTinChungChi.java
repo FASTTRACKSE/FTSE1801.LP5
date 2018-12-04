@@ -26,7 +26,7 @@ public class ThongTinChungChi {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
-	private HoSoNhanVien hoSoNhanVien;
+	private HoSoNhanSu hoSoNhanVien;
 	
 	@Column(name="ten_chung_chi")
 	private String tenChungChi;
@@ -35,7 +35,7 @@ public class ThongTinChungChi {
 	private String donViCap;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_cap", nullable = false)
 	private Date ngayCap;
 
@@ -47,11 +47,11 @@ public class ThongTinChungChi {
 		this.id = id;
 	}
 
-	public HoSoNhanVien getHoSoNhanVien() {
+	public HoSoNhanSu getHoSoNhanVien() {
 		return hoSoNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanVien hoSoNhanVien) {
+	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
 		this.hoSoNhanVien = hoSoNhanVien;
 	}
 

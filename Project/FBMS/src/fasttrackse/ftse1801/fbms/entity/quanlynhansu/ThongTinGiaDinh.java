@@ -26,7 +26,7 @@ public class ThongTinGiaDinh {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nhan_vien")
-	private HoSoNhanVien hoSoNhanVien;
+	private HoSoNhanSu hoSoNhanVien;
 
 	@Column(name = "ho_ten")
 	private String hoTen;
@@ -35,15 +35,15 @@ public class ThongTinGiaDinh {
 	private String queQuan;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "nam_sinh")
 	private Date namSinh;
 
 	@Column(name = "gioi_tinh")
-	private String gioiTinh;
+	private int gioiTinh;
 
 	@Column(name = "so_dien_thoai")
-	private int soDienThoai;
+	private String soDienThoai;
 
 	@Column(name = "quan_he")
 	private String quanHe;
@@ -56,11 +56,11 @@ public class ThongTinGiaDinh {
 		this.id = id;
 	}
 
-	public HoSoNhanVien getHoSoNhanVien() {
+	public HoSoNhanSu getHoSoNhanVien() {
 		return hoSoNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanVien hoSoNhanVien) {
+	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
 		this.hoSoNhanVien = hoSoNhanVien;
 	}
 
@@ -88,19 +88,19 @@ public class ThongTinGiaDinh {
 		this.namSinh = namSinh;
 	}
 
-	public String getGioiTinh() {
+	public int getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(String gioiTinh) {
+	public void setGioiTinh(int gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public int getSoDienThoai() {
+	public String getSoDienThoai() {
 		return soDienThoai;
 	}
 
-	public void setSoDienThoai(int soDienThoai) {
+	public void setSoDienThoai(String soDienThoai) {
 		this.soDienThoai = soDienThoai;
 	}
 

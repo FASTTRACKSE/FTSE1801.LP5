@@ -1,10 +1,10 @@
-package fasttrackse.ftse1801.fbms.dao.quanlynhansu;
+package fasttrackse.ftse1801.fbms.service.quanlynhansu;
 
 import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinChungChi;
 
-public interface ChungChiDao {
+public interface ChungChiService {
 	public List<ThongTinChungChi> getAll();
 
 	public List<ThongTinChungChi> getByPaging(int fistResult, int maxResult);

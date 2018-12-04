@@ -1,10 +1,10 @@
-package fasttrackse.ftse1801.fbms.dao.quanlynhansu;
+package fasttrackse.ftse1801.fbms.service.quanlynhansu;
 
 import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinGiaDinh;
 
-public interface ThongTinGiaDinhDao {
+public interface ThongTinGiaDinhService {
 	public List<ThongTinGiaDinh> getAll();
 
 	public List<ThongTinGiaDinh> getByPaging(int fistResult, int maxResult);
@@ -16,4 +16,4 @@ public interface ThongTinGiaDinhDao {
 	public void update(ThongTinGiaDinh thongTinGiaDinh);
 
 	public void delete(int id);
-}
+}	
