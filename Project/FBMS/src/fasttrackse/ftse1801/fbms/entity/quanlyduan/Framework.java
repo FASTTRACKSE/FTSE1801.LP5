@@ -18,40 +18,41 @@ public class Framework implements Serializable{
 	@Id
 	@NotEmpty
 	@Column(name = "ma_framework")
-	private String ma_framework;
+	private String maFramework;
 	
 	@NotEmpty
 	@Column(name = "ten_framework")
-	private String ten_framework;
+	private String tenFramework;
 
 	@Column(name = "is_delete")
-	private int is_delete;
+	private int isDelete;
 
 	@ManyToMany(fetch = FetchType.EAGER,mappedBy="framework",targetEntity=DuAn.class)
 	private Set<DuAn> duAn;
 
-	public String getMa_framework() {
-		return ma_framework;
+
+	public String getMaFramework() {
+		return maFramework;
 	}
 
-	public void setMa_framework(String ma_framework) {
-		this.ma_framework = ma_framework;
+	public void setMaFramework(String maFramework) {
+		this.maFramework = maFramework;
 	}
 
-	public String getTen_framework() {
-		return ten_framework;
+	public String getTenFramework() {
+		return tenFramework;
 	}
 
-	public void setTen_framework(String ten_framework) {
-		this.ten_framework = ten_framework;
+	public void setTenFramework(String tenFramework) {
+		this.tenFramework = tenFramework;
 	}
 
-	public int getIs_delete() {
-		return is_delete;
+	public int getIsDelete() {
+		return isDelete;
 	}
 
-	public void setIs_delete(int is_delete) {
-		this.is_delete = is_delete;
+	public void setIsDelete(int isDelete) {
+		this.isDelete = isDelete;
 	}
 
 	public Set<DuAn> getDuAn() {

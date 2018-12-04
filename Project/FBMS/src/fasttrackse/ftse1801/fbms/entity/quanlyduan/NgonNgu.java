@@ -16,11 +16,11 @@ public class NgonNgu {
 	@Id
 	@NotEmpty(message="Mã ngôn ngữ không được rỗng!")
 	@Column(name = "ma_ngon_ngu")
-	 String maNn;
+	 String maNgonNgu;
 	
 	@Column(name = "ten_ngon_ngu")
 	@NotEmpty(message="Tên ngôn ngữ không được rỗng!")
-	 String tenNn;
+	 String tenNgonNgu;
 	
 	@ManyToMany(fetch = FetchType.EAGER,mappedBy="ngonNgu",targetEntity=DuAn.class)
 	private Set<DuAn> duAn;
@@ -28,20 +28,22 @@ public class NgonNgu {
 	@Column(name = "is_delete")
 	 int isDelete;
 
-	public String getMaNn() {
-		return maNn;
+	
+
+	public String getMaNgonNgu() {
+		return maNgonNgu;
 	}
 
-	public void setMaNn(String maNn) {
-		this.maNn = maNn;
+	public void setMaNgonNgu(String maNgonNgu) {
+		this.maNgonNgu = maNgonNgu;
 	}
 
-	public String getTenNn() {
-		return tenNn;
+	public String getTenNgonNgu() {
+		return tenNgonNgu;
 	}
 
-	public void setTenNn(String tenNn) {
-		this.tenNn = tenNn;
+	public void setTenNgonNgu(String tenNgonNgu) {
+		this.tenNgonNgu = tenNgonNgu;
 	}
 
 	public Set<DuAn> getDuAn() {
