@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,11 +39,13 @@ public class ThongTinGiaDinhDaoImpl implements ThongTinGiaDinhDao {
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<ThongTinGiaDinh> findByMaNhanVien(int maNhanVien) {
 		Session session = sessionFactory.openSession();
-		List<ThongTinGiaDinh> list = session.createQuery("from ThongTinGiaDinh where maNhanVien = "+maNhanVien).list();
+//		Query query = session.createQuery("from ThongTinGiaDinh where ma_nhan_vien = "+maNhanVien);
+//		List<ThongTinGiaDinh> list = query.list();
+		List<ThongTinGiaDinh> list = session.createQuery("from ThongTinGiaDinh where ma_nhan_vien = "+maNhanVien).list();
 		session.close();
 		return list;
 	}

@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "thong_tin_gia_dinh")
 public class ThongTinGiaDinh {
 	@Id
-	@Column(name = "id")
+	@Column(name = "ma_thong_tin_gia_dinh")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 

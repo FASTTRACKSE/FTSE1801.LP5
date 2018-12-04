@@ -255,19 +255,30 @@
 						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
 								code="label.QuanTriHeThong.PhanQuyen" /></span></a></li>
 				<!-- Quản trị nhân sự -->
-				<li class=" navigation-header"><span>Quản lý nhân sự</span><i
-					data-toggle="tooltip" data-placement="right"
-					data-original-title="Apps" class=" ft-minus"></i></li>
-				<li class=" nav-item QuanTriHeThongphong_ban"><a
-					href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/"/>"><i
-						class="fa fa-files-o"></i><span data-i18n="" class="menu-title">Quản
-							lý hồ sơ nhân viên</span></a></li>
-				<li class=" nav-item QuanTriHeThongchuc_danh"><a
-					href="<c:url value = ""/>"><i class="fa fa-file-text-o"></i><span
-						data-i18n="" class="menu-title">Quản lý hợp đồng lao động</span></a></li>
-				<li class=" nav-item QuanTriHeThongtai-khoan"><a
-					href="<c:url value = ""/>"><i class="fa fa-briefcase"></i><span
-						data-i18n="" class="menu-title">Thông tin kinh nghiệm dự án</span></a></li>
+				<li class="nav-item has-sub open"><a href="#"><i
+						class="fa fa-users"></i><span class="menu-title" >Quản
+							lý nhân sự</span></a>
+					<ul class="menu-content" style="">
+						<li class="has-sub is-shown"><a class="menu-item" href="#">Quản
+								lý hồ sơ</a>
+							<ul class="menu-content">
+								<li><a class="menu-item"
+									href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/"/>">Hồ sơ
+										nhân viên</a></li>
+								<li><a class="menu-item" href="<c:url value = ""/>">Thông
+										tin liên hệ</a></li>
+								<li><a class="menu-item" href="<c:url value = ""/>">Thông
+										tin bằng cấp</a></li>
+								<li><a class="menu-item" href="<c:url value = ""/>">Thông
+										tin chứng chỉ</a></li>
+								<li><a class="menu-item" href="<c:url value = ""/>">Thông
+										tin gia đình</a></li>
+							</ul></li>
+						<li class="is-shown"><a class="menu-item"
+							href="<c:url value = ""/>">Quản lý hợp đồng lao động</a></li>
+						<li class="is-shown"><a class="menu-item"
+							href="<c:url value = ""/>">Quản lý kinh nghiệm dự án</a></li>
+					</ul></li>
 				<!-- Quản lý dự án  -->
 				<li class=" navigation-header"><span>Quản lý dự án</span><i
 					data-toggle="tooltip" data-placement="right"

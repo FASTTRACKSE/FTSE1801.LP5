@@ -4,7 +4,7 @@ import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinBangCap;
 
-public interface BangCapDao {
+public interface ThongTinBangCapDao {
 	
 	public List<ThongTinBangCap> getAll();
 

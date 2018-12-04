@@ -49,13 +49,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách chức danh</h3>
+				<h3 class="content-header-title mb-0">Danh sách nhân viên</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách chức danh</li>
+							<li class="breadcrumb-item active">Danh sách nhân viên</li>
 						</ol>
 					</div>
 				</div>
@@ -205,7 +205,7 @@
 														<td>${list.noiCap}</td>
 														<td>${list.ngayCap}</td>
 														<td>${list.trangThai}</td --%>
-														<td><a href="<c:url value = ""/>"><i
+														<td><a href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/viewOne/${list.maNhanVien}"/>"><i
 																class="fa fa-eye"></i></a> <a
 															href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/edit/${list.maNhanVien}"/>"><i
 																class="fa fa-pencil"></i></a> <a

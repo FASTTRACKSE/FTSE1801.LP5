@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinBangCap;
 
 @Repository
-public class BangCapDaoImpl implements BangCapDao {
+public class ThongTinBangCapDaoImpl implements ThongTinBangCapDao {
 	@Autowired
 	private SessionFactory sesionFactory;
 

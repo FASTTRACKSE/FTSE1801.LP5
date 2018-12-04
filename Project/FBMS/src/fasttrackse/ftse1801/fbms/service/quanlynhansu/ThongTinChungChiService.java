@@ -4,7 +4,7 @@ import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinChungChi;
 
-public interface ChungChiService {
+public interface ThongTinChungChiService {
 	public List<ThongTinChungChi> getAll();
 
 	public List<ThongTinChungChi> getByPaging(int fistResult, int maxResult);

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinChungChi;
 
 @Repository
-public class ChungChiDaoImpl implements ChungChiDao {
+public class ThongTinChungChiDaoImpl implements ThongTinChungChiDao {
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -42,8 +42,10 @@ public class ChungChiDaoImpl implements ChungChiDao {
 	@Override
 	public List<ThongTinChungChi> findByMaNhanVien(int maNhanVien) {
 		Session session = sessionFactory.openSession();
-		List<ThongTinChungChi> list = session.createQuery("from ThongTinChungChi where maNhanVien = " + maNhanVien)
+		List<ThongTinChungChi> list = session.createQuery("from ThongTinChungChi where ma_nhan_vien = " + maNhanVien)
 				.list();
+//		Query query = session.createQuery("from ThongTinChungChi where maNhanVien = " + maNhanVien);
+//		List<ThongTinChungChi> list = query.list();
 		session.close();
 		return list;
 	}

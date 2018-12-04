@@ -13,12 +13,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
 import fasttrackse.ftse1801.fbms.service.quanlynhansu.HoSoNhanSuService;
+import fasttrackse.ftse1801.fbms.service.quanlynhansu.ThongTinChungChiService;
+import fasttrackse.ftse1801.fbms.service.quanlynhansu.ThongTinGiaDinhService;
 
 @Controller
 @RequestMapping("QuanLyNhanSu/hoSoNhanVien")
 public class HoSoNhanSuController {
 	@Autowired
-	private HoSoNhanSuService hoSoNhanVienService;
+	private HoSoNhanSuService hoSoNhanSuService;
+	
+	@Autowired
+	private ThongTinChungChiService thongTinChungChiService;
+	
+	@Autowired
+	private ThongTinGiaDinhService thongTinGiaDinhService;
 	
 /*	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String viewChucDanh(Model model) {
@@ -27,12 +35,19 @@ public class HoSoNhanSuController {
 	
 	@RequestMapping(value="/")
 	public String viewHoSoNhanVien1(Model model) {
-		List<HoSoNhanSu> list = hoSoNhanVienService.getAll();
+		List<HoSoNhanSu> list = hoSoNhanSuService.getAll();
 		model.addAttribute("list", list);
 		return "QuanLyNhanSu/hoSoNhanVien/list";
 		
 	}
 	
+	@RequestMapping(value = "/viewOne/{maNhanVien}", method = RequestMethod.GET)
+	public String viewOne(@PathVariable("maNhanVien") int maNhanVien, Model model) {
+		model.addAttribute("hoSoNhanVien", hoSoNhanSuService.getById(maNhanVien));
+		model.addAttribute("thongTinChungChi", thongTinChungChiService.findByMaNhanVien(maNhanVien));
+		model.addAttribute("thongTinGiaDinh", thongTinGiaDinhService.findByMaNhanVien(maNhanVien));
+		return "QuanLyNhanSu/hoSoNhanVien/viewOne";
+	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addForm(Model model, final RedirectAttributes redirectAttributes) {
@@ -44,7 +59,7 @@ public class HoSoNhanSuController {
 	public String doAdd(Model model, @ModelAttribute("nhanVien") HoSoNhanSu nhanVien,
 			final RedirectAttributes redirectAttributes) {
 		try {
-			hoSoNhanVienService.addNew(nhanVien);
+			hoSoNhanSuService.addNew(nhanVien);
 			redirectAttributes.addFlashAttribute("messageSuccess", "Thêm mới thành công..");
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
@@ -54,7 +69,7 @@ public class HoSoNhanSuController {
 	
 	@RequestMapping(value = "/edit/{maNhanVien}", method = RequestMethod.GET)
 	public String editForm(@PathVariable("maNhanVien") int maNhanVien, Model model) {
-		model.addAttribute("nhanVien", hoSoNhanVienService.getById(maNhanVien));
+		model.addAttribute("nhanVien", hoSoNhanSuService.getById(maNhanVien));
 		return "QuanLyNhanSu/hoSoNhanVien/edit_form";
 	}
 
@@ -62,7 +77,7 @@ public class HoSoNhanSuController {
 	public String doEdit(Model model, @ModelAttribute("nhanVien") HoSoNhanSu nhanVien,
 			final RedirectAttributes redirectAttributes) {
 		try {
-			hoSoNhanVienService.update(nhanVien);
+			hoSoNhanSuService.update(nhanVien);
 			redirectAttributes.addFlashAttribute("messageSuccess", "Thành công..");
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");

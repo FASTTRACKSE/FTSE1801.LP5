@@ -4,7 +4,7 @@ import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.ThongTinBangCap;
 
-public interface BangCapService {
+public interface ThongTinBangCapService {
 	public List<ThongTinBangCap> getAll();
 
 	public List<ThongTinBangCap> getByPaging(int fistResult, int maxResult);
