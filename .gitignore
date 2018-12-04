@@ -152,3 +152,10 @@ Project/Servers2/Tomcat v9.0 Server at localhost-config/context.xml
 Project/Servers2/Tomcat v9.0 Server at localhost-config/server.xml
 Project/Servers2/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
 Project/Servers2/Tomcat v9.0 Server at localhost-config/web.xml
+
+Project/Servers/Tomcat v9.0 Server at localhost-config/catalina.policy
+Project/Servers/Tomcat v9.0 Server at localhost-config/catalina.properties
+Project/Servers/Tomcat v9.0 Server at localhost-config/context.xml
+Project/Servers/Tomcat v9.0 Server at localhost-config/server.xml
+Project/Servers/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
+Project/Servers/Tomcat v9.0 Server at localhost-config/web.xml
