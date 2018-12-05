@@ -10,9 +10,9 @@ public interface IConService {
 
 	public List<IconTaiLieu> getAllIcon(int page, int record);
 
-	public void insertIcon(IConTaiLieuDao ic);
+	public void insertIcon(IconTaiLieu ic);
 
-	public void updateIcon(IConTaiLieuDao ic);
+	public void updateIcon(IconTaiLieu ic);
 
 	public void deleteIcon(String maIcon);
 

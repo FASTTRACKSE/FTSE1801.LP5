@@ -53,7 +53,7 @@ public class TaiLieu implements Serializable{
 	private String linkTaiLieu;
 
 	@Column(name = "isDelete")
-	private Integer isDelete;
+	private int isDelete;
 
 	public int getTaiLieu() {
 		return taiLieu;
@@ -127,12 +127,13 @@ public class TaiLieu implements Serializable{
 		this.linkTaiLieu = linkTaiLieu;
 	}
 
-	public Integer getIsDelete() {
+	public int getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(Integer isDelete) {
+	public void setIsDelete(int isDelete) {
 		this.isDelete = isDelete;
 	}
 
+	
 }

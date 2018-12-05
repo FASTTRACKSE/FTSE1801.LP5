@@ -28,7 +28,7 @@ public class DanhMucDaoIMPL implements DanhMucDao {
 	@Override
 	public List<DanhMucTaiLieu> getAllDanhMuc() {
 		session = this.sessionFactory.openSession();
-		List<DanhMucTaiLieu> listDM = session.createQuery("from DanhMucTaiLieu").list();
+		List<DanhMucTaiLieu> listDM = session.createQuery("from DanhMucTaiLieu where isDelete = 0").list();
 		session.close();
 		return listDM;
 	}

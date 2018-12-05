@@ -171,6 +171,14 @@
 														<%--  <td><img src='<c:url value="/images/${SV.maSinhVien}/${SV.img}"/>' / style="width: 20px" height="20px"></td> --%>
 														<td>${dm.maDanhMuc}</td>
 														<td>${dm.tenDanhMuc}</td>
+														<td><a
+															href="/FBMS/QuanTriTaiLieu/danh_muc/view/maDanhMuc"><i
+																class="fa fa-eye"></i></a><a
+															href="/FBMS/QuanTriTaiLieu/danh_muc/edit/${dm.maDanhMuc}"><i
+																class="fa fa-pencil"></i></a><a
+															href="/FBMS/QuanTriTaiLieu/danh_muc/delete/${dm.maDanhMuc}">
+															<i
+																class="fa fa-trash"></i></a></td>
 														<%-- <td>${SV.password}</td>
 				<td>${SV.tuoi}</td>
 				<c:forEach var="Diem" items="${SV.listDiem}">
