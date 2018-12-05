@@ -297,8 +297,8 @@
 					href="<c:url value = "/QuanTriTaiLieu/danh_muc/"/>"><i
 						class="fa fa-th-list"></i><span data-i18n="" class="menu-title">Quản
 							lý danh mục</span></a></li>
-				<li class=" nav-item QuanTriTaiLieuicon"><a
-					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
+				<li class=" nav-item QuanTriTaiLieui_con"><a
+					href="<c:url value = "/QuanTriTaiLieu/i_con/"/>"><i class="ft ft-info"></i><span
 						data-i18n="" class="menu-title">Icon tài liệu</span></a></li>
 				<li class=" nav-item QuanTriTaiLieutai_lieu"><a
 					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
