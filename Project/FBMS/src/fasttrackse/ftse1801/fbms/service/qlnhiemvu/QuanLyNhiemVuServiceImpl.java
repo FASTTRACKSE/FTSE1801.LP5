@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import fasttrackse.ftse1801.fbms.dao.qlnhiemvu.QuanLyNhiemVuDao;
 import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.LoaiCongViec;
 import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.QuanLyNhiemVu;
-import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.TrangThai;
+import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.TrangThaiNhiemVu;
+import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
+import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Service
 public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
@@ -47,7 +49,7 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 	}
 
 	@Override
-	public List<TrangThai> trangThai() {
+	public List<TrangThaiNhiemVu> trangThai() {
 		return this.quanLyNhiemVuDao.trangThai();
 	}
 
@@ -74,6 +76,16 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 	@Override
 	public List<QuanLyNhiemVu> searchAll(String search) {
 		return this.quanLyNhiemVuDao.searchAll(search);
+	}
+
+	@Override
+	public List<HoSoNhanSu> hoSoNhanVien() {
+		return this.quanLyNhiemVuDao.hoSoNhanVien();
+	}
+
+	@Override
+	public List<PhongBan> phongBan() {
+		return this.quanLyNhiemVuDao.phongBan();
 	}
 
 }

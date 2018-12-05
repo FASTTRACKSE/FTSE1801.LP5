@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "trang_thai")
-public class TrangThai {
+public class TrangThaiNhiemVu {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,10 @@ public class TrangThai {
 	@Column(name = "trang_thai")
 	private String trangThai;
 
-	public TrangThai() {
+	public TrangThaiNhiemVu() {
 	}
 
-	public TrangThai(int id, String trangThai) {
+	public TrangThaiNhiemVu(int id, String trangThai) {
 		this.id = id;
 		this.trangThai = trangThai;
 	}

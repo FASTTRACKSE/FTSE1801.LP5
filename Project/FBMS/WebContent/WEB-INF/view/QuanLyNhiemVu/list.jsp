@@ -55,7 +55,7 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanTriHeThong/chuc_danh/add"/>"
+					<a href="<c:url value = "/QuanLyNhiemVu/add"/>"
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 						mới</a>
 				</div>
@@ -216,13 +216,13 @@
 													<tr>
 														<td>${sv.id}</td>
 														<td>${sv.maDuAn}</td>
-														<td>${sv.idLoaiCongVien.loaiCongViec}</td>
+														<td>${sv.idLoaiCongViec.loaiCongViec}</td>
 														<td>${sv.tenCongViec}</td>
 														<td>${sv.moTa}</td>
 														<td>${sv.thoiGianBatDau}</td>
 														<td>${sv.thoiGianKetThuc}</td>
 														<td>${sv.idPhongBan.tenPhongBan}</td>
-														<td>${sv.idNhanVien.maNhanVien}</td>
+														<td>${sv.idNhanVien.hoDem} ${sv.idNhanVien.ten}</td>
 														<td>${sv.maVaiTro}</td>
 														<td>${sv.thoiGianDuKienHoanThanh}</td>
 														<td>${sv.idTrangThai.trangThai}</td>

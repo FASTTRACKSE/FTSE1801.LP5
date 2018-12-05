@@ -307,6 +307,13 @@
 				<li class=" nav-item QuanTriTaiLieutrang_thai"><a
 					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
 						data-i18n="" class="menu-title">Quản lý trạng thái</span></a></li>
+					<!-- Quản lý thời gian -->
+				<li class=" navigation-header"><span>Quản lý thời gian</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Apps" class=" ft-minus"></i></li>
+				<li class=" nav-item QuanTriHeThongphong_ban"><a
+					href="<c:url value = "/QuanLyThoiGian/"/>"><i
+						class="fa fa-building"></i><span data-i18n="" class="menu-title">LogWork</span></a></li>
 				<!-- Quản lý nhiệm vụ -->
 				<li class=" navigation-header"><span>Quản lý nhiệm vụ</span><i
 					data-toggle="tooltip" data-placement="right"
@@ -317,14 +324,6 @@
 				<li class=" nav-item QuanTriNhiemVu"><a
 					href="<c:url value = ""/>"><i class="fa fa-calendar"></i><span
 						data-i18n="" class="menu-title">Lịch nhiệm vụ</span></a></li>
-
-				<!-- Quản lý thời gian -->
-				<li class=" navigation-header"><span>Quản lý thời gian</span><i
-					data-toggle="tooltip" data-placement="right"
-					data-original-title="Apps" class=" ft-minus"></i></li>
-				<li class=" nav-item QuanTriHeThongphong_ban"><a
-					href="<c:url value = "/QuanLyThoiGian/"/>"><i
-						class="fa fa-building"></i><span data-i18n="" class="menu-title">LogWork</span></a></li>
 			</ul>
 		</div>
 	</div>
