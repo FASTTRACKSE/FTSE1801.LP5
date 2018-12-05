@@ -256,8 +256,8 @@
 								code="label.QuanTriHeThong.PhanQuyen" /></span></a></li>
 				<!-- Quản trị nhân sự -->
 				<li class="nav-item has-sub open"><a href="#"><i
-						class="fa fa-users"></i><span class="menu-title" >Quản
-							lý nhân sự</span></a>
+						class="fa fa-users"></i><span class="menu-title">Quản lý
+							nhân sự</span></a>
 					<ul class="menu-content" style="">
 						<li class="has-sub is-shown"><a class="menu-item" href="#">Quản
 								lý hồ sơ</a>
@@ -298,8 +298,9 @@
 						class="fa fa-th-list"></i><span data-i18n="" class="menu-title">Quản
 							lý danh mục</span></a></li>
 				<li class=" nav-item QuanTriTaiLieui_con"><a
-					href="<c:url value = "/QuanTriTaiLieu/i_con/"/>"><i class="ft ft-info"></i><span
-						data-i18n="" class="menu-title">Icon tài liệu</span></a></li>
+					href="<c:url value = "/QuanTriTaiLieu/i_con/"/>"><i
+						class="ft ft-info"></i><span data-i18n="" class="menu-title">Icon
+							tài liệu</span></a></li>
 				<li class=" nav-item QuanTriTaiLieutai_lieu"><a
 					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
 						data-i18n="" class="menu-title">Quản lý tài liệu</span></a></li>
@@ -316,6 +317,14 @@
 				<li class=" nav-item QuanTriNhiemVu"><a
 					href="<c:url value = ""/>"><i class="fa fa-calendar"></i><span
 						data-i18n="" class="menu-title">Lịch nhiệm vụ</span></a></li>
+
+				<!-- Quản lý thời gian -->
+				<li class=" navigation-header"><span>Quản lý thời gian</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Apps" class=" ft-minus"></i></li>
+				<li class=" nav-item QuanTriHeThongphong_ban"><a
+					href="<c:url value = "/QuanLyThoiGian/"/>"><i
+						class="fa fa-building"></i><span data-i18n="" class="menu-title">LogWork</span></a></li>
 			</ul>
 		</div>
 	</div>
