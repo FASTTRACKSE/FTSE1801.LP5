@@ -67,13 +67,14 @@
 
 	//Mininum View Mode
 	$('#datetimepicker10').datetimepicker({
-		viewMode: 'years',
+		viewMode: 'days',
 		format: 'DD/MM/YYYY'
 	});
 
 	//Disabled Days of the Week
 	$('#datetimepicker11').datetimepicker({
-		daysOfWeekDisabled: [0, 6]
+		daysOfWeekDisabled: [0, 6],
+		format: 'DD/MM/YYYY'
 	});
 
 	// Inline Picker
