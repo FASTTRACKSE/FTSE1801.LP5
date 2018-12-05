@@ -68,7 +68,7 @@
 	//Mininum View Mode
 	$('#datetimepicker10').datetimepicker({
 		viewMode: 'years',
-		format: 'MM/YYYY'
+		format: 'DD/MM/YYYY'
 	});
 
 	//Disabled Days of the Week
@@ -81,7 +81,7 @@
 		inline: true,
 		sideBySide: true
 	});
-
+	
 	/*******	Pick-a-date Picker	*****/
 	// Basic date
 	$('.pickadate').pickadate();
