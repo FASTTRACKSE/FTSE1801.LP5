@@ -164,8 +164,7 @@
 					<li class="nav-item mobile-menu hidden-md-up float-xs-left"><a
 						href="#" class="nav-link nav-menu-main menu-toggle hidden-xs"><i
 							class="ft-menu font-large-1"></i></a></li>
-					<li class="nav-item"><a href="/FBMS/home"
-						class="navbar-brand"><img
+					<li class="nav-item"><a href="/FBMS/home" class="navbar-brand"><img
 							src="<c:url value="https://www.fasttrack.edu.vn/wp-content/uploads/2018/03/favicon.png"/>"
 							alt="FastTrackSE logo" class="brand-logo" />
 							<h2 class="brand-text">FBMS</h2></a></li>
@@ -204,10 +203,11 @@
 									alt="avatar"><i></i></span><span class="user-name">${pageContext.request.userPrincipal.name}</span></a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a href="#" class="dropdown-item"><i class="ft-user"></i> <spring:message
-										code="label.QuanTriHeThong.suaHoSo" /></a> <a href="#" class="dropdown-item"><i
-									class="ft-mail"></i> <spring:message code="label.QuanTriHeThong.hopThu" /></a> <a
-									href="#" class="dropdown-item"><i class="ft-check-square"></i>
-									<spring:message code="label.QuanTriHeThong.nhiemVu" /></a> <a href="#"
+										code="label.QuanTriHeThong.suaHoSo" /></a> <a href="#"
+									class="dropdown-item"><i class="ft-mail"></i> <spring:message
+										code="label.QuanTriHeThong.hopThu" /></a> <a href="#"
+									class="dropdown-item"><i class="ft-check-square"></i> <spring:message
+										code="label.QuanTriHeThong.nhiemVu" /></a> <a href="#"
 									class="dropdown-item"><i class="ft-message-square"></i> <spring:message
 										code="label.QuanTriHeThong.tinNhan" /></a>
 								<div class="dropdown-divider"></div>
@@ -217,7 +217,8 @@
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <a href="#"
 										onclick="$(this).closest('form').submit()"><i
-										class="ft-power"></i> <spring:message code="label.QuanTriHeThong.dangXuat" /></a>
+										class="ft-power"></i> <spring:message
+											code="label.QuanTriHeThong.dangXuat" /></a>
 								</form>
 							</div></li>
 					</ul>
@@ -253,6 +254,43 @@
 					href="<c:url value = "/QuanTriHeThong/phan-quyen/"/>"><i
 						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
 								code="label.QuanTriHeThong.PhanQuyen" /></span></a></li>
+
+				<!--  ----------------- Quản lí Dự Án ----------------------->
+
+				<li class="navigation-header"><span>Quản lý dự án</span><i class=" ft-minus" data-toggle="tooltip"
+					data-placement="right" data-original-title="Components"></i></li>
+				<li class="nav-item has-sub"><a href="#"><i
+						class="ft-briefcase"></i><span class="menu-title" data-i18n="">Danh	Mục Dự Án</span></a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/Contact/list-Contact" />">Contact</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/qlda/domain" />">Domain</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/technical/list-technical" />">Technical</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/vendor/list-vendor" />">Vendor</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/framework/list-framework" />">Framework</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/language/list-language" />">Programing Language</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/roles/list-roles" />">Vai trò</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/TrangThai/listTrangThai" />">Trạng thái</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/database/list-database" />">Database</a></li>
+					</ul></li>
+				<li class="nav-item has-sub"><a href="#"><i class="ft-box"></i><span
+						class="menu-title" data-i18n="">Dự Án</span></a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/project/show-form-add" />">Thêm dự án</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanliduan/project/list-project" />">Danh sách dự án</a></li>
+
+
+					</ul></li>
 			</ul>
 		</div>
 	</div>
