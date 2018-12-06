@@ -81,6 +81,41 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
+
+
+						<div class="modal fade" id="confirm-delete" tabindex="-1"
+							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">Bạn có chắc
+											muốn xóa</h4>
+									</div>
+
+									<div class="modal-body">
+										<p>Bạn có chắc muốn xóa</p>
+										<p class="debug-url"></p>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Quay lại</button>
+										<a class="btn btn-danger btn-ok">Xóa</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">Danh sách danh mục</h4>
 							<a class="heading-elements-toggle"><i
@@ -96,31 +131,7 @@
 						</div>
 						<div class="card-block card-dashboard">
 							<div class="table-responsive">
-								<div class="modal fade" id="confirm-delete" tabindex="-1"
-									role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
 
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
-													aria-hidden="true">×</button>
-												<h4 class="modal-title" id="myModalLabel">Bạn có chắc
-													muốn xóa</h4>
-											</div>
-
-											<div class="modal-body">
-												<p>Bạn có chắc muốn xóa</p>
-												<p class="debug-url"></p>
-											</div>
-
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Quay lại</button>
-												<a class="btn btn-danger btn-ok">Xóa</a>
-											</div>
-										</div>
-									</div>
-								</div>
 								<div id="datatable_wrapper"
 									class="dataTables_wrapper form-inline dt-bootstrap4 no-footer">
 									<div class="row">
@@ -153,11 +164,11 @@
 													<tr role="row">
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
+															aria-label="Mã danh mục: activate to sort column ascending"
 															style="width: 363px;">Mã Danh Mục</th>
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Tên phòng ban: activate to sort column descending"
+															aria-label="Tên danh mục: activate to sort column descending"
 															style="width: 376px;" aria-sort="ascending">Tên Danh
 															Mục</th>
 														<th class="sorting" tabindex="0" aria-controls="datatable"
@@ -168,27 +179,17 @@
 												</thead>
 												<c:forEach var="dm" items="${listDM}">
 													<tr>
-														<%--  <td><img src='<c:url value="/images/${SV.maSinhVien}/${SV.img}"/>' / style="width: 20px" height="20px"></td> --%>
 														<td>${dm.maDanhMuc}</td>
 														<td>${dm.tenDanhMuc}</td>
 														<td><a
 															href="/FBMS/QuanTriTaiLieu/danh_muc/view/maDanhMuc"><i
-																class="fa fa-eye"></i></a><a
+																class="fa fa-eye"></i></a>&nbsp;<a
 															href="/FBMS/QuanTriTaiLieu/danh_muc/edit/${dm.maDanhMuc}"><i
-																class="fa fa-pencil"></i></a><a
-															href="/FBMS/QuanTriTaiLieu/danh_muc/delete/${dm.maDanhMuc}">
-															<i
+																class="fa fa-pencil"></i></a><a href="javascript:void(0);"
+															data-toggle="modal" data-target="#confirm-delete"
+															data-href="/FBMS/QuanTriTaiLieu/danh_muc/delete/${dm.maDanhMuc}"><i
 																class="fa fa-trash"></i></a></td>
-														<%-- <td>${SV.password}</td>
-				<td>${SV.tuoi}</td>
-				<c:forEach var="Diem" items="${SV.listDiem}">
-				<td>${Diem.monHoc}</td>
-				<td>${Diem.diem}</td>
-				</c:forEach>
-				<c:url var="editSV" value="/editsv/${SV.maSinhVien}" ></c:url>
-				<c:url var="deleteSV" value="/deletesv/${SV.maSinhVien}"></c:url>
-				<td><a href="${editSV}"><spring:message code="sua" /></a></td>
-				<td><a href="${deleteSV}"><spring:message code="xoa" /></a></td> --%>
+
 													</tr>
 												</c:forEach>
 											</table>
@@ -228,4 +229,15 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	window.onload = function() {
+		$('#confirm-delete').on(
+				'show.bs.modal',
+				function(e) {
+					$(this).find('.btn-ok').attr('href',
+							$(e.relatedTarget).data('href'));
+				});
+
+	}
+</script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
