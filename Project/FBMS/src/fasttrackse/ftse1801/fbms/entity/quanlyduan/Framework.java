@@ -1,13 +1,10 @@
 package fasttrackse.ftse1801.fbms.entity.quanlyduan;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -27,8 +24,7 @@ public class Framework implements Serializable{
 	@Column(name = "is_delete")
 	private int isDelete;
 
-	@ManyToMany(fetch = FetchType.EAGER,mappedBy="framework",targetEntity=DuAn.class)
-	private Set<DuAn> duAn;
+	
 
 
 	public String getMaFramework() {
@@ -55,17 +51,5 @@ public class Framework implements Serializable{
 		this.isDelete = isDelete;
 	}
 
-	public Set<DuAn> getDuAn() {
-		return duAn;
-	}
-
-	public void setDuAn(Set<DuAn> duAn) {
-		this.duAn = duAn;
-	}
-	
-	@Override
-	public String toString() {
-		return "Framework [maFrameWork=" + maFramework + ", tenFramework=" + tenFramework + ", status=" + isDelete + "]";
-	}
 	
 }

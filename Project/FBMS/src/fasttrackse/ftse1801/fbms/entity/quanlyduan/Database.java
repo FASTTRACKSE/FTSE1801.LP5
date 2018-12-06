@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="database")
+@Table(name="database_list")
 public class Database {
 	@Id
 	@NotEmpty(message = "Mã Database không được để trống!!")
@@ -19,7 +19,7 @@ public class Database {
 	@NotEmpty(message = "Mã database không được để trống!!")
 	@Column(name = "ten_database")
 	private String tenDatabase;
-	
+	@Column(name = "is_delete")
 	private int isDelete;
 
 	public String getMaDatabase() {

@@ -20,7 +20,7 @@ public class TrangThai {
 	@Column(name="ten_trang_thai")
 	private String tenTrangThai;
 	
-	@Column(name="isdelete")
+	@Column(name="is_delete")
 	private int isDelete;
 
 	public int getMaTrangThai() {

@@ -1,10 +1,10 @@
-package fasttrackse.ftse1801.fbms.dao.quanlyduan;
+package fasttrackse.ftse1801.fbms.service.quanlyduan;
 
 import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.CongNghe;
 
-public interface CongNgheDao {
+public interface CongNgheService {
 	public List<CongNghe> findAll();
 	public CongNghe findById(String maCongNghe);
 	public void addNew(CongNghe congNghe);

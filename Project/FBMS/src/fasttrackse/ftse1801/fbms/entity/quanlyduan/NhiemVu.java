@@ -27,6 +27,8 @@ public class NhiemVu {
 	@JoinColumn(name = "ma_vai_tro")
 	@NotNull
 	private VaiTroThanhVien vaiTroThanhVien;
+	
+	@JoinColumn(name = "is_delete")
 	private int isDelete;
 	
 	

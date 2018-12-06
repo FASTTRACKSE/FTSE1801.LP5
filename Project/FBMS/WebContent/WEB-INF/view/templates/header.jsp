@@ -279,16 +279,48 @@
 						<li class="is-shown"><a class="menu-item"
 							href="<c:url value = ""/>">Quản lý kinh nghiệm dự án</a></li>
 					</ul></li>
-				<!-- Quản lý dự án  -->
-				<li class=" navigation-header"><span>Quản lý dự án</span><i
-					data-toggle="tooltip" data-placement="right"
-					data-original-title="Apps" class=" ft-minus"></i></li>
-				<li class=" nav-item QuanTriHeThongphong_ban"><a
-					href="<c:url value = ""/>"><i class="fa fa-th-list"></i><span
-						data-i18n="" class="menu-title">Quản lý danh mục</span></a></li>
-				<li class=" nav-item QuanTriHeThongchuc_danh"><a
-					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
-						data-i18n="" class="menu-title">Quản lý thông tin dự án</span></a></li>
+				<!--  ------------------ Quản lí Dự Án ----------------------->
+
+					<li class="navigation-header"><span>꧁-Quản lý
+							dự án</span><i class=" ft-minus" data-toggle="tooltip"
+						data-placement="right" data-original-title="Components"></i></li>
+					<li class="nav-item has-sub"><a href="#"><i
+							class="ft-briefcase"></i><span class="menu-title" data-i18n="">Danh
+								Mục Dự Án</span></a>
+						<ul class="menu-content" style="">
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/Domain/list-domain" />">Domain</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/CongNghe/list-congNghe" />">Công Nghệ</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/Contact/list-contact" />">Contact</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/Framework/list-framework" />">Framework</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/NgonNgu/list-ngonNgu" />">Ngôn Ngữ	</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/Vaitro/list-roles" />">Vai
+									trò</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/Trangthai/list-status" />">Trạng
+									thái</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/QuanLyDuAn/Database/list-database" />">Database</a></li>
+						</ul></li>
+					<li class="nav-item has-sub"><a href="#"><i class="ft-box"></i><span
+							class="menu-title" data-i18n="">Dự Án</span></a>
+						<ul class="menu-content" style="">
+							<li class=""><a class="menu-item"
+								href="<c:url value="/quanlyduan/duan/show-form-add" />">Thêm
+									dự án</a></li>
+							<li class=""><a class="menu-item"
+								href="<c:url value="/quanlyduan/duan/list-project" />">Danh
+									sách dự án</a></li>
+
+
+						</ul></li>
+
+					<!--  ////////////////////////////////////////////// -->
 				<!-- Quản trị tài liệu  -->
 				<li class=" navigation-header"><span>Quản trị tài liệu</span><i
 					data-toggle="tooltip" data-placement="right"

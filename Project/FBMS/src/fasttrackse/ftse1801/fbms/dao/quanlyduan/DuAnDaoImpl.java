@@ -51,7 +51,7 @@ public class DuAnDaoImpl implements DuAnDao{
 	@Override
 	public int checkNameProjects(String tenDuAn) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DuAn> dm = session.createQuery("from DuAn where nameProject = '"+tenDuAn+"' and status = 1", DuAn.class).list();
+		List<DuAn> dm = session.createQuery("from DuAn where tenDuAn = '"+tenDuAn+"' and status = 1", DuAn.class).list();
 		
 		return  dm.size();
 	}
@@ -71,7 +71,7 @@ public class DuAnDaoImpl implements DuAnDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<DuAn> listProject(String search, int start, int maxRows) {
+	public List<DuAn> listDuAn(String search, int start, int maxRows) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.createQuery("from DuAn where isDelete = 1 "+ search).setFirstResult(start)
 				.setMaxResults(maxRows).list();

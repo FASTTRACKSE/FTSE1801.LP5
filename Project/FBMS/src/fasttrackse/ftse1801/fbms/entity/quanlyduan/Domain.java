@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "domain")
+@Table(name = "nghiep_vu")
 public class Domain {
 
 	@Id
@@ -22,6 +22,7 @@ public class Domain {
 	@Column(name = "ten_nghiep_vu")
 	private String tenDomain;
 
+	@Column(name = "is_delete")
 	private int isDelete;
 
 	public String getMaDomain() {

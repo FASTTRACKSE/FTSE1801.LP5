@@ -20,6 +20,7 @@ public class VaiTroThanhVien {
 	@Column(name="ten_vai_tro")
 	private String tenVaiTro;
 	
+	@Column(name="is_delete")
 	private int isDelete;
 
 	public int getMaVaiTro() {

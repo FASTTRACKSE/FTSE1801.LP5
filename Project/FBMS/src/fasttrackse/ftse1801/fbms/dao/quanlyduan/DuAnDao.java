@@ -15,6 +15,6 @@ public interface DuAnDao {
 	public int checkNameProjects(String tenDuAn);
 	public int checkMaProjects(String maDuAn);
 	public List<HoSoNhanVien> getPm(String maPhongBan);
-	public List<DuAn> listProject(String search,int start,int maxRows);
+	public List<DuAn> listDuAn(String search,int start,int maxRows);
 	public UserAccount getAccount(String userName);
 }

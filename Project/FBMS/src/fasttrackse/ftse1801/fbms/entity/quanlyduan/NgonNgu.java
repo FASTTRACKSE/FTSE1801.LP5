@@ -1,12 +1,9 @@
 package fasttrackse.ftse1801.fbms.entity.quanlyduan;
 
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -22,8 +19,6 @@ public class NgonNgu {
 	@NotEmpty(message="Tên ngôn ngữ không được rỗng!")
 	 String tenNgonNgu;
 	
-	@ManyToMany(fetch = FetchType.EAGER,mappedBy="ngonNgu",targetEntity=DuAn.class)
-	private Set<DuAn> duAn;
 	
 	@Column(name = "is_delete")
 	 int isDelete;
@@ -46,13 +41,6 @@ public class NgonNgu {
 		this.tenNgonNgu = tenNgonNgu;
 	}
 
-	public Set<DuAn> getDuAn() {
-		return duAn;
-	}
-
-	public void setDuAn(Set<DuAn> duAn) {
-		this.duAn = duAn;
-	}
 
 	public int getIsDelete() {
 		return isDelete;

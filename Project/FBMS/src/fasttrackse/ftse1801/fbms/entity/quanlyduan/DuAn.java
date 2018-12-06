@@ -4,14 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,233 +20,224 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+@Table(name = "du_an")
+public class DuAn implements Serializable {
 
-	@Entity
-	@Table(name="du_an")
-	public class DuAn implements Serializable {
-		
-		private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-		@Id
-		@NotEmpty(message="Mã Dự án bắt buộc nhập")
-		@Size(min=6,max=10,message="Mã dự án 6 đến 10 kí tự")
-		@Column(name="ma_du_an")
-		private String maDuAn;
-		
-		@Column(name="ten_du_an")
-		@NotEmpty(message="Tên Dự án bắt buộc nhập")
-		private String tenDuAn;
-		
-		@Column(name="mo_ta_du_an")
-		@NotEmpty(message="Không được để trống")
-		private String moTaDuAn;
-		
+	@Id
+	@NotEmpty(message = "Mã Dự án bắt buộc nhập")
+	@Size(min = 6, max = 10, message = "Mã dự án 6 đến 10 kí tự")
+	@Column(name = "ma_du_an")
+	private String maDuAn;
 
-		@Column(name="is_delete")
-		private int isDelete;
-		
-		@Column (name="start_date")
-		@DateTimeFormat(pattern="yyyy-MM-dd")
-		@Temporal(TemporalType.DATE)
-		@NotNull(message="thời gian Dự án bắt buộc nhập")
-		private Date startDate;
-		
-		@Column (name="end_date")
-		@Temporal(TemporalType.DATE)
-		@DateTimeFormat(pattern="yyyy-MM-dd")
-		@NotNull(message="thời gian Dự án bắt buộc nhập")
-		private Date endDate;
-		
-		@ManyToMany(targetEntity = Database.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "database_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_database", referencedColumnName = "ma_database", nullable = true, updatable = false,insertable=true) })
-		private Set<Database> database;
+	@Column(name = "ten_du_an")
+	@NotEmpty(message = "Tên Dự án bắt buộc nhập")
+	private String tenDuAn;
 
-		@ManyToMany(targetEntity = CongNghe.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "cong_nghe_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_cong_nghe", referencedColumnName = "ma_cong_nghe", nullable = true, updatable = false,insertable=true) })
-		private Set<CongNghe> congNghe;
-		
-		@ManyToMany(targetEntity = Framework.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "framework_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_framework", referencedColumnName = "ma_framework", nullable = true, updatable = false,insertable=true) })
-		private Set<Framework> framework;
-		
-		@ManyToMany(targetEntity = NgonNgu.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "ngon_ngu_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_ngon_ngu", referencedColumnName = "ma_ngon_ngu", nullable = true, updatable = false,insertable=true) })
-		private Set<NgonNgu> ngonNgu;
+	@Column(name = "mo_ta_du_an")
+	@NotEmpty(message = "Không được để trống")
+	private String moTaDuAn;
 
+	@Column(name = "is_delete")
+	private int isDelete;
 
-		@ManyToMany(targetEntity = Contact.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "contact_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_contact", referencedColumnName = "ma_contact", nullable = true, updatable = false,insertable=true) })
-		private Set<Contact> contact;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_trang_thai",referencedColumnName="ma_trang_thai", insertable=true, updatable=true)
-		@NotNull(message="Bạn chưa chọn Trạng thái")
-		private TrangThai trangThai;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_nghiep_vu",referencedColumnName="ma_nghiep_vu", insertable=true, updatable=true)
-		@NotNull(message="Bạn chưa chọn nghiệp vụ")
-		private Domain domain;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_phong_ban",referencedColumnName="ma_phong_ban", insertable=true, updatable=true)
-		@NotNull(message="Không được để trống")
-		private PhongBan phongBan;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_pm",referencedColumnName="ma_nhan_vien", insertable=true, updatable=true)
-		@NotNull(message="Bạn chưa chon PM")
-		private HoSoNhanVien pM;
-		
-		@OneToMany(mappedBy = "duAn")
-		private Set<NhiemVu> nhiemVu;
-		
-		
+	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	@NotNull(message = "thời gian Dự án bắt buộc nhập")
+	private Date startDate;
 
-		public Set<NhiemVu> getNhiemVu() {
-			return nhiemVu;
-		}
+	@Column(name = "end_date")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message = "thời gian Dự án bắt buộc nhập")
+	private Date endDate;
 
-		public void setNhiemVu(Set<NhiemVu> nhiemVu) {
-			this.nhiemVu = nhiemVu;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_database", referencedColumnName = "ma_database", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Database")
+	private Database database;
 
-		public Set<NgonNgu> getNgonNgu() {
-			return ngonNgu;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_cong_nghe", referencedColumnName = "ma_cong_nghe", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Công nghệ")
+	private CongNghe congNghe;
 
-		public void setNgonNgu(Set<NgonNgu> ngonNgu) {
-			this.ngonNgu = ngonNgu;
-		}
-		public Set<CongNghe> getCongNghe() {
-			return congNghe;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_framework", referencedColumnName = "ma_framework", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Framework")
+	private Framework framework;
 
-		public void setcongNghe(Set<CongNghe> congNghe) {
-			this.congNghe = congNghe;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_ngon_ngu", referencedColumnName = "ma_ngon_ngu", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Ngôn Ngữ")
+	private NgonNgu ngonNgu;
 
-		public Set<Framework> getFramework() {
-			return framework;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_contact", referencedColumnName = "ma_contact", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Khách hàng")
+	private Contact contact;
 
-		public HoSoNhanVien getpM() {
-			return pM;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_trang_thai", referencedColumnName = "ma_trang_thai", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Trạng thái")
+	private TrangThai trangThai;
 
-		public void setpM(HoSoNhanVien pM) {
-			this.pM = pM;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_nghiep_vu", referencedColumnName = "ma_nghiep_vu", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn nghiệp vụ")
+	private Domain domain;
 
-		public void setFramework(Set<Framework> framework) {
-			this.framework = framework;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban", insertable = true, updatable = true)
+	@NotNull(message = "Không được để trống")
+	private PhongBan phongBan;
 
-		public Set<Contact> getContact() {
-			return contact;
-		}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_pm", referencedColumnName = "ma_nhan_vien", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chon PM")
+	private HoSoNhanVien pM;
 
-		public void setVendor(Set<Contact> contact) {
-			this.contact = contact;
-		}
+	@OneToMany(mappedBy = "duAn")
+	private Set<NhiemVu> nhiemVu;
 
-		public TrangThai getTrangThai() {
-			return trangThai;
-		}
+	public String getMaDuAn() {
+		return maDuAn;
+	}
 
-		public void setTrangThai(TrangThai trangThai) {
-			this.trangThai = trangThai;
-		}
+	public void setMaDuAn(String maDuAn) {
+		this.maDuAn = maDuAn;
+	}
 
-		public Domain getDomain() {
-			return domain;
-		}
+	public String getTenDuAn() {
+		return tenDuAn;
+	}
 
-		public void setDomain(Domain domain) {
-			this.domain = domain;
-		}
+	public void setTenDuAn(String tenDuAn) {
+		this.tenDuAn = tenDuAn;
+	}
 
-		public String getMaDuAn() {
-			return maDuAn;
-		}
+	public String getMoTaDuAn() {
+		return moTaDuAn;
+	}
 
-		public void setMaDuAn(String maDuAn) {
-			this.maDuAn = maDuAn;
-		}
+	public void setMoTaDuAn(String moTaDuAn) {
+		this.moTaDuAn = moTaDuAn;
+	}
 
-		public Set<Database> getDatabase() {
-			return database;
-		}
+	public int getIsDelete() {
+		return isDelete;
+	}
 
-		public void setDatabase(Set<Database> database) {
-			this.database = database;
-		}
+	public void setIsDelete(int isDelete) {
+		this.isDelete = isDelete;
+	}
 
-		public String getTenDuAn() {
-			return tenDuAn;
-		}
+	public Date getStartDate() {
+		return startDate;
+	}
 
-		public void setTenDuAn(String tenDuAn) {
-			this.tenDuAn = tenDuAn;
-		}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 
-		public String getMoTaDuAn() {
-			return moTaDuAn;
-		}
+	public Date getEndDate() {
+		return endDate;
+	}
 
-		public void setMoTaDuAn(String moTaDuAn) {
-			this.moTaDuAn = moTaDuAn;
-		}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
-		public int getIsDelete() {
-			return isDelete;
-		}
+	public Database getDatabase() {
+		return database;
+	}
 
-		public void setIsDelete(int isDelete) {
-			this.isDelete = isDelete;
-		}
+	public void setDatabase(Database database) {
+		this.database = database;
+	}
 
-		public Date getStartDate() {
-			return startDate;
-		}
+	public CongNghe getCongNghe() {
+		return congNghe;
+	}
 
-		public void setStartDate(Date startDate) {
-			this.startDate = startDate;
-		}
+	public void setCongNghe(CongNghe congNghe) {
+		this.congNghe = congNghe;
+	}
 
-		public Date getEndDate() {
-			return endDate;
-		}
+	public Framework getFramework() {
+		return framework;
+	}
 
-		public void setEndDate(Date endDate) {
-			this.endDate = endDate;
-		}
+	public void setFramework(Framework framework) {
+		this.framework = framework;
+	}
 
-		public PhongBan getPhongBan() {
-			return phongBan;
-		}
+	public NgonNgu getNgonNgu() {
+		return ngonNgu;
+	}
 
-		public void setPhongBan(PhongBan phongBan) {
-			this.phongBan = phongBan;
-		}
+	public void setNgonNgu(NgonNgu ngonNgu) {
+		this.ngonNgu = ngonNgu;
+	}
 
-		@Override
-		public String toString() {
-			return "DuAn [maDuAn=" + maDuAn + ", tenDuAn=" + tenDuAn + ", moTaDuAn=" + moTaDuAn + ", isDelete="
-					+ isDelete + ", startDate=" + startDate + ", endDate=" + endDate + ", database=" + database
-					+ ", congNghe=" + congNghe + ", framework=" + framework + ", ngonNgu=" + ngonNgu + ", vendor="
-					+ contact + ", khachHang=" + contact + ", trangThai=" + trangThai + ", domain=" + domain
-					+ ", phongBan=" + phongBan + ", pM=" + pM + ", nhiemVu=" + nhiemVu + "]";
-		}
+	public Contact getContact() {
+		return contact;
+	}
+
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+
+	public TrangThai getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(TrangThai trangThai) {
+		this.trangThai = trangThai;
+	}
+
+	public Domain getDomain() {
+		return domain;
+	}
+
+	public void setDomain(Domain domain) {
+		this.domain = domain;
+	}
+
+	public PhongBan getPhongBan() {
+		return phongBan;
+	}
+
+	public void setPhongBan(PhongBan phongBan) {
+		this.phongBan = phongBan;
+	}
+
+	public HoSoNhanVien getpM() {
+		return pM;
+	}
+
+	public void setpM(HoSoNhanVien pM) {
+		this.pM = pM;
+	}
+
+	public Set<NhiemVu> getNhiemVu() {
+		return nhiemVu;
+	}
+
+	public void setNhiemVu(Set<NhiemVu> nhiemVu) {
+		this.nhiemVu = nhiemVu;
+	}
+
+	@Override
+	public String toString() {
+		return "DuAn [maDuAn=" + maDuAn + ", tenDuAn=" + tenDuAn + ", moTaDuAn=" + moTaDuAn + ", isDelete=" + isDelete
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", database=" + database + ", congNghe="
+				+ congNghe + ", framework=" + framework + ", ngonNgu=" + ngonNgu + ", vendor=" + contact
+				+ ", khachHang=" + contact + ", trangThai=" + trangThai + ", domain=" + domain + ", phongBan="
+				+ phongBan + ", pM=" + pM + ", nhiemVu=" + nhiemVu + "]";
+	}
 
 }

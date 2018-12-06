@@ -1,10 +1,10 @@
-package fasttrackse.ftse1801.fbms.dao.quanlyduan;
+package fasttrackse.ftse1801.fbms.service.quanlyduan;
 
 import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.Framework;
 
-public interface FrameworkDao {
+public interface FrameworkService {
 	public List<Framework> getAll();
 	public Framework getById(String maFramework);
 	public void add(Framework framework);
