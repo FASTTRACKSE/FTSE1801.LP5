@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.LoaiCongViec;
 import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.QuanLyNhiemVu;
 import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.TrangThaiNhiemVu;
+import fasttrackse.ftse1801.fbms.entity.quanlyduan.VaiTroThanhVien;
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
 import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
@@ -57,7 +58,7 @@ public class QuanLyNhiemVuDaoImpl implements QuanLyNhiemVuDao {
 	public void delete(QuanLyNhiemVu qlnv) {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		session.delete(qlnv);
+		session.update(qlnv);;
 		transaction.commit();
 		session.close();
 	}
@@ -89,24 +90,30 @@ public class QuanLyNhiemVuDaoImpl implements QuanLyNhiemVuDao {
 		return list;
 	}
 
-	// @Override
-	// public List<DuAn> duAn() {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<DuAn> duAn() {
+//		Session session = sessionFactory.openSession();
+//		List<DuAn> list = session.createQuery("from DuAn").getResultList();
+//		session.close();
+//	return list;
+//	}
 
-	// @Override
-	// public List<VaiTro> vaiTro() {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<VaiTroThanhVien> vaiTro() {
+//		Session session = sessionFactory.openSession();
+//		List<VaiTroThanhVien> list = session.createQuery("from VaiTroThanhVien").getResultList();
+//		session.close();
+//	return list;
+//	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<QuanLyNhiemVu> getAllpage(int page, int size) {
 		Session session = sessionFactory.openSession();
-		List<QuanLyNhiemVu> listNhiemVu = session.createQuery("from QuanLyNhiemVu where isDelete = 0").setFirstResult(page).setMaxResults(size)
-				.list();
+		List<QuanLyNhiemVu> listNhiemVu = session.createQuery("from QuanLyNhiemVu where isDelete = 0")
+				.setFirstResult(page).setMaxResults(size).list();
 		session.close();
 		return listNhiemVu;
 	}

@@ -87,6 +87,37 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
+						<div class="modal fade" id="confirm-delete" tabindex="-1"
+							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">Bạn có chắc
+											muốn xóa</h4>
+									</div>
+
+									<div class="modal-body">
+										<p>Bạn có chắc muốn xóa</p>
+										<p class="debug-url"></p>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Quay lại</button>
+										<a class="btn btn-danger btn-ok">Xóa</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">Danh sách nhiệm vụ</h4>
 							<a class="heading-elements-toggle"><i
@@ -102,31 +133,6 @@
 						</div>
 						<div class="card-block card-dashboard">
 							<div class="table-responsive">
-								<div class="modal fade" id="confirm-delete" tabindex="-1"
-									role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
-													aria-hidden="true">×</button>
-												<h4 class="modal-title" id="myModalLabel">Bạn có chắc
-													muốn xóa</h4>
-											</div>
-
-											<div class="modal-body">
-												<p>Bạn có chắc muốn xóa</p>
-												<p class="debug-url"></p>
-											</div>
-
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Quay lại</button>
-												<a class="btn btn-danger btn-ok">Xóa</a>
-											</div>
-										</div>
-									</div>
-								</div>
 								<div id="datatable_wrapper"
 									class="dataTables_wrapper form-inline dt-bootstrap4 no-footer">
 									<div class="row">
@@ -157,10 +163,10 @@
 												style="width: 1013px;">
 												<thead>
 													<tr role="row">
-													<th class="sorting_desc" tabindex="0"
+														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
 															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">id</th>
+															style="width: 363px;">Mã nhiệm vụ</th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
 															aria-label="Mã phòng ban: activate to sort column ascending"
@@ -222,17 +228,17 @@
 														<td>${sv.thoiGianBatDau}</td>
 														<td>${sv.thoiGianKetThuc}</td>
 														<td>${sv.idPhongBan.tenPhongBan}</td>
-														<td>${sv.idNhanVien.hoDem} ${sv.idNhanVien.ten}</td>
+														<td>${sv.idNhanVien.hoDem}${sv.idNhanVien.ten}</td>
 														<td>${sv.maVaiTro}</td>
 														<td>${sv.thoiGianDuKienHoanThanh}</td>
 														<td>${sv.idTrangThai.trangThai}</td>
 														<td><a
-															href="/ffse-fbms/QuanTriHeThong/phong_ban/view/PDA"><i
+															href="<c:url value="/QuanLyNhiemVu/edit/${sv.id}"/>"><i
 																class="fa fa-eye"></i></a><a
-															href="/ffse-fbms/QuanTriHeThong/phong_ban/edit/PDA"><i
+															href="<c:url value="/QuanLyNhiemVu/edit/${sv.id}"/>"><i
 																class="fa fa-pencil"></i></a><a href="javascript:void(0);"
 															data-toggle="modal" data-target="#confirm-delete"
-															data-href="/ffse-fbms/QuanTriHeThong/phong_ban/delete/PDA"><i
+															data-href="<c:url value="/QuanLyNhiemVu/delete/${sv.id}"/>"><i
 																class="fa fa-trash"></i></a></td>
 													</tr>
 												</c:forEach>
@@ -249,17 +255,50 @@
 											<div class="dataTables_paginate paging_simple_numbers"
 												id="datatable_paginate">
 												<ul class="pagination">
-													<li class="paginate_button page-item previous disabled"
-														id="datatable_previous"><a href="#"
-														aria-controls="datatable" data-dt-idx="0" tabindex="0"
-														class="page-link">Previous</a></li>
-													<li class="paginate_button page-item active"><a
-														href="#" aria-controls="datatable" data-dt-idx="1"
-														tabindex="0" class="page-link">1</a></li>
-													<li class="paginate_button page-item next disabled"
-														id="datatable_next"><a href="#"
-														aria-controls="datatable" data-dt-idx="2" tabindex="0"
-														class="page-link">Next</a></li>
+													<c:choose>
+														<c:when test="${page != 1}">
+															<li class="paginate_button page-item previous enable"
+																id="datatable_previous"><a
+																href="<c:url value="/QuanLyNhiemVu/${page-1}"/>"
+																aria-controls="datatable" tabindex="0" class="page-link">Previous</a></li>
+														</c:when>
+														<c:otherwise>
+															<li class="paginate_button page-item previous disabled"
+																id="datatable_previous"><a
+																href="<c:url value="/QuanLyNhiemVu/${page-1}"/>"
+																aria-controls="datatable" tabindex="0" class="page-link">Previous</a></li>
+														</c:otherwise>
+													</c:choose>
+													<c:forEach begin="1" end="${total}" var="i">
+														<c:choose>
+															<c:when test="${size eq i}">
+																<li class="paginate_button page-item enable"><a
+																	href="<c:url value="/QuanLyNhiemVu/${i}"/>"
+																	aria-controls="datatable" data-dt-idx="1" tabindex="0"
+																	class="page-link">${i}</a></li>
+															</c:when>
+															<c:otherwise>
+																<li class="paginate_button page-item enable"><a
+																	href="<c:url value="/QuanLyNhiemVu/${i}"/>"
+																	aria-controls="datatable" data-dt-idx="1" tabindex="0"
+																	class="page-link">${i}</a></li>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													<c:choose>
+														<c:when test="${page lt total}">
+															<li class="paginate_button page-item next enable"
+																id="datatable_next"><a
+																href="<c:url value="/QuanLyNhiemVu/${page+1}"/>"
+																aria-controls="datatable" tabindex="0" class="page-link">Next</a></li>
+														</c:when>
+														<c:otherwise>
+															<li class="paginate_button page-item next disabled"
+																id="datatable_next"><a
+																href="<c:url value="/QuanLyNhiemVu/${page+1}"/>"
+																aria-controls="datatable" tabindex="2" class="page-link">Next</a></li>
+														</c:otherwise>
+													</c:choose>
 												</ul>
 											</div>
 										</div>
@@ -273,4 +312,14 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	window.onload = function() {
+		$('#confirm-delete').on(
+				'show.bs.modal',
+				function(e) {
+					$(this).find('.btn-ok').attr('href',
+							$(e.relatedTarget).data('href'));
+				});
+	}
+</script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

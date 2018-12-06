@@ -29,9 +29,11 @@ public QuanLyNhiemVu findById(int id);
 	
 //	public List<DuAn> duAn();
 //	
-//	public List<VaiTro> vaiTro();
+//	public List<VaiTroThanhVien> vaiTro();
 	
 	public List<QuanLyNhiemVu> getAllpage(int page, int size);
 	
 	public List<QuanLyNhiemVu> searchAll(String search);
+	
+	public String toJson(List<QuanLyNhiemVu> list);
 }

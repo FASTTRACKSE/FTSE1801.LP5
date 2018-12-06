@@ -27,10 +27,10 @@ public interface QuanLyNhiemVuDao {
 	public List<HoSoNhanSu> hoSoNhanVien();
 	
 	public List<PhongBan> phongBan();
-	
-//	public List<DuAn> duAn();
 //	
-//	public List<VaiTro> vaiTro();
+//	public List<DuAn> duAn();
+	
+//	public List<VaiTroThanhVien> vaiTro();
 	
 	public List<QuanLyNhiemVu> getAllpage(int page, int size);
 	

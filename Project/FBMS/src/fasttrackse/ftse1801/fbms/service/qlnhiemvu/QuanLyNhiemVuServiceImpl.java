@@ -1,5 +1,6 @@
 package fasttrackse.ftse1801.fbms.service.qlnhiemvu;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,15 +59,15 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 		return this.quanLyNhiemVuDao.loaiCongViec();
 	}
 
-//	@Override
-//	public List<DuAn> duAn() {
-//		return this.qlNhiemVuDao.duAn();
-//	}
-//
-//	@Override
-//	public List<VaiTro> vaiTro() {
-//		return this.qlNhiemVuDao.vaiTro();
-//	}
+	/*@Override
+	public List<DuAn> duAn() {
+		return this.quanLyNhiemVuDao.duAn();
+	}
+
+	@Override
+	public List<VaiTroThanhVien> vaiTro() {
+		return this.quanLyNhiemVuDao.vaiTro();
+	}*/
 
 	@Override
 	public List<QuanLyNhiemVu> getAllpage(int page, int size) {
@@ -86,6 +87,28 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 	@Override
 	public List<PhongBan> phongBan() {
 		return this.quanLyNhiemVuDao.phongBan();
+	}
+
+	@Override
+	public String toJson(List<QuanLyNhiemVu> list) {
+		// duyet list => to json
+				int j= list.size();
+				int i=0;
+				String y="[";
+				
+				for(QuanLyNhiemVu x :list) {
+					i++;
+					String tenCongviec = x.getTenCongViec();
+					Date tgBatdau =x.getThoiGianBatDau();
+					Date tgKetthuc = x.getThoiGianKetThuc();
+					if(i==j) {
+							y += "{\"title\": \"" + tenCongviec + "\", \"start\": \"" + tgBatdau + "\", \"end\":\"" + tgKetthuc + "\"}";
+					}else {
+						y+= "{\"title\": \"" + tenCongviec + "\",\"start\": \"" + tgBatdau + "\", \"end\": \"" + tgKetthuc + "\"}"+",";
+					}
+				}
+				//return "[{\"title\":\"Làm crud\",\"start\":\"2018-09-11\",\"end\":\"2018-09-11\"}]" ;
+				return y + "]" ;
 	}
 
 }

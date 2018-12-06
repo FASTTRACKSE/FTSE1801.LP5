@@ -43,12 +43,12 @@ public class QuanLyNhiemVu {
 
 	@Column(name = "thoi_gian_bat_dau")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date thoiGianBatDau;
 
 	@Column(name = "thoi_gian_ket_thuc")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date thoiGianKetThuc;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -72,6 +72,10 @@ public class QuanLyNhiemVu {
 	@Column(name = "ma_vai_tro")
 	private String maVaiTro;
 
+	public String getMaVaiTro() {
+		return maVaiTro;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -86,6 +90,10 @@ public class QuanLyNhiemVu {
 
 	public void setMaDuAn(int maDuAn) {
 		this.maDuAn = maDuAn;
+	}
+
+	public void setMaVaiTro(String maVaiTro) {
+		this.maVaiTro = maVaiTro;
 	}
 
 	public LoaiCongViec getIdLoaiCongViec() {
@@ -128,6 +136,13 @@ public class QuanLyNhiemVu {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
+	public HoSoNhanSu getIdNhanVien() {
+		return idNhanVien;
+	}
+
+	public void setIdNhanVien(HoSoNhanSu idNhanVien) {
+		this.idNhanVien = idNhanVien;
+	}
 
 	public int getThoiGianDuKienHoanThanh() {
 		return thoiGianDuKienHoanThanh;
@@ -161,17 +176,10 @@ public class QuanLyNhiemVu {
 		this.idPhongBan = idPhongBan;
 	}
 
-	public String getMaVaiTro() {
-		return maVaiTro;
-	}
-
-	public void setMaVaiTro(String maVaiTro) {
-		this.maVaiTro = maVaiTro;
-	}
-
 	public QuanLyNhiemVu(int id, int maDuAn, LoaiCongViec idLoaiCongViec, String tenCongViec, String moTa,
 			Date thoiGianBatDau, Date thoiGianKetThuc, HoSoNhanSu idNhanVien, int thoiGianDuKienHoanThanh,
 			TrangThaiNhiemVu idTrangThai, int isDelete, PhongBan idPhongBan, String maVaiTro) {
+		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
 		this.idLoaiCongViec = idLoaiCongViec;
@@ -185,14 +193,6 @@ public class QuanLyNhiemVu {
 		this.isDelete = isDelete;
 		this.idPhongBan = idPhongBan;
 		this.maVaiTro = maVaiTro;
-	}
-
-	public HoSoNhanSu getIdNhanVien() {
-		return idNhanVien;
-	}
-
-	public void setIdNhanVien(HoSoNhanSu idNhanVien) {
-		this.idNhanVien = idNhanVien;
 	}
 
 	public QuanLyNhiemVu() {
