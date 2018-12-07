@@ -1,41 +1,38 @@
 package fasttrackse.ftse1801.fbms.entity.quanlyduan;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contact")
 public class Contact {
 	@Id
 	@Column(name = "ma_contact")
+	@NotEmpty(message = "Mã contact không được để trống !!!")
 	private String maContact;
 	
 	@Column(name = "ten_contact")
-	@NotEmpty(message = "Họ tên không được để trống")
+	@NotEmpty(message = "Tên contact không được để trống !!!")
 	private String tenContact;
-
+	
 	@Column(name = "dia_chi")
-	@NotEmpty(message = "địa chỉ không được để rỗng !!!")
-	private String diachi;
+	@NotEmpty(message = "Địa chỉ không được để trống !!!")
+	private String diaChi;
 	
 	@Column(name = "so_dien_thoai")
-	@Size(min = 10, max = 11)
-	@NotEmpty(message = "số điện thoại không được để rỗng !!!")
-	private String sdt;
+	@NotEmpty(message = "Số điện thoại không được để trống !!!")
+	private String soDienThoai;
 	
 	@Column(name = "email")
-	@Email
-	@NotEmpty(message = "email không được để rỗng !!!")
+	@NotEmpty(message = "Email không được để trống !!!")
 	private String email;
 	
 	@Column(name = "is_delete")
-	private String isDelete;
+	private int isDelete;
 
+	
 	public String getMaContact() {
 		return maContact;
 	}
@@ -52,20 +49,20 @@ public class Contact {
 		this.tenContact = tenContact;
 	}
 
-	public String getDiachi() {
-		return diachi;
+	public String getDiaChi() {
+		return diaChi;
 	}
 
-	public void setDiachi(String diachi) {
-		this.diachi = diachi;
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
 	}
 
-	public String getSdt() {
-		return sdt;
+	public String getSoDienThoai() {
+		return soDienThoai;
 	}
 
-	public void setSdt(String sdt) {
-		this.sdt = sdt;
+	public void setSoDienThoai(String soDienThoai) {
+		this.soDienThoai = soDienThoai;
 	}
 
 	public String getEmail() {
@@ -76,14 +73,12 @@ public class Contact {
 		this.email = email;
 	}
 
-	public String getIsDelete() {
+	public int getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(String isDelete) {
+	public void setIsDelete(int isDelete) {
 		this.isDelete = isDelete;
-	}
-
-
-
+	}	
+	
 }

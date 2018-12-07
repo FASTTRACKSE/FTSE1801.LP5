@@ -2,8 +2,6 @@ package fasttrackse.ftse1801.fbms.entity.quanlyduan;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -12,22 +10,23 @@ import javax.validation.constraints.NotEmpty;
 @Table(name="vai_tro_thanh_vien")
 public class VaiTroThanhVien {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ma_vai_tro")
-	private int maVaiTro;
+	@Column(name = "ma_vai_tro")
+	@NotEmpty(message = "Mã vai trò không được để trống")
+	private String maVaiTro;
 	
-	@NotEmpty(message="Nhập tên vai trò")
 	@Column(name="ten_vai_tro")
+	@NotEmpty(message = "Tên vai trò không được để trống")
 	private String tenVaiTro;
 	
-	@Column(name="is_delete")
+	@Column(name = "is_delete")
 	private int isDelete;
 
-	public int getMaVaiTro() {
+	
+	public String getMaVaiTro() {
 		return maVaiTro;
 	}
 
-	public void setMaVaiTro(int maVaiTro) {
+	public void setMaVaiTro(String maVaiTro) {
 		this.maVaiTro = maVaiTro;
 	}
 

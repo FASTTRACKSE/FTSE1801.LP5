@@ -1,10 +1,10 @@
-package fasttrackse.ftse1801.fbms.dao.quanlyduan;
+package fasttrackse.ftse1801.fbms.service.quanlyduan;
 
 import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.TrangThai;
 
-public interface TrangThaiDao {
+public interface TrangThaiService {
 	public List<TrangThai> findAll();
 	public TrangThai findById(String maTrangThai);
 	public void add(TrangThai trangThai);

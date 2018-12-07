@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,7 +18,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,10 +28,9 @@ public class DuAn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@NotEmpty(message = "Mã Dự án bắt buộc nhập")
-	@Size(min = 6, max = 10, message = "Mã dự án 6 đến 10 kí tự")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ma_du_an")
-	private String maDuAn;
+	private int maDuAn;
 
 	@Column(name = "ten_du_an")
 	@NotEmpty(message = "Tên Dự án bắt buộc nhập")
@@ -103,11 +103,11 @@ public class DuAn implements Serializable {
 	@OneToMany(mappedBy = "duAn")
 	private Set<NhiemVu> nhiemVu;
 
-	public String getMaDuAn() {
+	public int getMaDuAn() {
 		return maDuAn;
 	}
 
-	public void setMaDuAn(String maDuAn) {
+	public void setMaDuAn(int maDuAn) {
 		this.maDuAn = maDuAn;
 	}
 
