@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +34,52 @@ public class IConController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getListIcon(Model model) {
-		List<IconTaiLieu> list = iConService.getAllIcon();
+		int record = 1;
+		int pages = iConService.getAllIcon().size()/record;
+		int end = 3;
+		int start = 1;
+		if (pages < 3) {
+			start = 1;
+			end = pages;
+		}
+		model.addAttribute("pages", pages);
+		model.addAttribute("start", start);
+		model.addAttribute("end", end);
+		model.addAttribute("page", 1);
+		List<IconTaiLieu> list = iConService.getAllIcon(0, record);
 		return new ModelAndView("QuanTriTaiLieu/icon/list", "listIC", list);
 	}
-
+	@RequestMapping(value="/{page}",method=RequestMethod.GET)
+	public ModelAndView getListIcon1(@PathVariable int page, Model model) {
+		int record = 1;
+		int pages =iConService.getAllIcon().size()/record + (iConService.getAllIcon().size() % record == 0 ? 0 : 1);
+		int end = 3;
+		int start = 1;
+		if (page <= 0) {
+			page = 1;
+		} else if (page > pages) {
+			page = 1;
+		} else if (page == pages) {
+			start = pages - 2;
+			end = pages;
+		} else if (page == 1) {
+			start = 1;
+			end = 3;
+		} else {
+			start = page - 1;
+			end = page + 1;
+		}
+		if (pages < 3) {
+			start = 1;
+			end = pages;
+		}
+		model.addAttribute("pages", pages);
+		model.addAttribute("start", start);
+		model.addAttribute("end", end);
+		model.addAttribute("page", page);
+		List<IconTaiLieu> list = iConService.getAllIcon((page-1)*record, record);
+		return new ModelAndView("QuanTriTaiLieu/icon/list", "listIC", list);
+	}
 	@RequestMapping(value = "/addIcon", method = RequestMethod.GET)
 	public ModelAndView addIcon(Model model) {
 		return new ModelAndView("QuanTriTaiLieu/icon/add_ic", "icon", new IconTaiLieu());

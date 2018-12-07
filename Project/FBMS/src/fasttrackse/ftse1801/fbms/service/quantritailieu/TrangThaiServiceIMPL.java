@@ -3,10 +3,11 @@ package fasttrackse.ftse1801.fbms.service.quantritailieu;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fasttrackse.ftse1801.fbms.dao.quantritailieu.TrangThaiDao;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.TrangThaiTaiLieu;
-
+@Service
 public class TrangThaiServiceIMPL implements TrangThaiService {
 	@Autowired
 	TrangThaiDao trangThaiDao;

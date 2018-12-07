@@ -6,10 +6,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.TaiLieu;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.TrangThaiTaiLieu;
-
+@Repository
 public class TrangThaiDaoIMPL implements TrangThaiDao {
 	@Autowired
 	private SessionFactory sessionFactory;

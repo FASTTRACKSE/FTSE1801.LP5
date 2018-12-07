@@ -35,13 +35,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách danh mục</h3>
+				<h3 class="content-header-title mb-0">Danh sách trạng thái</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách danh mục</li>
+							<li class="breadcrumb-item active">Danh sách trạng thái</li>
 						</ol>
 					</div>
 				</div>
@@ -49,9 +49,9 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanTriTaiLieu/danh_muc/add"/>"
+					<a href="<c:url value = "/QuanTriTaiLieu/trang_thai/addTT"/>"
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
-						mới danh mục</a>
+						mới</a>
 				</div>
 			</div>
 		</div>
@@ -117,7 +117,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách danh mục</h4>
+							<h4 class="card-title">Danh sách trạng thái</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -164,30 +164,29 @@
 													<tr role="row">
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã danh mục: activate to sort column ascending"
-															style="width: 363px;">Mã Danh Mục</th>
+															aria-label="Mã trạng thái: activate to sort column ascending"
+															style="width: 363px;">Mã Trạng Thái</th>
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Tên danh mục: activate to sort column descending"
-															style="width: 376px;" aria-sort="ascending">Tên Danh
-															Mục</th>
+															aria-label="Tên trạng thái: activate to sort column descending"
+															style="width: 376px;" aria-sort="ascending">Tên Trạng Thái</th>
 														<th class="sorting" tabindex="0" aria-controls="datatable"
 															rowspan="1" colspan="1"
 															aria-label=": activate to sort column ascending"
 															style="width: 98px;"></th>
 													</tr>
 												</thead>
-												<c:forEach var="dm" items="${listDM}">
+												<c:forEach var="tt" items="${listTT}">
 													<tr>
-														<td>${dm.maDanhMuc}</td>
-														<td>${dm.tenDanhMuc}</td>
+														<td>${tt.maTrangThai}</td>
+														<td>${tt.tenTrangThai}</td>
 														<td><a
-															href="/FBMS/QuanTriTaiLieu/danh_muc/view/maDanhMuc"><i
+															href="/FBMS/QuanTriTaiLieu/trang_thai/view/maTrangThai"><i
 																class="fa fa-eye"></i></a>&nbsp;<a
-															href="/FBMS/QuanTriTaiLieu/danh_muc/edit/${dm.maDanhMuc}"><i
+															href="/FBMS/QuanTriTaiLieu/trang_thai/editTT/${tt.maTrangThai}"><i
 																class="fa fa-pencil"></i></a>&nbsp;<a href="javascript:void(0);"
 															data-toggle="modal" data-target="#confirm-delete"
-															data-href="/FBMS/QuanTriTaiLieu/danh_muc/delete/${dm.maDanhMuc}"><i
+															data-href="/FBMS/QuanTriTaiLieu/trang_thai/deleteTT/${tt.maTrangThai}"><i
 																class="fa fa-trash"></i></a></td>
 
 													</tr>
