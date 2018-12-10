@@ -340,16 +340,20 @@
 				<li class=" nav-item QuanTriHeThongphong_ban"><a
 					href="<c:url value = "/QuanLyThoiGian/"/>"><i
 						class="fa fa-building"></i><span data-i18n="" class="menu-title">LogWork</span></a></li>
+						
 				<!-- Quản lý nhiệm vụ -->
-				<li class=" navigation-header"><span>Quản lý nhiệm vụ</span><i
+				<li class=" navigation-header"><span><spring:message
+								code="label.QuanLyNhiemVu" /></span><i
 					data-toggle="tooltip" data-placement="right"
 					data-original-title="Apps" class=" ft-minus"></i></li>
-				<li class=" nav-item QuanTriNhiemVu"><a
+				<li class=" nav-item QuanlyNhiemVu"><a
 					href="<c:url value = "/QuanLyNhiemVu/"/>"><i class="ft ft-list"></i><span
-						data-i18n="" class="menu-title">Danh sách nhiệm vụ</span></a></li>
-				<li class=" nav-item QuanTriNhiemVu"><a
+						data-i18n="" class="menu-title"><spring:message
+								code="label.QuanLyNhiemVu.DanhSachNhiemVu" /></span></a></li>
+				<li class=" nav-item QuanLyNhiemVu"><a
 					href="<c:url value = ""/>"><i class="fa fa-calendar"></i><span
-						data-i18n="" class="menu-title">Lịch nhiệm vụ</span></a></li>
+						data-i18n="" class="menu-title"><spring:message
+								code="label.QuanLyNhiemVu.Lich" /></span></a></li>
 			</ul>
 		</div>
 	</div>
