@@ -355,7 +355,7 @@
 							kê tình hình</span></a>
 					<ul class="menu-content" style="">
 						<li class="is-shown"><a class="menu-item"
-							href="<c:url value="/QuanLyThoiGian/new"/>" class="menu-item">New</a></li>
+							href="<c:url value="/QuanLyThoiGian/add"/>" class="menu-item">New</a></li>
 						<li><a
 							href="<c:url value="/QuanLyThoiGian/danhsachchopheduyetlan1"/>"
 							class="menu-item">Danh Sách Chờ Phê Duyệt Lần 1</a></li>
