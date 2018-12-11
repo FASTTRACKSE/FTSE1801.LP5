@@ -328,7 +328,7 @@
 						class="ft ft-info"></i><span data-i18n="" class="menu-title">Icon
 							tài liệu</span></a></li>
 				<li class=" nav-item QuanTriTaiLieutai_lieu"><a
-					href="<c:url value = ""/>"><i class="ft ft-info"></i><span
+					href="<c:url value = "/QuanTriTaiLieu/tai_lieu/"/>"><i class="ft ft-info"></i><span
 						data-i18n="" class="menu-title">Quản lý tài liệu</span></a></li>
 				<li class=" nav-item QuanTriTaiLieutrang_thai"><a
 					href="<c:url value = "/QuanTriTaiLieu/trang_thai/"/>"><i class="ft ft-info"></i><span
