@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,6 +23,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
+import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "du_an")
@@ -54,52 +60,58 @@ public class DuAn implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message = "thời gian Dự án bắt buộc nhập")
 	private Date endDate;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_database", referencedColumnName = "ma_database", insertable = true, updatable = true)
-	@NotNull(message = "Bạn chưa chọn Database")
-	private Database database;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_cong_nghe", referencedColumnName = "ma_cong_nghe", insertable = true, updatable = true)
-	@NotNull(message = "Bạn chưa chọn Công nghệ")
-	private CongNghe congNghe;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_framework", referencedColumnName = "ma_framework", insertable = true, updatable = true)
-	@NotNull(message = "Bạn chưa chọn Framework")
-	private Framework framework;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_ngon_ngu", referencedColumnName = "ma_ngon_ngu", insertable = true, updatable = true)
-	@NotNull(message = "Bạn chưa chọn Ngôn Ngữ")
-	private NgonNgu ngonNgu;
-
-	@ManyToOne(fetch = FetchType.EAGER)
+	
+	// many-to-one
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "ma_contact", referencedColumnName = "ma_contact", insertable = true, updatable = true)
-	@NotNull(message = "Bạn chưa chọn Khách hàng")
+	@NotNull(message = "Bạn chưa chọn Contact")
 	private Contact contact;
-
-	@ManyToOne(fetch = FetchType.EAGER)
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "phong_du_an", referencedColumnName = "ma_phong_ban", insertable = true, updatable = true)
+	@NotNull(message = "Không được để trống")
+	private PhongBan phongDuAn;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "ma_trang_thai", referencedColumnName = "ma_trang_thai", insertable = true, updatable = true)
 	@NotNull(message = "Bạn chưa chọn Trạng thái")
 	private TrangThai trangThai;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "ma_nghiep_vu", referencedColumnName = "ma_nghiep_vu", insertable = true, updatable = true)
 	@NotNull(message = "Bạn chưa chọn nghiệp vụ")
 	private Domain domain;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban", insertable = true, updatable = true)
-	@NotNull(message = "Không được để trống")
-	private PhongBan phongBan;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_pm", referencedColumnName = "ma_nhan_vien", insertable = true, updatable = true)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "pm", referencedColumnName = "ma_nhan_vien", insertable = true, updatable = true)
 	@NotNull(message = "Bạn chưa chon PM")
-	private HoSoNhanVien pM;
+	private HoSoNhanSu pM;
 
+	// many-to-many
+	@ManyToMany(targetEntity = CongNghe.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "cong_nghe_du_an", joinColumns = {
+	@JoinColumn(name = "ma_cong_nghe") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<CongNghe> congNghe;
+	
+	@ManyToMany(targetEntity = Framework.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "framework_du_an", joinColumns = {
+	@JoinColumn(name = "ma_framework") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<Framework> framework;
+	
+	@ManyToMany(targetEntity = Database.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "database_du_an", joinColumns = {
+	@JoinColumn(name = "ma_database") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<Database> database;
+	
+	@ManyToMany(targetEntity = NgonNgu.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "ngon_ngu_du_an", joinColumns = {
+	@JoinColumn(name = "ma_ngon_ngu") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<NgonNgu> ngonNgu;
+	
 	@OneToMany(mappedBy = "duAn")
 	private Set<NhiemVu> nhiemVu;
 
@@ -151,44 +163,20 @@ public class DuAn implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public Database getDatabase() {
-		return database;
-	}
-
-	public void setDatabase(Database database) {
-		this.database = database;
-	}
-
-	public CongNghe getCongNghe() {
-		return congNghe;
-	}
-
-	public void setCongNghe(CongNghe congNghe) {
-		this.congNghe = congNghe;
-	}
-
-	public Framework getFramework() {
-		return framework;
-	}
-
-	public void setFramework(Framework framework) {
-		this.framework = framework;
-	}
-
-	public NgonNgu getNgonNgu() {
-		return ngonNgu;
-	}
-
-	public void setNgonNgu(NgonNgu ngonNgu) {
-		this.ngonNgu = ngonNgu;
-	}
-
 	public Contact getContact() {
 		return contact;
 	}
 
 	public void setContact(Contact contact) {
 		this.contact = contact;
+	}
+
+	public PhongBan getPhongDuAn() {
+		return phongDuAn;
+	}
+
+	public void setPhongDuAn(PhongBan phongDuAn) {
+		this.phongDuAn = phongDuAn;
 	}
 
 	public TrangThai getTrangThai() {
@@ -207,20 +195,44 @@ public class DuAn implements Serializable {
 		this.domain = domain;
 	}
 
-	public PhongBan getPhongBan() {
-		return phongBan;
-	}
-
-	public void setPhongBan(PhongBan phongBan) {
-		this.phongBan = phongBan;
-	}
-
-	public HoSoNhanVien getpM() {
+	public HoSoNhanSu getpM() {
 		return pM;
 	}
 
-	public void setpM(HoSoNhanVien pM) {
+	public void setpM(HoSoNhanSu pM) {
 		this.pM = pM;
+	}
+
+	public Set<CongNghe> getCongNghe() {
+		return congNghe;
+	}
+
+	public void setCongNghe(Set<CongNghe> congNghe) {
+		this.congNghe = congNghe;
+	}
+
+	public Set<Framework> getFramework() {
+		return framework;
+	}
+
+	public void setFramework(Set<Framework> framework) {
+		this.framework = framework;
+	}
+
+	public Set<Database> getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(Set<Database> database) {
+		this.database = database;
+	}
+
+	public Set<NgonNgu> getNgonNgu() {
+		return ngonNgu;
+	}
+
+	public void setNgonNgu(Set<NgonNgu> ngonNgu) {
+		this.ngonNgu = ngonNgu;
 	}
 
 	public Set<NhiemVu> getNhiemVu() {
@@ -229,15 +241,6 @@ public class DuAn implements Serializable {
 
 	public void setNhiemVu(Set<NhiemVu> nhiemVu) {
 		this.nhiemVu = nhiemVu;
-	}
-
-	@Override
-	public String toString() {
-		return "DuAn [maDuAn=" + maDuAn + ", tenDuAn=" + tenDuAn + ", moTaDuAn=" + moTaDuAn + ", isDelete=" + isDelete
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", database=" + database + ", congNghe="
-				+ congNghe + ", framework=" + framework + ", ngonNgu=" + ngonNgu + ", vendor=" + contact
-				+ ", khachHang=" + contact + ", trangThai=" + trangThai + ", domain=" + domain + ", phongBan="
-				+ phongBan + ", pM=" + pM + ", nhiemVu=" + nhiemVu + "]";
 	}
 
 }

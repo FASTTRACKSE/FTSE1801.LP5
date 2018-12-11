@@ -1,4 +1,4 @@
-package fasttrackse.ftse1801.fbms.dao.quanlyduan;
+package fasttrackse.ftse1801.fbms.service.quanlyduan;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import fasttrackse.ftse1801.fbms.entity.quanlyduan.DuAn;
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
 import fasttrackse.ftse1801.fbms.entity.security.UserAccount;
 
-public interface DuAnDao {
+public interface DuAnService {
 	public List<DuAn> findAll();
 	public DuAn findById(int maDuAn);
 	public void add(DuAn duAn);
