@@ -1,7 +1,10 @@
 package fasttrackse.ftse1801.fbms.entity.vang_nghi;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,13 +13,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import fasttrackse.ftse1801.fbms.entity.security.HoSoNhanVien;
 import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Entity
@@ -27,37 +31,42 @@ public class DonXinNghi {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_don_xin_nghi")
 	private int idDonXinPhep;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ma_nhan_vien")
-	private HoSoNhanVien maNhanVien;
-	
+	private TinhTrangNghi maNhanVien;
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_phong_ban")
-	private PhongBan maPhongBan;
-	
+	private PhongBan idPhongBan;
+
 	@ManyToOne
-	@JoinColumn(name = "id_loai_nghi")
+	@JoinColumn(name = "ma_loai_nghi")
 	private LoaiNghiPhep idLoaiNghi;
-	
-	@NotNull
-	@Column(name = "thoi_gian_bat_dau")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	@Temporal(TemporalType.DATE)
-	private String thoiGianBatDau;
-	
-	@NotNull
-	@Column(name = "thoi_gian_ket_thuc")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "thoi_gian_bat_dau", nullable = false)
+	private Date thoiGianBatDau;
+
 	@Temporal(TemporalType.DATE)
-	private String thoiGianKetThuc;
-	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "thoi_gian_ket_thuc", nullable = false)
+	private Date thoiGianKetThuc;
+
+	@NotNull
+	@Min(1)
+	@Max(12)
+	@Column(name = "so_ngay_nghi")
+	private int soNgayNghi;
+
 	@Column(name = "ghi_chu")
 	@NotEmpty()
-	@Size(max=255)
+	@Size(max = 255)
 	private String ghiChu;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "trang_thai")
+	@JoinColumn(name = "ma_trang_thai")
 	private TrangThaiVN maTrangThai;
 
 	public int getIdDonXinPhep() {
@@ -68,20 +77,20 @@ public class DonXinNghi {
 		this.idDonXinPhep = idDonXinPhep;
 	}
 
-	public HoSoNhanVien getMaNhanVien() {
+	public TinhTrangNghi getMaNhanVien() {
 		return maNhanVien;
 	}
 
-	public void setMaNhanVien(HoSoNhanVien maNhanVien) {
+	public void setMaNhanVien(TinhTrangNghi maNhanVien) {
 		this.maNhanVien = maNhanVien;
 	}
 
-	public PhongBan getMaPhongBan() {
-		return maPhongBan;
+	public PhongBan getidPhongBan() {
+		return idPhongBan;
 	}
 
-	public void setMaPhongBan(PhongBan maPhongBan) {
-		this.maPhongBan = maPhongBan;
+	public void setidPhongBan(PhongBan idPhongBan) {
+		this.idPhongBan = idPhongBan;
 	}
 
 	public LoaiNghiPhep getIdLoaiNghi() {
@@ -92,22 +101,30 @@ public class DonXinNghi {
 		this.idLoaiNghi = idLoaiNghi;
 	}
 
-	public String getThoiGianBatDau() {
+	public Date getThoiGianBatDau() {
 		return thoiGianBatDau;
 	}
 
-	public void setThoiGianBatDau(String thoiGianBatDau) {
+	public void setThoiGianBatDau(Date thoiGianBatDau) {
 		this.thoiGianBatDau = thoiGianBatDau;
 	}
 
-	public String getThoiGianKetThuc() {
+	public Date getThoiGianKetThuc() {
 		return thoiGianKetThuc;
 	}
 
-	public void setThoiGianKetThuc(String thoiGianKetThuc) {
+	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
+	public int getSoNgayNghi() {
+		return soNgayNghi;
+	}
+
+	public void setSoNgayNghi(int soNgayNghi) {
+		this.soNgayNghi = soNgayNghi;
+	}
+	
 	public String getGhiChu() {
 		return ghiChu;
 	}
@@ -123,7 +140,4 @@ public class DonXinNghi {
 	public void setMaTrangThai(TrangThaiVN maTrangThai) {
 		this.maTrangThai = maTrangThai;
 	}
-	
-	
-	
 }
