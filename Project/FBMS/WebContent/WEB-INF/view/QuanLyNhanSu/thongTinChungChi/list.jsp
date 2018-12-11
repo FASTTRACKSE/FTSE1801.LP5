@@ -63,7 +63,7 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/add"/>"
+					<a href="<c:url value = "/QuanLyNhanSu/thongTinChungChi/add"/>"
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 						mới</a>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách Nhân viên</h4>
+							<h4 class="card-title">Danh sách chức danh</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -166,28 +166,24 @@
 												<thead>
 													<tr role="row">
 														<th>Id</th>
-														<th>Họ đệm</th>
-														<th>Tên</th>
-														<th>Năm sinh</th>
-														<th>Giới tính</th>
-														<th>Số điện thoại</th>
+														<th>Mã nhân viên</th>
+														<th>Tên chứng chỉ</th>
+														<th>Đơn vị cấp</th>
+														<th>Ngày cấp</th>
 														<th>Chức năng</th>
 													</tr>
 												</thead>
 												<c:forEach var="list" items="${list}">
 													<tr>
-														<td>${list.maNhanVien}</td>
-														<td>${list.hoDem}</td>
-														<td>${list.ten}</td>
-														<td>${list.namSinh}</td>
-														<td><c:if test="${list.gioiTinh == 1}">Nam</c:if><c:if
-																test="${list.gioiTinh == 2}">Nữ</c:if></td>
-														<td>${list.soDienThoai}</td>
-														<td><a
-															href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/viewOne/${list.maNhanVien}"/>"><i
-																class="fa fa-eye"></i></a> <a
-															href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/edit/${list.maNhanVien}"/>"><i
-																class="fa fa-pencil"></i></a> <a
+														<td>${list.id}
+														<td>${list.maNhanVien.maNhanVien}</td>
+														<td>${list.tenChungChi}</td>
+														<td>${list.donViCap}</td>
+														<td>${list.ngayCap}</td>
+														<td><a href="<c:url value = "/QuanLyNhanSu/thongTinChungChi/viewOne/${list.id}"/>"><i
+																class="fa fa-eye"></i></a><a
+															href="<c:url value = "/QuanLyNhanSu/thongTinChungChi/edit/${list.id}"/>"><i
+																class="fa fa-pencil"></i></a><a
 															href='<c:url value = ""></c:url>' class="fa fa-trash"
 															onclick="return confirm('Bạn có muốn xóa sinh viên này?');"></a></td>
 													</tr>

@@ -24,7 +24,7 @@ public class HopDongDaoImpl implements HopDongDao{
 	@Override
 	public List<HopDong> getAll() {
 		Session session = sessionFactory.openSession();
-		List<HopDong> list = session.createQuery("from HopDong").list();
+		List<HopDong> list = session.createQuery("from HopDong where isdelete = 0").list();
 		session.close();
 		return list;
 	}
@@ -38,10 +38,11 @@ public class HopDongDaoImpl implements HopDongDao{
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public HopDong findByMaNhanVien(int maNhanVien) {
+	public List<HopDong> findByMaNhanVien(int maNhanVien) {
 		Session session = sessionFactory.openSession();
-		HopDong hopDong = session.get(HopDong.class, maNhanVien);
+		List<HopDong> hopDong = session.createQuery("from HopDong where ma_nhan_vien =" + maNhanVien).list();
 		session.close();
 		return hopDong;
 	}
@@ -65,12 +66,20 @@ public class HopDongDaoImpl implements HopDongDao{
 	}
 
 	@Override
-	public void delete(int id) {
+	public HopDong getById(int id) {
 		Session session = sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.delete(session.get(HopDong.class, id));
-		tx.commit();
+		HopDong hopDong = session.get(HopDong.class, id);
 		session.close();
+		return hopDong;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<HopDong> getByType(int maLoaiHopDong) {
+		Session session = sessionFactory.openSession();
+		List<HopDong> list = session.createQuery("from HopDong where ma_loai_hop_dong = " + maLoaiHopDong).list();
+		session.close();
+		return list;
 	}
 
 }

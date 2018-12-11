@@ -26,7 +26,7 @@ public class ThongTinGiaDinh {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nhan_vien")
-	private HoSoNhanSu hoSoNhanVien;
+	private HoSoNhanSu maNhanVien;
 
 	@Column(name = "ho_ten")
 	private String hoTen;
@@ -45,6 +45,9 @@ public class ThongTinGiaDinh {
 	@Column(name = "so_dien_thoai")
 	private String soDienThoai;
 
+	@Column(name = "cong_viec_hien_tai")
+	private String congViec;
+
 	@Column(name = "quan_he")
 	private String quanHe;
 
@@ -56,12 +59,12 @@ public class ThongTinGiaDinh {
 		this.id = id;
 	}
 
-	public HoSoNhanSu getHoSoNhanVien() {
-		return hoSoNhanVien;
+	public HoSoNhanSu getMaNhanVien() {
+		return maNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
-		this.hoSoNhanVien = hoSoNhanVien;
+	public void setMaNhanVien(HoSoNhanSu maNhanVien) {
+		this.maNhanVien = maNhanVien;
 	}
 
 	public String getHoTen() {
@@ -102,6 +105,14 @@ public class ThongTinGiaDinh {
 
 	public void setSoDienThoai(String soDienThoai) {
 		this.soDienThoai = soDienThoai;
+	}
+
+	public String getCongViec() {
+		return congViec;
+	}
+
+	public void setCongViec(String congViec) {
+		this.congViec = congViec;
 	}
 
 	public String getQuanHe() {

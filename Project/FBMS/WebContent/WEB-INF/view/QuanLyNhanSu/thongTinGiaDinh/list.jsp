@@ -49,13 +49,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách nhân viên</h3>
+				<h3 class="content-header-title mb-0">Thông tin gia đình</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách nhân viên</li>
+							<li class="breadcrumb-item active">Thông tin gia đình</li>
 						</ol>
 					</div>
 				</div>
@@ -63,7 +63,7 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/add"/>"
+					<a href="<c:url value = "/QuanLyNhanSu/thongTinGiaDinh/add"/>"
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 						mới</a>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách Nhân viên</h4>
+							<h4 class="card-title">Thông tin gia đình</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -166,9 +166,8 @@
 												<thead>
 													<tr role="row">
 														<th>Id</th>
-														<th>Họ đệm</th>
-														<th>Tên</th>
-														<th>Năm sinh</th>
+														<th>Mã nhân viên</th>
+														<th>Họ tên</th>
 														<th>Giới tính</th>
 														<th>Số điện thoại</th>
 														<th>Chức năng</th>
@@ -176,18 +175,17 @@
 												</thead>
 												<c:forEach var="list" items="${list}">
 													<tr>
-														<td>${list.maNhanVien}</td>
-														<td>${list.hoDem}</td>
-														<td>${list.ten}</td>
-														<td>${list.namSinh}</td>
-														<td><c:if test="${list.gioiTinh == 1}">Nam</c:if><c:if
+														<td>${list.id}
+														<td>${list.maNhanVien.maNhanVien}</td>
+														<td>${list.hoTen}</td>
+														<td><c:if test="${list.gioiTinh == 1}">Nam</c:if> <c:if
 																test="${list.gioiTinh == 2}">Nữ</c:if></td>
 														<td>${list.soDienThoai}</td>
 														<td><a
-															href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/viewOne/${list.maNhanVien}"/>"><i
-																class="fa fa-eye"></i></a> <a
-															href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/edit/${list.maNhanVien}"/>"><i
-																class="fa fa-pencil"></i></a> <a
+															href="<c:url value = "/QuanLyNhanSu/thongTinGiaDinh/viewOne/${list.id}"/>"><i
+																class="fa fa-eye"></i></a><a
+															href="<c:url value = "/QuanLyNhanSu/thongTinGiaDinh/edit/${list.id}"/>"><i
+																class="fa fa-pencil"></i></a><a
 															href='<c:url value = ""></c:url>' class="fa fa-trash"
 															onclick="return confirm('Bạn có muốn xóa sinh viên này?');"></a></td>
 													</tr>

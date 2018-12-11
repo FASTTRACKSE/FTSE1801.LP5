@@ -26,7 +26,7 @@ public class ThongTinBangCap {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
-	private HoSoNhanSu hoSoNhanVien;
+	private HoSoNhanSu maNhanVien;
 
 	@Column(name = "ten_bang_cap", nullable = false)
 	private String tenBangCap;
@@ -50,12 +50,12 @@ public class ThongTinBangCap {
 		this.id = id;
 	}
 
-	public HoSoNhanSu getHoSoNhanVien() {
-		return hoSoNhanVien;
+	public HoSoNhanSu getMaNhanVien() {
+		return maNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
-		this.hoSoNhanVien = hoSoNhanVien;
+	public void setMaNhanVien(HoSoNhanSu maNhanVien) {
+		this.maNhanVien = maNhanVien;
 	}
 
 	public String getTenBangCap() {

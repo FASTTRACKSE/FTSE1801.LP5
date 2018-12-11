@@ -16,4 +16,6 @@ public interface ThongTinGiaDinhDao {
 	public void update(ThongTinGiaDinh thongTinGiaDinh);
 
 	public void delete(int id);
+	
+	public ThongTinGiaDinh getById(int id);
 }

@@ -34,11 +34,10 @@ public class HoSoNhanSuController {
 	}*/
 	
 	@RequestMapping(value="/")
-	public String viewHoSoNhanVien1(Model model) {
+	public String viewHoSoNhanVien(Model model) {
 		List<HoSoNhanSu> list = hoSoNhanSuService.getAll();
 		model.addAttribute("list", list);
 		return "QuanLyNhanSu/hoSoNhanVien/list";
-		
 	}
 	
 	@RequestMapping(value = "/viewOne/{maNhanVien}", method = RequestMethod.GET)
