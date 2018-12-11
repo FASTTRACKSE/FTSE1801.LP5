@@ -273,46 +273,55 @@
 										tin gia đình</a></li>
 							</ul></li>
 						<li class="is-shown"><a class="menu-item"
-							href="<c:url value = "/QuanLyNhanSu/hopDong/"/>">Quản lý hợp đồng lao động</a></li>
+							href="<c:url value = "/QuanLyNhanSu/hopDong/"/>">Quản lý hợp
+								đồng lao động</a></li>
 						<li class="is-shown"><a class="menu-item"
 							href="<c:url value = ""/>">Quản lý kinh nghiệm dự án</a></li>
 					</ul></li>
 				<!--  ------------------ Quản lý Dự Án ----------------------->
 
-					<li class="navigation-header"><span> Quản lý dự án</span><i class=" ft-minus" data-toggle="tooltip"
-						data-placement="right" data-original-title="Components"></i></li>
-					<li class="nav-item has-sub"><a href="#"><i
-							class="ft-briefcase"></i><span class="menu-title" data-i18n="">Quản Lý Danh Mục</span></a>
-						<ul class="menu-content" style="">
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/Contact/list-contact" />">Contact</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/Domain/list-domain" />">Domain</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/CongNghe/list-congNghe" />">Công Nghệ</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/Framework/list-framework" />">Framework</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/NgonNgu/list-ngonNgu" />">Ngôn Ngữ	</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/VaiTro/list-vaiTro" />">Vai Trò</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/TrangThai/list-trangThai" />">Trạng Thái</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/QuanLyDuAn/Database/list-database" />">Database</a></li>
-						</ul></li>
-					<li class="nav-item has-sub"><a href="#"><i class="ft-box"></i><span
-							class="menu-title" data-i18n="">Dự Án</span></a>
-						<ul class="menu-content" style="">
-							<li class=""><a class="menu-item"
-								href="<c:url value="/quanlyduan/duan/show-form-add" />">Thêm Dự Án</a></li>
-							<li class=""><a class="menu-item"
-								href="<c:url value="/quanlyduan/duan/list-project" />">Danh	Sách Dự Án</a></li>
+				<li class="navigation-header"><span> Quản lý dự án</span><i
+					class=" ft-minus" data-toggle="tooltip" data-placement="right"
+					data-original-title="Components"></i></li>
+				<li class="nav-item has-sub"><a href="#"><i
+						class="ft-briefcase"></i><span class="menu-title" data-i18n="">Quản
+							Lý Danh Mục</span></a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/Contact/list-contact" />">Contact</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/Domain/list-domain" />">Domain</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/CongNghe/list-congNghe" />">Công
+								Nghệ</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/Framework/list-framework" />">Framework</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/NgonNgu/list-ngonNgu" />">Ngôn
+								Ngữ </a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/VaiTro/list-vaiTro" />">Vai
+								Trò</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/TrangThai/list-trangThai" />">Trạng
+								Thái</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/QuanLyDuAn/Database/list-database" />">Database</a></li>
+					</ul></li>
+				<li class="nav-item has-sub"><a href="#"><i class="ft-box"></i><span
+						class="menu-title" data-i18n="">Dự Án</span></a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanlyduan/duan/show-form-add" />">Thêm
+								Dự Án</a></li>
+						<li class=""><a class="menu-item"
+							href="<c:url value="/quanlyduan/duan/list-project" />">Danh
+								Sách Dự Án</a></li>
 
 
-						</ul></li>
+					</ul></li>
 
-					<!--  ////////////////////////////////////////////// -->
+				<!--  ////////////////////////////////////////////// -->
 				<!-- Quản trị tài liệu  -->
 				<li class=" navigation-header"><span>Quản trị tài liệu</span><i
 					data-toggle="tooltip" data-placement="right"
@@ -326,24 +335,25 @@
 						class="ft ft-info"></i><span data-i18n="" class="menu-title">Icon
 							tài liệu</span></a></li>
 				<li class=" nav-item QuanTriTaiLieutai_lieu"><a
-					href="<c:url value = "/QuanTriTaiLieu/tai_lieu/"/>"><i class="ft ft-info"></i><span
-						data-i18n="" class="menu-title">Quản lý tài liệu</span></a></li>
+					href="<c:url value = "/QuanTriTaiLieu/tai_lieu/"/>"><i
+						class="ft ft-info"></i><span data-i18n="" class="menu-title">Quản
+							lý tài liệu</span></a></li>
 				<li class=" nav-item QuanTriTaiLieutrang_thai"><a
-					href="<c:url value = "/QuanTriTaiLieu/trang_thai/"/>"><i class="ft ft-info"></i><span
-						data-i18n="" class="menu-title">Quản lý trạng thái</span></a></li>
-					<!-- Quản lý thời gian -->
+					href="<c:url value = "/QuanTriTaiLieu/trang_thai/"/>"><i
+						class="ft ft-info"></i><span data-i18n="" class="menu-title">Quản
+							lý trạng thái</span></a></li>
+				<!-- Quản lý thời gian -->
 				<li class=" navigation-header"><span>Quản lý thời gian</span><i
 					data-toggle="tooltip" data-placement="right"
 					data-original-title="Apps" class=" ft-minus"></i></li>
 				<li class=" nav-item QuanTriHeThongphong_ban"><a
 					href="<c:url value = "/QuanLyThoiGian/"/>"><i
 						class="fa fa-building"></i><span data-i18n="" class="menu-title">LogWork</span></a></li>
-						
+
 				<!-- Quản lý nhiệm vụ -->
 				<li class=" navigation-header"><span><spring:message
-								code="label.QuanLyNhiemVu" /></span><i
-					data-toggle="tooltip" data-placement="right"
-					data-original-title="Apps" class=" ft-minus"></i></li>
+							code="label.QuanLyNhiemVu" /></span><i data-toggle="tooltip"
+					data-placement="right" data-original-title="Apps" class=" ft-minus"></i></li>
 				<li class=" nav-item QuanlyNhiemVu"><a
 					href="<c:url value = "/QuanLyNhiemVu/"/>"><i class="ft ft-list"></i><span
 						data-i18n="" class="menu-title"><spring:message
@@ -352,6 +362,43 @@
 					href="<c:url value = ""/>"><i class="fa fa-calendar"></i><span
 						data-i18n="" class="menu-title"><spring:message
 								code="label.QuanLyNhiemVu.Lich" /></span></a></li>
+				<!-- Quản lý vắng nghỉ -->
+				<li class="nav-item has-sub open"><a href="#"><i
+						class="fa fa-users"></i><span class="menu-title">Quản lý
+							vắng nghỉ</span></a>
+					<ul class="menu-content" style="">
+						<li class="is-shown"><a class="menu-item"
+							href="<c:url value="/QuanLyVangNghi/soandonmoi"/>"
+							class="menu-item"> Soạn Đơn Mới</a></li>
+						<li class="has-sub is-shown"><a class="menu-item" href="#">Thống
+								kê tình hình</a>
+							<ul class="menu-content">
+								<li><a href="<c:url value="/QuanLyVangNghi/danhsachnhap"/>"
+									class="menu-item">Danh Sách Nháp</a></li>
+								<li><a href="<c:url value="/QuanLyVangNghi/danhsachcho"/>"
+									class="menu-item">Danh Sách Chờ Duyệt</a></li>
+								<li><a
+									href="<c:url value="/QuanLyVangNghi/danhsachduyet"/>"
+									class="menu-item">Danh Sách Đã Duyệt</a></li>
+								<li><a
+									href="<c:url value="/QuanLyVangNghi/danhsachbituchoi"/>"
+									class="menu-item">Danh Sách Bị Từ Chối</a></li>
+							</ul></li>
+						<li class="has-sub is-shown"><a class="menu-item" href="#">Thống
+								kê ngày nghỉ</a>
+							<ul class="menu-content">
+								<li><a
+									href="<c:url value="/QuanLyVangNghi/danhsachngaynghi"/>"
+									class="menu-item">Danh Sách ngày nghỉ</a></li>
+							</ul></li>
+						<li class="has-sub is-shown"><a class="menu-item" href="#">Thống
+								Kê Trạng Thái</a>
+							<ul class="menu-content">
+								<li><a
+									href="<c:url value="/QuanLyVangNghi/danhsachtrangthai"/>"
+									class="menu-item">Danh Sách Trạng Thái</a></li>
+							</ul></li>
+					</ul></li>
 			</ul>
 		</div>
 	</div>
