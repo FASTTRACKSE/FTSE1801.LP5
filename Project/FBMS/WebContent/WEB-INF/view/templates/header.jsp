@@ -365,9 +365,9 @@
 							href="<c:url value="/QuanLyThoiGian/danhsachdapheduyet"/>"
 							class="menu-item">Danh Sách Đã Phê Duyệt</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/danhsachbituchoi"/>"
+							href="<c:url value="/QuanLyThoiGian/danhsachbituchoi"/>"
 							class="menu-item">Danh Sách Bị Từ Chối</a></li>
-						<li><a href="<c:url value="/QuanLyVangNghi/danhsachnhap"/>"
+						<li><a href="<c:url value="/QuanLyThoiGian/danhsachnhap"/>"
 							class="menu-item">Danh Sách Nháp</a></li>
 					</ul></li>
 				<li class="nav-item has-sub"><a href="#"><i class="ft-box"></i><span
