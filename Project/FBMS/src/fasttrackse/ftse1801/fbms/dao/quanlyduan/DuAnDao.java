@@ -17,4 +17,5 @@ public interface DuAnDao {
 	public List<HoSoNhanVien> getPm(String maPhongBan);
 	public List<DuAn> listDuAn(String search,int start,int maxRows);
 	public UserAccount getAccount(String userName);
+	public int count(String search);
 }

@@ -312,10 +312,10 @@
 						class="menu-title" data-i18n="">Dự Án</span></a>
 					<ul class="menu-content" style="">
 						<li class=""><a class="menu-item"
-							href="<c:url value="/quanlyduan/duan/show-form-add" />">Thêm
+							href="<c:url value="/QuanLyDuAn/DuAn/show-form-add" />">Thêm
 								Dự Án</a></li>
 						<li class=""><a class="menu-item"
-							href="<c:url value="/quanlyduan/duan/list-project" />">Danh
+							href="<c:url value="/QuanLyDuAn/DuAn/" />">Danh
 								Sách Dự Án</a></li>
 
 

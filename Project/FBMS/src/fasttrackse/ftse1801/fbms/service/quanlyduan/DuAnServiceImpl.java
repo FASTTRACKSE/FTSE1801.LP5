@@ -76,4 +76,9 @@ public class DuAnServiceImpl implements DuAnService {
 		return duAnDao.getAccount(userName);
 	}
 
+	@Override
+	public int count(String search) {
+		return duAnDao.count(search);
+	}
+
 }
