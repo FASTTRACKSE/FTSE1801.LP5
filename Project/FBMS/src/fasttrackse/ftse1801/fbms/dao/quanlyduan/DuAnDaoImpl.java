@@ -5,11 +5,12 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.DuAn;
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.HoSoNhanVien;
 import fasttrackse.ftse1801.fbms.entity.security.UserAccount;
-
+@Repository
 public class DuAnDaoImpl implements DuAnDao{
 	@Autowired
 	private SessionFactory sessionFactory;
