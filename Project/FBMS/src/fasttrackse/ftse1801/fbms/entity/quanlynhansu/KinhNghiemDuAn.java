@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import fasttrackse.ftse1801.fbms.entity.quanlyduan.DuAn;
 
 @Entity
 @Table(name="kinh_nghiem_du_an")
@@ -24,9 +23,9 @@ public class KinhNghiemDuAn {
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
 	private HoSoNhanSu maNhanVien;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_du_an", nullable = false)
-	private DuAn maDuAn;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "ma_du_an", nullable = false)
+//	private DuAn maDuAn;
 	
 	@Column(name = "isdelete", nullable = false)
 	private int isdelete;
@@ -47,13 +46,13 @@ public class KinhNghiemDuAn {
 		this.maNhanVien = maNhanVien;
 	}
 
-	public DuAn getMaDuAn() {
-		return maDuAn;
-	}
-
-	public void setMaDuAn(DuAn maDuAn) {
-		this.maDuAn = maDuAn;
-	}
+//	public DuAn getMaDuAn() {
+//		return maDuAn;
+//	}
+//
+//	public void setMaDuAn(DuAn maDuAn) {
+//		this.maDuAn = maDuAn;
+//	}
 
 	public int getIsdelete() {
 		return isdelete;
