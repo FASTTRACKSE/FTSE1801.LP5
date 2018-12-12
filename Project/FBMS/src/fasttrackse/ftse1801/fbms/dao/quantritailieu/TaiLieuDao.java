@@ -3,7 +3,9 @@ package fasttrackse.ftse1801.fbms.dao.quantritailieu;
 import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.DanhMucTaiLieu;
+import fasttrackse.ftse1801.fbms.entity.quantritailieu.IconTaiLieu;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.TaiLieu;
+import fasttrackse.ftse1801.fbms.entity.quantritailieu.TrangThaiTaiLieu;
 import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 public interface TaiLieuDao {
@@ -26,4 +28,7 @@ public interface TaiLieuDao {
 	public List<DanhMucTaiLieu> listDanhMuc();
 
 	public List<PhongBan> listPhongBan();
+
+	public List<IconTaiLieu> listIcon();
+	public List<TrangThaiTaiLieu>listTrangThai();
 }

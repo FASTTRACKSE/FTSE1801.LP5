@@ -9,16 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.DanhMucTaiLieu;
+import fasttrackse.ftse1801.fbms.entity.quantritailieu.IconTaiLieu;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.TaiLieu;
+import fasttrackse.ftse1801.fbms.entity.quantritailieu.TrangThaiTaiLieu;
 import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 import fasttrackse.ftse1801.fbms.service.quantritailieu.DanhMucService;
+import fasttrackse.ftse1801.fbms.service.quantritailieu.IConService;
+import fasttrackse.ftse1801.fbms.service.quantritailieu.TrangThaiService;
 import fasttrackse.ftse1801.fbms.service.security.PhongBanService;
 
 @Repository
 public class TaiLieuDaoIMPL implements TaiLieuDao {
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	@Autowired
+    private TrangThaiService trangThaiService;
+	@Autowired
+    private IConService iConService;
+	@Autowired
+    private PhongBanService phongBanService;
+	@Autowired
+    private DanhMucService danhMucService;
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -104,20 +115,29 @@ public class TaiLieuDaoIMPL implements TaiLieuDao {
 		return listTL;
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public List<DanhMucTaiLieu> listDanhMuc() {
-		DanhMucService danhMucService = null;
 		List<DanhMucTaiLieu> listDM = danhMucService.getAllDanhMuc();
 		return listDM;
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public List<PhongBan> listPhongBan() {
-		PhongBanService phongBanService = null;
 		List<PhongBan> listPB = phongBanService.findAll();
 		return listPB;
 	}
+
+	@Override
+	public List<IconTaiLieu> listIcon() {
+		List<IconTaiLieu> listIC = iConService.getAllIcon(); 
+		return listIC;
+	}
+
+	@Override
+	public List<TrangThaiTaiLieu> listTrangThai() {
+		List<TrangThaiTaiLieu>listTT = trangThaiService.getAllTrangThaiDel0();
+		return listTT;
+	}
+	
 
 }

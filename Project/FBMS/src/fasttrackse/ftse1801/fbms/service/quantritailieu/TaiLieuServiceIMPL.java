@@ -2,12 +2,16 @@ package fasttrackse.ftse1801.fbms.service.quantritailieu;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fasttrackse.ftse1801.fbms.dao.quantritailieu.TaiLieuDao;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.DanhMucTaiLieu;
+import fasttrackse.ftse1801.fbms.entity.quantritailieu.IconTaiLieu;
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.TaiLieu;
+import fasttrackse.ftse1801.fbms.entity.quantritailieu.TrangThaiTaiLieu;
 import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Service
@@ -24,9 +28,10 @@ public class TaiLieuServiceIMPL implements TaiLieuService {
 	public List<TaiLieu> getAllTaiLieuDel1() {
 		return taiLieuDao.getAllTaiLieuDel1();
 	}
-
+	@Transactional
 	@Override
 	public void insertTaiLieu(TaiLieu tl) {
+		
 		taiLieuDao.insertTaiLieu(tl);
 
 	}
@@ -66,6 +71,16 @@ public class TaiLieuServiceIMPL implements TaiLieuService {
 	@Override
 	public List<PhongBan> listPhongBan() {
 		return taiLieuDao.listPhongBan();
+	}
+
+	@Override
+	public List<IconTaiLieu> listIcon() {
+		return taiLieuDao.listIcon();
+	}
+
+	@Override
+	public List<TrangThaiTaiLieu> listTrangThai() {
+		return taiLieuDao.listTrangThai();
 	}
 
 }

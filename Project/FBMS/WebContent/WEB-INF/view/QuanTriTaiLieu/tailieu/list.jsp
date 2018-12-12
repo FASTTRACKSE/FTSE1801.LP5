@@ -206,7 +206,7 @@
 												</thead>
 												<c:forEach var="tl" items="${taiLieu}">
 													<tr>
-														<td>${tl.taiLieu}</td>
+														<td>${tl.idTL}</td>
 														<td>${tl.maTaiLieu}</td>
 														<td>${tl.danhMucTaiLieu.tenDanhMuc}</td>
 														<td><img
@@ -215,7 +215,7 @@
 														<td>${tl.tenTaiLieu}</td>
 														<td>${tl.phongBan.tenPhongBan}</td>
 														<td>${tl.moTaTaiLieu}</td>
-														<td>${tl.linkTaiLieu}</td>
+														<td><a href="${tl.linkTaiLieu}">${tl.tenTaiLieu}</a></td>
 														<td>${tl.trangThaiTaiLieu.tenTrangThai}</td>
 														<td><a
 															href="/FBMS/QuanTriTaiLieu/trang_thai/view/maTrangThai"><i
@@ -244,13 +244,13 @@
 												<c:choose>
 												 <c:when test="${page != 1}">
 												 <li class="paginate_button page-item previous enable"
-														id="datatable_previous"><a href="<c:url value = "/QuanTriTaiLieu/danh_muc/${page-1}"/>"
+														id="datatable_previous"><a href="<c:url value = "/QuanTriTaiLieu/tai_lieu/${page-1}"/>"
 														aria-controls="datatable" data-dt-idx="0" tabindex="0"
 														class="page-link">Previous</a></li>
 												 </c:when>
 												 <c:otherwise>
 												 <li class="paginate_button page-item previous disabled"
-														id="datatable_previous"><a href="<c:url value = "/QuanTriTaiLieu/danh_muc/${page-1}"/>"
+														id="datatable_previous"><a href="<c:url value = "/QuanTriTaiLieu/tai_lieu/${page-1}"/>"
 														aria-controls="datatable" data-dt-idx="0" tabindex="0"
 														class="page-link">Previous</a></li>
 												 </c:otherwise>
@@ -258,7 +258,7 @@
 												
 												<c:forEach var="i" begin="${start}" end="${end}">
 												   <li class="paginate_button page-item previous enable"
-														id="datatable_previous"><a href="<c:url value = "/QuanTriTaiLieu/danh_muc/${i}"/>"
+														id="datatable_previous"><a href="<c:url value = "/QuanTriTaiLieu/tai_lieu/${i}"/>"
 														aria-controls="datatable" data-dt-idx="0" tabindex="0"
 														class="page-link">${i}</a></li>
 												</c:forEach>
@@ -266,13 +266,13 @@
 													<c:choose>
 												 <c:when test="${page < pages}">
 												 <li class="paginate_button page-item next enable"
-														id="datatable_next"><a href="<c:url value = "/QuanTriTaiLieu/danh_muc/${page+1}"/>"
+														id="datatable_next"><a href="<c:url value = "/QuanTriTaiLieu/tai_lieu/${page+1}"/>"
 														aria-controls="datatable" data-dt-idx="2" tabindex="0"
 														class="page-link">Next</a></li>
 												 </c:when>
 												 <c:otherwise>
 												 <li class="paginate_button page-item next disabled"
-														id="datatable_next"><a href="<c:url value = "/QuanTriTaiLieu/danh_muc/${page+1}"/>"
+														id="datatable_next"><a href="<c:url value = "/QuanTriTaiLieu/tai_lieu/${page+1}"/>"
 														aria-controls="datatable" data-dt-idx="2" tabindex="0"
 														class="page-link">Next</a></li>
 												 </c:otherwise>
