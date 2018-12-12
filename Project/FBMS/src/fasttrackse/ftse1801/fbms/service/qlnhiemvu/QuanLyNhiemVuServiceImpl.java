@@ -1,5 +1,6 @@
 package fasttrackse.ftse1801.fbms.service.qlnhiemvu;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -91,7 +92,6 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 
 	@Override
 	public String toJson(List<QuanLyNhiemVu> list) {
-		// duyet list => to json
 				int j= list.size();
 				int i=0;
 				String y="[";
@@ -107,7 +107,6 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 						y+= "{\"title\": \"" + tenCongviec + "\",\"start\": \"" + tgBatdau + "\", \"end\": \"" + tgKetthuc + "\"}"+",";
 					}
 				}
-				//return "[{\"title\":\"Làm crud\",\"start\":\"2018-09-11\",\"end\":\"2018-09-11\"}]" ;
 				return y + "]" ;
 	}
 

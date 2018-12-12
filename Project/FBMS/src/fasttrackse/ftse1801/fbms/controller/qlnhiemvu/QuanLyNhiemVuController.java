@@ -46,22 +46,24 @@ public class QuanLyNhiemVuController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView list(Model model) {
-		int size = 5;
+		int size = 1;
 		int total = quanLyNhiemVuService.getAll().size() / size
 				+ (quanLyNhiemVuService.getAll().size() % size == 0 ? 0 : 1);
 		model.addAttribute("total", total);
 		model.addAttribute("page", 1);
+		model.addAttribute("size", size);
 		List<QuanLyNhiemVu> list = quanLyNhiemVuService.getAllpage(0, size);
 		return new ModelAndView("QuanLyNhiemVu/list", "list", list);
 	}
 
 	@RequestMapping(value = "/{page}")
 	public ModelAndView viewList1(@PathVariable int page, Model model) {
-		int size = 5;
+		int size = 1;
 		int total = quanLyNhiemVuService.getAll().size() / size
 				+ (quanLyNhiemVuService.getAll().size() % size == 0 ? 0 : 1);
 		model.addAttribute("total", total);
 		model.addAttribute("page", page);
+		model.addAttribute("size", size);
 		List<QuanLyNhiemVu> list = quanLyNhiemVuService.getAllpage((page - 1) * size, size);
 		return new ModelAndView("QuanLyNhiemVu/list", "list", list);
 	}
@@ -136,7 +138,7 @@ public class QuanLyNhiemVuController {
 	@RequestMapping(value = "/view/{maNhiemVu}", method = RequestMethod.GET)
 	public ModelAndView viewOneNhiemVu(@PathVariable("maNhiemVu") int maNhiemVu) {
 		QuanLyNhiemVu quanLyNhiemVu = quanLyNhiemVuService.findById(maNhiemVu);
-		return new ModelAndView("/QuanLyNhiemVu/viewOne","quanLyNhiemVu",quanLyNhiemVu);
+		return new ModelAndView("/QuanLyNhiemVu/viewOne", "quanLyNhiemVu", quanLyNhiemVu);
 	}
 
 	@RequestMapping(value = "/calender", method = RequestMethod.GET)

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/vendors/css/pickers/daterange/daterangepicker.css"/>">
@@ -20,15 +21,19 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Thêm mới nhiệm vụ</h3>
+				<h3 class="content-header-title mb-0">
+					<spring:message code="label.QuanLyNhiemVu.ThemMoiNhiemVu" />
+				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyNhiemVu/" />'>Danh sách nhiệm vụ</a></li>
-							<li class="breadcrumb-item active">Thêm mới nhiệm vụ</li>
+								href='<c:url value="/QuanLyNhiemVu/" />'><spring:message
+										code="label.QuanLyNhiemVu.DanhSachNhiemVu" /></a></li>
+							<li class="breadcrumb-item active"><spring:message
+									code="label.QuanLyNhiemVu.ThemMoiNhiemVu" /></li>
 						</ol>
 					</div>
 				</div>
@@ -41,7 +46,7 @@
 				<div class="row">
 					<form:form method="POST" modelAttribute="nhiemVu" action="">
 						<div class="form-group col-sm-6">
-							<label>Mã dự án</label>
+							<label><spring:message code="database.QuanLyNhiemVu.DuAn" /></label>
 							<%-- <form:select path="idLoaiCongViec" >
 						  	 	<form:option value="none">Chọn công việc</form:option>
 						  	 	<c:forEach items="${listCongViec}" var="x">
@@ -53,9 +58,13 @@
 							<form:errors path="maDuAn" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Loại công việc</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.LoaiCongViec" /></label>
 							<form:select path="idLoaiCongViec.id">
-								<form:option value="0">Chọn công việc</form:option>
+								<form:option value="0">
+									<spring:message
+										code="database.QuanLyNhiemVu.LoaiCongViec.ChonCongViec" />
+								</form:option>
 								<c:forEach items="${listCongViec}" var="x">
 									<form:option value="${x.id}">${x.loaiCongViec}</form:option>
 								</c:forEach>
@@ -63,18 +72,20 @@
 							<form:errors path="idLoaiCongViec" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Tên công việc</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.TenCongViec" /></label>
 							<form:input class="form-control" path="tenCongViec"
 								placeholder="Tên công việc" />
 							<form:errors path="tenCongViec" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Mô tả</label>
+							<label><spring:message code="database.QuanLyNhiemVu.MoTa" /></label>
 							<form:input class="form-control" path="moTa" placeholder="Mô tả" />
 							<form:errors path="moTa" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Thời gian bắt đầu</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.ThoiGianBatDau" /></label>
 							<div class='input-group date' id='datetimepicker11'>
 								<form:input type='text' path="thoiGianBatDau"
 									class="form-control" placeholder="Thời gian bắt đầu" />
@@ -85,10 +96,11 @@
 							</div>
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Thời gian kết thúc</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.ThoiGianKetThuc" /></label>
 							<div class='input-group date' id='datetimepicker10'>
 								<form:input type='text' path="thoiGianKetThuc"
-									class="form-control" placeholder="Thời gian kết thúc"/>
+									class="form-control" placeholder="Thời gian kết thúc" />
 								<span class="input-group-addon"> <span
 									class="fa fa-calendar"></span>
 								</span>
@@ -96,7 +108,8 @@
 							</div>
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Phòng Ban</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.PhongBan" /></label>
 							<form:select path="idPhongBan.maPhongBan">
 								<form:option value="0">Chọn phòng ban</form:option>
 								<c:forEach items="${listPhongBan}" var="y">
@@ -106,7 +119,8 @@
 							<form:errors path="idPhongBan" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Nhân viên được phân công</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.NhanVien" /></label>
 							<form:select path="idNhanVien.maNhanVien">
 								<form:option value="0">Chọn nhân viên</form:option>
 								<c:forEach items="${listNhanVien}" var="z">
@@ -116,7 +130,8 @@
 							<form:errors path="idNhanVien" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Vai trò</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.VaiTro" /></label>
 							<form:input class="form-control" path="maVaiTro"
 								placeholder="Tên vai trò" />
 							<%-- <form:select path="idNhanVien" >
@@ -128,13 +143,15 @@
 							<form:errors path="maVaiTro" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Thời gian dự kiến hoàn thành (Giờ)</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.ThoiGianDuKienHoanThanh" /> (Giờ)</label>
 							<form:input class="form-control" path="thoiGianDuKienHoanThanh"
 								placeholder="Thời gian dự kiến hoàn thành" />
 							<form:errors path="thoiGianDuKienHoanThanh" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Trạng thái</label>
+							<label><spring:message
+									code="database.QuanLyNhiemVu.TrangThai" /></label>
 							<form:select path="idTrangThai.id">
 								<form:option value="0">Chọn trạng thái</form:option>
 								<c:forEach items="${listTrangThai}" var="k">

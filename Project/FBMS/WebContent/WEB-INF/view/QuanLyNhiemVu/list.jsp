@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <style>
 .tbl_actions a {
 	color: #333;
@@ -41,13 +42,16 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách nhiệm vụ</h3>
+				<h3 class="content-header-title mb-0">
+					<spring:message code="label.QuanLyNhiemVu.DanhSachNhiemVu" />
+				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách nhiệm vụ</li>
+							<li class="breadcrumb-item active"><spring:message
+									code="label.QuanLyNhiemVu.DanhSachNhiemVu" /></li>
 						</ol>
 					</div>
 				</div>
@@ -56,8 +60,8 @@
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
 					<a href="<c:url value = "/QuanLyNhiemVu/add"/>"
-						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
-						mới</a>
+						class="btn btn-primary"><span class="fa fa-plus"></span> <spring:message
+							code="button.ThemMoi" /></a>
 				</div>
 			</div>
 		</div>
@@ -95,19 +99,25 @@
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal"
 											aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">Bạn có chắc
-											muốn xóa</h4>
+										<h4 class="modal-title" id="myModalLabel">
+											<spring:message code="message.deleteinform" />
+										</h4>
 									</div>
 
 									<div class="modal-body">
-										<p>Bạn có chắc muốn xóa</p>
+										<p>
+											<spring:message code="message.deleteinform" />
+										</p>
 										<p class="debug-url"></p>
 									</div>
 
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Quay lại</button>
-										<a class="btn btn-danger btn-ok">Xóa</a>
+											data-dismiss="modal">
+											<spring:message code="message.QuayLai" />
+										</button>
+										<a class="btn btn-danger btn-ok"><spring:message
+												code="message.Xoa" /></a>
 									</div>
 								</div>
 							</div>
@@ -119,7 +129,9 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách nhiệm vụ</h4>
+							<h4 class="card-title">
+								<spring:message code="label.QuanLyNhiemVu.DanhSachNhiemVu" />
+							</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -140,10 +152,10 @@
 											<div class="dataTables_length" id="datatable_length">
 												<label>Show <select name="datatable_length"
 													aria-controls="datatable" class="form-control input-sm"><option
-															value="10">10</option>
-														<option value="25">25</option>
-														<option value="50">50</option>
-														<option value="100">100</option></select> entries
+															value="${size}">1</option>
+														<option value="${size}">2</option>
+														<option value="${size}">3</option>
+														<option value="${size}">4</option></select> entries
 												</label>
 											</div>
 										</div>
@@ -165,53 +177,64 @@
 													<tr role="row">
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Mã nhiệm vụ</th>
+															aria-label="Mã nhiệm vụ: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.MaNhiemVu" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Dự án</th>
+															aria-label="Dự án: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.DuAn" /></th>
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Tên phòng ban: activate to sort column descending"
-															style="width: 376px;" aria-sort="ascending">Loại
-															công việc</th>
+															aria-label="Loại: activate to sort column descending"
+															style="width: 376px;" aria-sort="ascending"><spring:message
+																code="database.QuanLyNhiemVu.LoaiCongViec" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Tên công việc</th>
+															aria-label="Tên công việc: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.TenCongViec" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Mô tả</th>
+															aria-label="Mô tả: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.MoTa" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Thời gian bắt đầu</th>
+															aria-label="Thời gian bắt đầu: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.ThoiGianBatDau" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Thời gian kết thúc</th>
+															aria-label="Thời gian kết thúc: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.ThoiGianKetThuc" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Phòng ban</th>
+															aria-label="Phòng ban: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.PhongBan" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Nhân viên</th>
+															aria-label="Nhân viên: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.NhanVien" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Vai trò</th>
+															aria-label="Vai trò: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.VaiTro" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Thời gian dự kiến hoàn thành</th>
+															aria-label="Thời gian dự kiến hoàn thành: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.ThoiGianDuKienHoanThanh" /></th>
 														<th class="sorting_desc" tabindex="0"
 															aria-controls="datatable" rowspan="1" colspan="1"
-															aria-label="Mã phòng ban: activate to sort column ascending"
-															style="width: 363px;">Trạng thái</th>
+															aria-label="Trạng thái: activate to sort column ascending"
+															style="width: 363px;"><spring:message
+																code="database.QuanLyNhiemVu.TrangThai" /></th>
 														<th class="sorting" tabindex="0" aria-controls="datatable"
 															rowspan="1" colspan="1"
 															aria-label=": activate to sort column ascending"
@@ -233,7 +256,7 @@
 														<td>${sv.thoiGianDuKienHoanThanh}</td>
 														<td>${sv.idTrangThai.trangThai}</td>
 														<td><a
-															href="<c:url value="/QuanLyNhiemVu/edit/${sv.id}"/>"><i
+															href="<c:url value="/QuanLyNhiemVu/view/${sv.id}"/>"><i
 																class="fa fa-eye"></i></a><a
 															href="<c:url value="/QuanLyNhiemVu/edit/${sv.id}"/>"><i
 																class="fa fa-pencil"></i></a><a href="javascript:void(0);"
@@ -290,7 +313,7 @@
 															<li class="paginate_button page-item next enable"
 																id="datatable_next"><a
 																href="<c:url value="/QuanLyNhiemVu/${page+1}"/>"
-																aria-controls="datatable" tabindex="0" class="page-link">Next</a></li>
+																aria-controls="datatable" tabindex="2" class="page-link">Next</a></li>
 														</c:when>
 														<c:otherwise>
 															<li class="paginate_button page-item next disabled"
