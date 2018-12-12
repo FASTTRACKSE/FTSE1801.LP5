@@ -1,11 +1,8 @@
 package fasttrackse.ftse1801.fbms.entity.quanlynhansu;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +14,6 @@ public class LoaiHopDong {
 	
 	@Column(name="ten_loai_hop_dong", nullable=false)
 	private String tenLoaiHopDong;
-	
-	// ket noi 2 chieu voi class HopDong
-	@OneToMany(mappedBy="loaiHopDong")
-	private List<HopDong> hopDong;
 	
 	public LoaiHopDong() {
 	}
@@ -39,14 +32,6 @@ public class LoaiHopDong {
 
 	public void setTenLoaiHopDong(String tenLoaiHopDong) {
 		this.tenLoaiHopDong = tenLoaiHopDong;
-	}
-
-	public List<HopDong> getHopDong() {
-		return hopDong;
-	}
-
-	public void setHopDong(List<HopDong> hopDong) {
-		this.hopDong = hopDong;
 	}
 	
 	

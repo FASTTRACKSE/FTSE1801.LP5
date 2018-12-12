@@ -43,4 +43,9 @@ public class ThongTinChungChiServiceImpl implements ThongTinChungChiService {
 		thongTinChungChiDao.delete(id);
 	}
 
+	@Override
+	public ThongTinChungChi getById(int id) {
+		return thongTinChungChiDao.getById(id);
+	}
+
 }

@@ -11,25 +11,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ky_nang")
+@Table(name = "ky_nang")
 public class KyNang {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ma_ky_nang", nullable= false)
+	@Column(name = "ma_ky_nang", nullable = false)
 	private int maKyNang;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
-	private HoSoNhanSu hoSoNhanVien;
-	
+	private HoSoNhanSu maNhanVien;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_loai_ky_nang", nullable = false)
 	private LoaiKyNang loaiKyNang;
-	
-	@Column(name="ten_ky_nang", nullable=false)
+
+	@Column(name = "ten_ky_nang", nullable = false)
 	private String tenKyNang;
-	
-	@Column(name="danh_gia", nullable= false)
+
+	@Column(name = "danh_gia", nullable = false)
 	private int danhGia;
 
 	public int getMaKyNang() {
@@ -40,12 +40,12 @@ public class KyNang {
 		this.maKyNang = maKyNang;
 	}
 
-	public HoSoNhanSu getHoSoNhanVien() {
-		return hoSoNhanVien;
+	public HoSoNhanSu getMaNhanVien() {
+		return maNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
-		this.hoSoNhanVien = hoSoNhanVien;
+	public void setMaNhanVien(HoSoNhanSu maNhanVien) {
+		this.maNhanVien = maNhanVien;
 	}
 
 	public LoaiKyNang getLoaiKyNang() {
@@ -71,5 +71,5 @@ public class KyNang {
 	public void setDanhGia(int danhGia) {
 		this.danhGia = danhGia;
 	}
-	
+
 }

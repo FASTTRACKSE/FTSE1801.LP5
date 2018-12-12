@@ -44,8 +44,6 @@ public class ThongTinChungChiDaoImpl implements ThongTinChungChiDao {
 		Session session = sessionFactory.openSession();
 		List<ThongTinChungChi> list = session.createQuery("from ThongTinChungChi where ma_nhan_vien = " + maNhanVien)
 				.list();
-//		Query query = session.createQuery("from ThongTinChungChi where maNhanVien = " + maNhanVien);
-//		List<ThongTinChungChi> list = query.list();
 		session.close();
 		return list;
 	}
@@ -75,6 +73,14 @@ public class ThongTinChungChiDaoImpl implements ThongTinChungChiDao {
 		session.delete(session.get(ThongTinChungChi.class, id));
 		tx.commit();
 		session.close();
+	}
+
+	@Override
+	public ThongTinChungChi getById(int id) {
+		Session session = sessionFactory.openSession();
+		ThongTinChungChi chungChi = session.get(ThongTinChungChi.class, id);
+		session.close();
+		return chungChi;
 	}
 
 }

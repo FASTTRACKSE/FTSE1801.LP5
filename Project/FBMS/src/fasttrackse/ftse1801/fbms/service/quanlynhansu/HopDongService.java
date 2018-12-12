@@ -1,10 +1,10 @@
-package fasttrackse.ftse1801.fbms.dao.quanlynhansu;
+package fasttrackse.ftse1801.fbms.service.quanlynhansu;
 
 import java.util.List;
 
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HopDong;
 
-public interface HopDongDao {
+public interface HopDongService {
 	public List<HopDong> getAll();
 
 	public List<HopDong> getByPaging(int fistResult, int maxResult);
@@ -18,5 +18,4 @@ public interface HopDongDao {
 	public void update(HopDong hopDong);
 
 	public HopDong getById(int id);
-
 }

@@ -16,4 +16,6 @@ public interface ThongTinChungChiDao {
 	public void update(ThongTinChungChi chungChi);
 
 	public void delete(int id);
+	
+	public ThongTinChungChi getById(int id);
 }

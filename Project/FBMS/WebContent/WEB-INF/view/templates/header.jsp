@@ -265,17 +265,15 @@
 								<li><a class="menu-item"
 									href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/"/>">Hồ sơ
 										nhân viên</a></li>
-								<li><a class="menu-item" href="<c:url value = ""/>">Thông
-										tin liên hệ</a></li>
-								<li><a class="menu-item" href="<c:url value = ""/>">Thông
-										tin bằng cấp</a></li>
-								<li><a class="menu-item" href="<c:url value = ""/>">Thông
+								<li><a class="menu-item"
+									href="<c:url value = "/QuanLyNhanSu/thongTinChungChi/"/>">Thông
 										tin chứng chỉ</a></li>
-								<li><a class="menu-item" href="<c:url value = ""/>">Thông
+								<li><a class="menu-item"
+									href="<c:url value = "/QuanLyNhanSu/thongTinGiaDinh/"/>">Thông
 										tin gia đình</a></li>
 							</ul></li>
 						<li class="is-shown"><a class="menu-item"
-							href="<c:url value = ""/>">Quản lý hợp đồng lao động</a></li>
+							href="<c:url value = "/QuanLyNhanSu/hopDong/"/>">Quản lý hợp đồng lao động</a></li>
 						<li class="is-shown"><a class="menu-item"
 							href="<c:url value = ""/>">Quản lý kinh nghiệm dự án</a></li>
 					</ul></li>

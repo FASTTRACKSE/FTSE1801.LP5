@@ -3,6 +3,15 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/vendors/css/pickers/daterange/daterangepicker.css"/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/vendors/css/pickers/datetime/bootstrap-datetimepicker.css"/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/vendors/css/pickers/pickadate/pickadate.css"/>">
+
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/plugins/pickers/daterange/daterange.css"/>">
 
 <div class="app-content content container-fluid">
 	<div class="content-wrapper">
@@ -60,8 +69,14 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Năm sinh</label>
-							<form:input class="form-control" path="namSinh"
-								value="${nhanVien.namSinh}" placeholder="Năm sinh" />
+							<div class='input-group date datetimepicker10'>
+								<form:input type='text' path="namSinh" value="${nhanVien.namSinh}"
+									placeholder="Năm sinh" class="form-control" />
+								<span class="input-group-addon"> <span
+									class="fa fa-calendar"></span>
+								</span>
+								<form:errors path="namSinh" cssClass="error" />
+							</div>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Giới tính</label>
@@ -117,8 +132,14 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Ngày cấp</label>
-							<form:input class="form-control" path="ngayCap"
-								value="${nhanVien.ngayCap}" placeholder="Ngày cấp" />
+							<div class='input-group date datetimepicker10'>
+								<form:input type='text' path="ngayCap" value="${nhanVien.ngayCap}"
+									placeholder="Ngày cấp" class="form-control" />
+								<span class="input-group-addon"> <span
+									class="fa fa-calendar"></span>
+								</span>
+								<form:errors path="ngayCap" cssClass="error" />
+							</div>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Trạng thái</label>
@@ -141,3 +162,17 @@
 </div>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.date.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.time.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/legacy.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/daterange/daterangepicker.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/scripts/pickers/dateTime/picker-date-time.js"/> "></script>

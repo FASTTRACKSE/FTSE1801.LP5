@@ -8,78 +8,71 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HopDong;
+import fasttrackse.ftse1801.fbms.entity.quanlynhansu.KinhNghiemDuAn;
 
 @Repository
-public class HopDongDaoImpl implements HopDongDao{
+public class KinhNghiemDuAnDaoImpl implements KinhNghiemDuAnDao {
+
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<HopDong> getAll() {
+	public List<KinhNghiemDuAn> list() {
 		Session session = sessionFactory.openSession();
-		List<HopDong> list = session.createQuery("from HopDong where isdelete = 0").list();
+		List<KinhNghiemDuAn> list = session.createQuery("from KinhNghiemDuAn where isdelete = 0").list();
 		session.close();
 		return list;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<HopDong> getByPaging(int fistResult, int maxResult) {
+	public List<KinhNghiemDuAn> getByMaNhanVien(int maNhanVien) {
 		Session session = sessionFactory.openSession();
-		List<HopDong> list = session.createQuery("from HopDong where isdelete = 0").setFirstResult(fistResult).setMaxResults(maxResult).list();
+		List<KinhNghiemDuAn> list = session
+				.createQuery("from KinhNghiemDuAn where isdelete = 0 and ma_nhan_vien = " + maNhanVien).list();
 		session.close();
 		return list;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<HopDong> findByMaNhanVien(int maNhanVien) {
+	public List<KinhNghiemDuAn> getByPaging(int fistResult, int maxResult) {
 		Session session = sessionFactory.openSession();
-		List<HopDong> hopDong = session.createQuery("from HopDong where isdelete =0 and ma_nhan_vien =" + maNhanVien).list();
+		List<KinhNghiemDuAn> list = session.createQuery("from KinhNghiemDuAn where isdelete = 0")
+				.setFirstResult(fistResult).setMaxResults(maxResult).list();
 		session.close();
-		return hopDong;
+		return list;
 	}
 
 	@Override
-	public void addNew(HopDong hopDong) {
+	public void addNew(KinhNghiemDuAn kinhNghiemDuAn) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		session.persist(hopDong);
+		session.persist(kinhNghiemDuAn);
 		tx.commit();
 		session.close();
 	}
 
 	@Override
-	public void update(HopDong hopDong) {
+	public void update(KinhNghiemDuAn kinhNghiemDuAn) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		session.update(hopDong);
+		session.update(kinhNghiemDuAn);
 		tx.commit();
 		session.close();
 	}
 
 	@Override
-	public HopDong getById(int id) {
+	public KinhNghiemDuAn getById(int id) {
 		Session session = sessionFactory.openSession();
-		HopDong hopDong = session.get(HopDong.class, id);
+		KinhNghiemDuAn kinhNghiemDuAn = session.get(KinhNghiemDuAn.class, id);
 		session.close();
-		return hopDong;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<HopDong> getByType(int maLoaiHopDong) {
-		Session session = sessionFactory.openSession();
-		List<HopDong> list = session.createQuery("from HopDong where ma_loai_hop_dong = " + maLoaiHopDong).list();
-		session.close();
-		return list;
+		return kinhNghiemDuAn;
 	}
 
 }
