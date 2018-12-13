@@ -11,16 +11,16 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Update Contact</h3>
+				<h3 class="content-header-title mb-0">Update Khách Hàng</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyDuAn/Contact/list-contact" />'>
-									Contact </a></li>
-							<li class="breadcrumb-item active">Update Contact</li>
+								href='<c:url value="/QuanLyDuAn/KhachHang/list-khachHang" />'>
+									Danh Sách Khách Hàng</a></li>
+							<li class="breadcrumb-item active">Chỉnh Sửa Khách Hàng</li>
 						</ol>
 					</div>
 				</div>
@@ -31,19 +31,19 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" action="/FBMS/QuanLyDuAn/Contact/update"
-						modelAttribute="contact">
+					<form:form method="POST" action="/FBMS/QuanLyDuAn/KhachHang/update"
+						modelAttribute="khachHang">
 
 						<div class="form-group col-sm-6">
-							<label>Mã Contact</label>
-							<form:input class="form-control" path="maContact"
-								placeholder="Mã contact" />
+							<label>Mã Khách Hàng</label>
+							<form:input class="form-control" path="maKh"
+								placeholder="Mã Khách Hàng" />
 						</div>
 						
 						<div class="form-group col-sm-6">
-							<label> Tên Contact </label>
-							<form:input class="form-control" path="tenContact"
-								placeholder="Tên contact" />
+							<label> Tên Khách Hàng </label>
+							<form:input class="form-control" path="tenKh"
+								placeholder="Tên Khách Hàng" />
 						</div>
 						
 						<div class="form-group col-sm-6">

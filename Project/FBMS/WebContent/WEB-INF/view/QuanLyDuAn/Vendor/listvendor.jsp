@@ -14,14 +14,15 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Contact</h3>
+				<h3 class="content-header-title mb-0">Danh Sách Vendor</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyDuAn/Contact/list-contact" />'>Contact</li>
+								href='<c:url value="/QuanLyDuAn/Vendor/list-vendor" />'>Danh Sách Vendor</a></li>
+
 						</ol>
 					</div>
 				</div>
@@ -34,73 +35,78 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<a class="btn btn-outline-success round btn-min-width mr-1 mb-1"
-						href="<c:url value="/QuanLyDuAn/Contact/show-form-add" />">
-						<h5 class="ft-plus-circle"> Thêm Contact </h5>
+						href="<c:url value="/QuanLyDuAn/Vendor/show-form-add" />">
+						<h5 class="ft-plus-circle">Thêm Vendor</h5>
 					</a>
 				</div>
 				<div class="x_content">
 
-					<table class="table table-striped"
-						style="text-align: center; background: white">
+					<table class="table table-striped" style="text-align: center;background: white">
 						<thead style="background: #AEEEEE">
-							<tr>
-								<th style="text-align: center">Mã Contact</th>
-								<th style="text-align: center">Tên Contact</th>
-								<th style="text-align: center">Địa chỉ</th>
-								<th style="text-align: center">Số điện thoại</th>
-								<th style="text-align: center">Email</th>
+							<tr style="text-align: center">
+								<th>Stt</th>
+								<th>Mã nhà cung cấp</th>
+								<th>Tên nhà cung cấp</th>
+								<th>Số điện thoại</th>
+								<th>Email</th>
+								<th>Địa chỉ</th>
+								<th style="text-align: center">Chức năng</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="contact" items="${listContact}">
+							<c:forEach var="vendor" items="${listVendor}" varStatus="count">
 								<tr>
-									<td style="text-align: left">${contact.maContact}</td>
-									<td style="text-align: left">${contact.tenContact}</td>
-									<td style="text-align: left">${contact.diaChi}</td>
-									<td style="text-align: left">${contact.soDienThoai}</td>
-									<td style="text-align: left">${contact.email}</td>
 
+									<th scope="row">${count.count}</th>
+									<td style="text-align: left">${vendor.idVendor}</td>
+									<td style="text-align: left">${vendor.nameVendor}</td>
+									<td style="text-align: left">${vendor.phone}</td>
+									<td style="text-align: left">${vendor.email}</td>
+									<td style="text-align: left">${vendor.address}</td>
 									<td><a
 										style="width: 50px; high: 50px; border-color: #00E5EE; border-radius: 100%;"
 										class="btn btn-outline-info "
-										href="<c:url value="/QuanLyDuAn/Contact/show-form-edit/${contact.maContact}" />"
-										title=""><i class="ft-edit"></i></a>
+										href="<c:url value="/QuanLyDuAn/Vendor/show-form-edit/${vendor.idVendor }" />"
+										title=""><i class="ft-edit"></i></a> 
 										<button
 											style="width: 50px; high: 50px; border-color: #FF6A6A; border-radius: 100%;"
-											data-href="<c:url value="/QuanLyDuAn/Contact/delete/${contact.maContact}" />"
+											data-href="<c:url value="/QuanLyDuAn/Vendor/delete/${vendor.idVendor }" />"
 											class="btn btn-outline-danger" data-toggle="modal"
 											data-target="#xoa_pr">
 											<i class="ft-delete"></i>
 										</button>
 								</tr>
+
 							</c:forEach>
+
+
+							<!--<script type="text/javascript"> window.onload = alertName; </script>	  -->
+
 						</tbody>
 					</table>
-
-					<c:if test="${totalPage > 1}">
-						<div class="text-center" style="float: right; margin-right: 50px">
-							<ul class="pagination firstLast1-links">
-								<c:if test="${pageId > 1}">
-									<li class="page-item"><a href="1" class="page-link">First</a></li>
-									<li class="page-item"><a href="${pageId-1 }"
-										class="page-link">${pageId-1 }</a></li>
-								</c:if>
-								<li class="page-item active"><a href="#" class="page-link">${pageId }</a></li>
-								<c:if test="${pageId < totalPage}">
-									<li class="page-item"><a href="${pageId+1 }"
-										class="page-link">${pageId+1 }</a></li>
-									<li class="page-item"><a href="${totalPage }"
-										class="page-link">Last</a></li>
-								</c:if>
-							</ul>
-						</div>
+						<c:if test="${totalPage > 1}">
+					<div class="text-center" style="float: right;margin-right: 50px">
+						<ul class="pagination firstLast1-links">
+							<c:if test="${pageId > 1}">
+								<li class="page-item"><a href="1" class="page-link">First</a></li>
+								<li class="page-item"><a href="${pageId-1 }"
+									class="page-link">${pageId-1 }</a></li>
+							</c:if>
+							<li class="page-item active"><a href="#" class="page-link">${pageId }</a></li>
+							<c:if test="${pageId < totalPage}">
+								<li class="page-item"><a href="${pageId+1 }"
+									class="page-link">${pageId+1 }</a></li>
+								<li class="page-item"><a href="${totalPage }"
+									class="page-link">Last</a></li>
+							</c:if>
+						</ul>
+					</div>
 					</c:if>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!--                 Css for confirm delete -->
 <div class="modal fade" id="xoa_pr" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -112,7 +118,9 @@
 				<h4 class="modal-title">Xác nhận</h4>
 			</div>
 			<div class="modal-body">
-				<p>Bạn muốn xóa Contact này???</p>
+				<p>
+					Bạn muốn xóa Nhà cung cấp này???
+				</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
@@ -125,6 +133,7 @@
 </div>
 <script type="text/javascript">
 	$('#xoa_pr').on('show.bs.modal', function(e) {
+		// var test = $(e.relatedTarget).data('href'); console.log(test);
 		$(this).find('.del_pr').attr('href', $(e.relatedTarget).data('href'));
 	});
 </script>

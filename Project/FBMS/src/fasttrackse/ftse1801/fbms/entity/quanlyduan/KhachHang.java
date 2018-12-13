@@ -6,16 +6,16 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "contact")
-public class Contact {
+@Table(name = "khach_hang")
+public class KhachHang {
 	@Id
-	@Column(name = "ma_contact")
-	@NotEmpty(message = "Mã contact không được để trống !!!")
-	private String maContact;
+	@Column(name = "ma_khach_hang")
+	@NotEmpty(message = "Mã khách hàng không được để trống !!!")
+	private String maKh;
 	
-	@Column(name = "ten_contact")
-	@NotEmpty(message = "Tên contact không được để trống !!!")
-	private String tenContact;
+	@Column(name = "ten_khach_hang")
+	@NotEmpty(message = "Tên khách hàng không được để trống !!!")
+	private String tenKh;
 	
 	@Column(name = "dia_chi")
 	@NotEmpty(message = "Địa chỉ không được để trống !!!")
@@ -33,20 +33,21 @@ public class Contact {
 	private int isDelete;
 
 	
-	public String getMaContact() {
-		return maContact;
+	
+	public String getMaKh() {
+		return maKh;
 	}
 
-	public void setMaContact(String maContact) {
-		this.maContact = maContact;
+	public void setMaKh(String maKh) {
+		this.maKh = maKh;
 	}
 
-	public String getTenContact() {
-		return tenContact;
+	public String getTenKh() {
+		return tenKh;
 	}
 
-	public void setTenContact(String tenContact) {
-		this.tenContact = tenContact;
+	public void setTenKh(String tenKh) {
+		this.tenKh = tenKh;
 	}
 
 	public String getDiaChi() {

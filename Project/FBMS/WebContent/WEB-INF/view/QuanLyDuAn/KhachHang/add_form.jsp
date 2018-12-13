@@ -11,16 +11,16 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Thêm Contact</h3>
+				<h3 class="content-header-title mb-0">Thêm Khách Hàng</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyDuAn/Contact/list-contact" />'>
-									Contact </a></li>
-							<li class="breadcrumb-item active">Thêm Contact</li>
+								href='<c:url value="/QuanLyDuAn/KhachHang/list-khachHang" />'>
+									Danh Sách Khách Hàng</a></li>
+							<li class="breadcrumb-item active">Thêm Khách Hàng</li>
 						</ol>
 					</div>
 				</div>
@@ -34,19 +34,19 @@
 					<form:form method="POST" action="addnew">
 						<div class="row">
 							<div class="form-group col-sm-6">
-								<label> Mã Contact </label>
+								<label> Mã Khách Hàng </label>
 								<p Class="error">${messageMa}</p>
-								<form:input class="form-control" path="maContact"
-									placeholder="Mã contact" />
-								<form:errors path="maContact" cssStyle="color: red"></form:errors>
+								<form:input class="form-control" path="maKh"
+									placeholder="Mã Khách Hàng" />
+								<form:errors path="maKh" cssStyle="color: red"></form:errors>
 
 							</div>
 							<div class="form-group col-sm-6">
-								<label> Tên Contact </label>
+								<label> Tên Khách Hàng </label>
 								<p Class="error"></p>
-								<form:input class="form-control" path="tenContact"
-									placeholder="Tên Contact" />
-								<form:errors path="tenContact" cssStyle="color: red"></form:errors>
+								<form:input class="form-control" path="tenKh"
+									placeholder="Tên Khách Hàng" />
+								<form:errors path="tenKh" cssStyle="color: red"></form:errors>
 							</div>
 						</div>
 						<div class="row">

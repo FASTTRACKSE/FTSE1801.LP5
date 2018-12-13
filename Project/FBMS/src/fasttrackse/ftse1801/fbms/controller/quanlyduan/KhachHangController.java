@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fasttrackse.ftse1801.fbms.entity.quanlyduan.Contact;
-import fasttrackse.ftse1801.fbms.service.quanlyduan.ContactService;
+import fasttrackse.ftse1801.fbms.entity.quanlyduan.KhachHang;
+import fasttrackse.ftse1801.fbms.service.quanlyduan.KhachHangService;
 
 @Controller
-@RequestMapping("/QuanLyDuAn/Contact")
-public class ContactController {
+@RequestMapping("/QuanLyDuAn/KhachHang")
+public class KhachHangController {
 	
 	@Autowired
-	private ContactService contactService;
+	private KhachHangService khachHangService;
 
-	public void setContactService(ContactService contactService) {
-		this.contactService = contactService;
+	public void setContactService(KhachHangService khachHangService) {
+		this.khachHangService = khachHangService;
 	}
 
 
-	@RequestMapping("/list-contact")
+	@RequestMapping("/list-khachHang")
 	public String listContact(HttpSession session) {
 		int pageId = 0;
 		if (session.getAttribute("pageIdKh") == null) {
@@ -36,74 +36,74 @@ public class ContactController {
 		} else {
 			pageId = (int) session.getAttribute("pageIdKh");
 		}
-		return "redirect: list-contact/"+pageId;
+		return "redirect: list-khachHang/"+pageId;
 	}
-	@RequestMapping(value = "/list-contact/{pageId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/list-khachHang/{pageId}", method = RequestMethod.GET)
 	public String listPersons(@PathVariable int pageId, Model model,HttpSession session) {
 		int maxRows= 3;
 		int start = (pageId - 1) * maxRows;
-		int totalContact = contactService.countContact();
-		int totalPage = (int) Math.ceil(totalContact / (double) maxRows);
+		int totalKh = khachHangService.countKhachHang();
+		int totalPage = (int) Math.ceil(totalKh / (double) maxRows);
 		if (pageId == 0) {
 			pageId = 1;
 		}
 		
-		model.addAttribute("listContact", this.contactService.listContact(start, maxRows));
+		model.addAttribute("listKh", this.khachHangService.listKh(start, maxRows));
 		model.addAttribute("pageId", pageId);
 		model.addAttribute("totalPage", totalPage);
 		session.setAttribute("pageIdKh", pageId);
-		return "QuanLyDuAn/Contact/list";
+		return "QuanLyDuAn/KhachHang/list";
 	}
 	
 	
 	@RequestMapping("/show-form-add")
 	public String showFormAdd(Model model) {
-		model.addAttribute("command", new Contact());
-		return "QuanLyDuAn/Contact/add_form";
+		model.addAttribute("command", new KhachHang());
+		return "QuanLyDuAn/KhachHang/add_form";
 	}
 	@RequestMapping(value = "/addnew", method = RequestMethod.POST)
-	public String addNew(@Valid @ModelAttribute("command") Contact contact, BindingResult result,
+	public String addNew(@Valid @ModelAttribute("command") KhachHang khachHang, BindingResult result,
 			final RedirectAttributes redirectAttributes, Model model) {
 		if (result.hasErrors()) {
-			return "QuanLyDuAn/Contact/add_form";
+			return "QuanLyDuAn/KhachHang/add_form";
 		}
-		int checkMa = contactService.checkMaContact(contact.getMaContact());
+		int checkMa = khachHangService.checkMaKhachHang(khachHang.getMaKh());
 		if(checkMa >= 1) {
-			model.addAttribute("messageMa", "Mã contact đã được sử dụng");
-			return "QuanLyDuAn/Contact/add_form";
+			model.addAttribute("messageMa", "Mã khách hàng đã được sử dụng");
+			return "QuanLyDuAn/KhachHang/add_form";
 		}
 		
-		contact.setIsDelete(1);
-		contactService.add(contact);
+		khachHang.setIsDelete(1);
+		khachHangService.add(khachHang);
 		redirectAttributes.addFlashAttribute("success", "<script>alert('Thêm thành công');</script>");
-		return "redirect: list-contact";
+		return "redirect: list-khachHang";
 	}
 
 	
 	@RequestMapping(value = "/show-form-edit/{id}")
 	public String showFormEdit(Model model, @PathVariable String id) {
-		Contact contact = contactService.getById(id);
-		model.addAttribute("contact", contact);
-		return "QuanLyDuAn/Contact/update_form";
+		KhachHang khachHang = khachHangService.getById(id);
+		model.addAttribute("khachHang", khachHang);
+		return "QuanLyDuAn/KhachHang/update_form";
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(@Valid @ModelAttribute("contact") Contact contact, BindingResult result,
+	public String update(@Valid @ModelAttribute("khachHang") KhachHang khachHang, BindingResult result,
 			final RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
-			return "QuanLyDuAn/Contact/update_form";
+			return "QuanLyDuAn/KhachHang/update_form";
 		}
-		contact.setIsDelete(1);
-		contactService.update(contact);
-		return "redirect: /FBMS/QuanLyDuAn/Contact/list-contact";
+		khachHang.setIsDelete(1);
+		khachHangService.update(khachHang);
+		return "redirect: /FBMS/QuanLyDuAn/KhachHang/list-khachHang";
 	}
 
 	
 	@RequestMapping(value = "/delete/{id}")
 	public String delete(@PathVariable String id, final RedirectAttributes redirectAttributes) {
-		Contact contact = contactService.getById(id);
-		contact.setIsDelete(0);
-		contactService.update(contact);
-		return "redirect: /FBMS/QuanLyDuAn/Contact/list-contact";
+		KhachHang khachHang = khachHangService.getById(id);
+		khachHang.setIsDelete(0);
+		khachHangService.update(khachHang);
+		return "redirect: /FBMS/QuanLyDuAn/KhachHang/list-khachHang";
 	}
 
 }

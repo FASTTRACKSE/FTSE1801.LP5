@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="trang_thai")
+@Table(name="trang_thai_du_an")
 public class TrangThai {
 	@Id
 	@Column(name = "ma_trang_thai")
