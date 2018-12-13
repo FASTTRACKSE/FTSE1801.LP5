@@ -10,16 +10,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "loai_ngay_nghi")
 public class LoaiNghiPhep {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ma_loai_nghi")
+	@Column(name = "ma_loai_nghi")
 	private int maLoaiNghi;
-	
-	@Column(name="ten_ngay_nghi")
+
+	@Column(name = "ten_ngay_nghi")
 	private String tenNgayNghi;
-	
-	@Column(name="so_ngay_duoc_nghi")
+
+	@Column(name = "so_ngay_duoc_nghi")
 	private int soNgayNghi;
 
 	public int getMaLoaiNghi() {
@@ -46,5 +45,4 @@ public class LoaiNghiPhep {
 		this.soNgayNghi = soNgayNghi;
 	}
 
-	
 }

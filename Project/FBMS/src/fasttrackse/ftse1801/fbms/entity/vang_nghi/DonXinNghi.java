@@ -124,7 +124,7 @@ public class DonXinNghi {
 	public void setSoNgayNghi(int soNgayNghi) {
 		this.soNgayNghi = soNgayNghi;
 	}
-	
+
 	public String getGhiChu() {
 		return ghiChu;
 	}

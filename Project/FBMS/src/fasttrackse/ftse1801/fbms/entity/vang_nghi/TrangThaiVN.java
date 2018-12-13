@@ -11,12 +11,12 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "trang_thai")
 public class TrangThaiVN {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ma_trang_thai")
 	private int maTrangThai;
-	
+
 	@NotEmpty
 	@Column(name = "ten_trang_thai")
 	private String tenTrangThai;
@@ -36,5 +36,5 @@ public class TrangThaiVN {
 	public void setTenTrangThai(String tenTrangThai) {
 		this.tenTrangThai = tenTrangThai;
 	}
-	
+
 }

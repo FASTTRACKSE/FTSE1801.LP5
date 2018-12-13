@@ -10,9 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
-
 
 @Entity
 @Table(name = "tinh_trang_nghi")
@@ -44,7 +42,6 @@ public class TinhTrangNghi {
 	public void setIdTinhTrang(int idTinhTrang) {
 		this.idTinhTrang = idTinhTrang;
 	}
-
 
 	public LoaiNghiPhep getMaLoaiNghi() {
 		return maLoaiNghi;
