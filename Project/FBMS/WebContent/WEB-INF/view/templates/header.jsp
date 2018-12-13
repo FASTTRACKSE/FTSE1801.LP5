@@ -356,30 +356,30 @@
 							kê tình hình</span></a>
 					<ul class="menu-content" style="">
 						<li class="is-shown"><a class="menu-item"
-							href="<c:url value="/QuanLyThoiGian/add"/>" class="menu-item">New</a></li>
+							href="<c:url value="/QuanLyThoiGian/nhanVien/add"/>" class="menu-item">New</a></li>
 						<li><a
-							href="<c:url value="/QuanLyThoiGian/danhsachchopheduyetlan1"/>"
+							href="<c:url value="/QuanLyThoiGian/nhanVien/danhsachchopheduyetlan1"/>"
 							class="menu-item">Danh Sách Chờ Phê Duyệt Lần 1</a></li>
 						<li><a
-							href="<c:url value="/QuanLyThoiGian/danhsachchopheduyetlan2"/>"
+							href="<c:url value="/QuanLyThoiGian/nhanVien/danhsachchopheduyetlan2"/>"
 							class="menu-item">Danh Sách Chờ Phê Duyệt Lần 2</a></li>
 						<li><a
-							href="<c:url value="/QuanLyThoiGian/danhsachdapheduyet"/>"
+							href="<c:url value="/QuanLyThoiGian/nhanVien/danhsachdapheduyet"/>"
 							class="menu-item">Danh Sách Đã Phê Duyệt</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/danhsachbituchoi"/>"
+							href="<c:url value="/QuanLyVangNghi/nhanVien/danhsachbituchoi"/>"
 							class="menu-item">Danh Sách Bị Từ Chối</a></li>
-						<li><a href="<c:url value="/QuanLyVangNghi/danhsachnhap"/>"
+						<li><a href="<c:url value="/QuanLyVangNghi/nhanVien/danhsachnhap"/>"
 							class="menu-item">Danh Sách Nháp</a></li>
 					</ul></li>
 				<li class="nav-item has-sub"><a href="#"><i class="ft-box"></i><span
 						class="menu-title" data-i18n="">Phê duyệt</span></a>
 					<ul class="menu-content" style="">
 						<li><a
-							href="<c:url value="/QuanLyThoiGian/danhsachchopheduyet"/>"
+							href="<c:url value="/QuanLyThoiGian/pheDuyet/danhsachchopheduyet"/>"
 							class="menu-item">Danh Sách Chờ Phê Duyệt</a></li>
 						<li><a
-							href="<c:url value="/QuanLyThoiGian/danhsachpheduyet"/>"
+							href="<c:url value="/QuanLyThoiGian/pheDuyet/danhsachpheduyet"/>"
 							class="menu-item">Danh Sách Đã Phê Duyệt</a></li>
 
 					</ul></li>
