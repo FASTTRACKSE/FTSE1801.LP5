@@ -5,24 +5,15 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.DuAn;
 import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
 import fasttrackse.ftse1801.fbms.entity.security.UserAccount;
 
-@Repository
-public class DuAnDaoImpl implements DuAnDao {
+public class DuAnDaoImpl implements DuAnDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public List<DuAn> findAll() {
@@ -31,14 +22,14 @@ public class DuAnDaoImpl implements DuAnDao {
 	}
 
 	@Override
-	public DuAn findById(String maDuAn) {
+	public DuAn findById(int maDuAn) {
 		Session session = sessionFactory.getCurrentSession();
-		DuAn dm = session.get(DuAn.class, maDuAn);
-		return dm;
+		DuAn duAn = session.get(DuAn.class, maDuAn);
+		return duAn;
 	}
 
 	@Override
-	public void addNew(DuAn duAn) {
+	public void add(DuAn duAn) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(duAn);
 	}
@@ -47,58 +38,46 @@ public class DuAnDaoImpl implements DuAnDao {
 	public void update(DuAn duAn) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(duAn);
-
 	}
 
 	@Override
 	public void delete(DuAn duAn) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(duAn);
-
 	}
 
 	@Override
-	public int checkNameProjects(String tenDuAn) {
+	public int checkTenDuAn(String tenDuAn) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DuAn> dm = session.createQuery("from DuAn where tenDuAn = '" + tenDuAn + "' and status = 1", DuAn.class)
-				.list();
-
-		return dm.size();
+		List<DuAn> dm = session.createQuery("from DuAn where tenDuAn = '"+ tenDuAn +"' and isDelete = 1", DuAn.class).list();
+		return  dm.size();
 	}
 
 	@Override
-	public int checkMaProjects(String maDuAn) {
+	public int checkMaDuAn(int maDuAn) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DuAn> dm = session.createQuery("from DuAn where maDuAn = '" + maDuAn + "' ", DuAn.class).list();
-		return dm.size();
+		List<DuAn> listDuAn = session.createQuery("from DuAn where maDuAn = '"+ maDuAn +"' ", DuAn.class).list();
+		return  listDuAn.size();
 	}
 
 	@Override
 	public List<HoSoNhanSu> getPm(String maPhongBan) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from HoSoNhanVien where isDelete = 0 and maPhongBan = '" + maPhongBan + "'",
-				HoSoNhanSu.class).list();
+		return session.createQuery("from HoSoNhanSu where trangThai = 2 and maPhongBan = '"+ maPhongBan +"'", HoSoNhanSu.class).list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<DuAn> listDuAn(String search, int start, int maxRows) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from DuAn where isDelete = 1 " + search).setFirstResult(start)
+		return session.createQuery("from DuAn where isDelete = 1 "+ search).setFirstResult(start)
 				.setMaxResults(maxRows).list();
 	}
 
 	@Override
 	public UserAccount getAccount(String userName) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from UserAccount where username='" + userName + "'", UserAccount.class)
-				.getSingleResult();
-	}
-
-	@Override
-	public int count(String search) {
-		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from DuAn where isDelete =0 " + search).list().size();
+		return session.createQuery("from UserAccount where username='"+ userName +"'", UserAccount.class).getSingleResult();
 	}
 
 }

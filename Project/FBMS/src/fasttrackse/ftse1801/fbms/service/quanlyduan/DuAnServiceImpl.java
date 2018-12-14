@@ -18,27 +18,19 @@ public class DuAnServiceImpl implements DuAnService {
 	@Autowired
 	private DuAnDao duAnDao;
 
-	public DuAnDao getDuAnDao() {
-		return duAnDao;
-	}
-
-	public void setDuAnDao(DuAnDao duAnDao) {
-		this.duAnDao = duAnDao;
-	}
-
 	@Override
 	public List<DuAn> findAll() {
 		return duAnDao.findAll();
 	}
 
 	@Override
-	public DuAn findById(String maDuAn) {
+	public DuAn findById(int maDuAn) {
 		return duAnDao.findById(maDuAn);
 	}
 
 	@Override
-	public void addNew(DuAn duAn) {
-		duAnDao.addNew(duAn);
+	public void add(DuAn duAn) {
+		duAnDao.add(duAn);
 	}
 
 	@Override
@@ -52,13 +44,13 @@ public class DuAnServiceImpl implements DuAnService {
 	}
 
 	@Override
-	public int checkNameProjects(String tenDuAn) {
-		return duAnDao.checkNameProjects(tenDuAn);
+	public int checkTenDuAn(String tenDuAn) {
+		return duAnDao.checkTenDuAn(tenDuAn);
 	}
 
 	@Override
-	public int checkMaProjects(String maDuAn) {
-		return duAnDao.checkMaProjects(maDuAn);
+	public int checkMaDuAn(int maDuAn) {
+		return duAnDao.checkMaDuAn(maDuAn);
 	}
 
 	@Override
@@ -75,10 +67,5 @@ public class DuAnServiceImpl implements DuAnService {
 	public UserAccount getAccount(String userName) {
 		return duAnDao.getAccount(userName);
 	}
-
-	@Override
-	public int count(String search) {
-		return duAnDao.count(search);
-	}
-
+	
 }
