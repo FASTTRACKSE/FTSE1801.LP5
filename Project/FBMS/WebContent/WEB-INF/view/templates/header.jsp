@@ -399,7 +399,7 @@
 						data-i18n="" class="menu-title"><spring:message
 								code="label.QuanLyNhiemVu.DanhSachNhiemVu" /></span></a></li>
 				<li class=" nav-item QuanLyNhiemVu"><a
-					href="<c:url value = ""/>"><i class="fa fa-calendar"></i><span
+					href="<c:url value = "/QuanLyNhiemVu/calender"/>"><i class="fa fa-calendar"></i><span
 						data-i18n="" class="menu-title"><spring:message
 								code="label.QuanLyNhiemVu.Lich" /></span></a></li>
 				<!-- Quản lý vắng nghỉ -->
