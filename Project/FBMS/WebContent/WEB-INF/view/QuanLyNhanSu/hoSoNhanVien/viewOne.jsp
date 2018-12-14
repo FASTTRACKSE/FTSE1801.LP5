@@ -18,33 +18,18 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	<div class="content-wrapper">
 
 		<!-- Path -->
-		<%-- <div class="content-header row">
+		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">
-					Xem Thông tin nhân viên
-				</h3>
+				<h3 class="content-header-title mb-0">Thông tin nhân viên</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a
-								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item"><a
-								href='<c:url value="/quanlynhansutt/ho_so/" />'>Danh sách nhân viên</a></li>
-							<li class="breadcrumb-item active"><a
-								href='<c:url value="/quanlynhansutt/ho_so/view/${maNhanVien}" />'>Xem thông tin nhân viên</a></li>
-						</ol>
-						<a href="/ffse-fbms/quanlynhansutt/ho_so/excelfile/${maNhanVien}"><button
+						<a href="<c:url value="/QuanLyNhanSu/hoSoNhanVien/excelfile/${hoSoNhanVien.maNhanVien}"/>"><button
 								class="btn btn-success">
 								<i class="fa fa-download"></i> Tải xuống
 							</button></a>
-
-											<a
-						href="/ffse-fbms/quanlynhansutt/ho_so/excelfile/${hoSoNhanVien.maNhanVien}"
-						class="btn btn-primary"><span class="fa fa-plus"></span><spring:message
-							code="label.themMoi" /></a>
 					</div>
 				</div>
-			</div> --%>
+			</div>
 		</div>
 		<!-- Left Column -->
 		<!-- Thông Tin Chính -->
@@ -53,10 +38,11 @@ html, body, h1, h2, h3, h4, h5, h6 {
 				<div class="profile-container">
 					<div style="text-align: center;">
 						<img class="profile"
-							src="<%-- <c:url value="/uploads/${hoSoNhanVien.anhDaiDien}" /> --%>"
+							src="/FBMS/resources/images/portrait/small/avatar-s-1.png<%-- <c:url value="/uploads/${hoSoNhanVien.anhDaiDien}" /> --%>"
 							width="150" height="180" alt="ảnh đại diện" />
 					</div>
-					<h1 class="name" style="text-align: center;">${hoSoNhanVien.hoDem} ${hoSoNhanVien.ten}</h1>
+					<h1 class="name" style="text-align: center;">${hoSoNhanVien.hoDem}
+						${hoSoNhanVien.ten}</h1>
 					<h3 class="tagline" style="text-align: center;">Full Stack
 						Developer</h3>
 				</div>
@@ -264,7 +250,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 
 		<!-- End Grid -->
 	</div>
-
+</div>
 	<!-- End Page Container -->
 
-<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+	<jsp:include page="/WEB-INF/view/templates/footer.jsp" />

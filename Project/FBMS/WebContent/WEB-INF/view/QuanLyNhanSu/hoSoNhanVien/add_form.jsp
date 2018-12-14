@@ -62,6 +62,11 @@
 							<form:input class="form-control" path="ten" placeholder="Tên" />
 							<form:errors path="ten" cssClass="error" />
 						</div>
+						<!-- <div class="form-group col-sm-6">
+							<label>Avatar:</label> <input id="imgUrl" class="form-control"
+								type="file" name="file" /> <br> <img id="img" src="#"
+								alt="your image" width="100" height="150" />
+						</div> -->
 						<div class="form-group col-sm-6">
 							<label>Ảnh đại diện</label>
 							<form:input class="form-control" path="avatar"

@@ -254,8 +254,12 @@
 					href="<c:url value = "/QuanTriHeThong/phan-quyen/"/>"><i
 						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
 								code="label.QuanTriHeThong.PhanQuyen" /></span></a></li>
+
 				<!-- Quản trị nhân sự -->
-				<li class="nav-item has-sub open"><a href="#"><i
+				<li class="navigation-header"><span>Quản lý nhân sự</span><i
+					class=" ft-minus" data-toggle="tooltip" data-placement="right"
+					data-original-title="Components"></i></li>
+				<li class="nav-item has-sub"><a href="#"><i
 						class="fa fa-users"></i><span class="menu-title">Quản lý
 							nhân sự</span></a>
 					<ul class="menu-content" style="">
@@ -276,7 +280,7 @@
 							href="<c:url value = "/QuanLyNhanSu/hopDong/"/>">Quản lý hợp
 								đồng lao động</a></li>
 						<li class="is-shown"><a class="menu-item"
-							href="<c:url value = ""/>">Quản lý kinh nghiệm dự án</a></li>
+							href="<c:url value = "/QuanLyNhanSu/kinhNghiemDuAn/"/>">Quản lý kinh nghiệm dự án</a></li>
 					</ul></li>
 				<!--  ------------------ Quản lý Dự Án ----------------------->
 
@@ -288,7 +292,8 @@
 							Lý Danh Mục</span></a>
 					<ul class="menu-content" style="">
 						<li class=""><a class="menu-item"
-							href="<c:url value="/QuanLyDuAn/KhachHang/list-khachHang" />">Khách Hàng</a></li>
+							href="<c:url value="/QuanLyDuAn/KhachHang/list-khachHang" />">Khách
+								Hàng</a></li>
 						<li class=""><a class="menu-item"
 							href="<c:url value="/QuanLyDuAn/Domain/list-domain" />">Domain</a></li>
 						<li class=""><a class="menu-item"
@@ -316,8 +321,7 @@
 						<li class=""><a class="menu-item"
 							href="<c:url value="/QuanLyDuAn/DuAn/" />">Thông Tin Dự Án</a></li>
 						<li class=""><a class="menu-item"
-							href="<c:url value="/QuanLyDuAn/DuAn/" />">Danh
-								Sách Dự Án</a></li>
+							href="<c:url value="/QuanLyDuAn/DuAn/" />">Danh Sách Dự Án</a></li>
 
 
 					</ul></li>
@@ -347,7 +351,7 @@
 
 
 				<!-- Quản lý thời gian -->
-				
+
 				<li class="navigation-header"><span> Quản lý thời gian</span><i
 					class=" ft-minus" data-toggle="tooltip" data-placement="right"
 					data-original-title="Components"></i></li>
@@ -356,7 +360,8 @@
 							kê tình hình</span></a>
 					<ul class="menu-content" style="">
 						<li class="is-shown"><a class="menu-item"
-							href="<c:url value="/QuanLyThoiGian/nhanVien/add"/>" class="menu-item">New</a></li>
+							href="<c:url value="/QuanLyThoiGian/nhanVien/add"/>"
+							class="menu-item">New</a></li>
 						<li><a
 							href="<c:url value="/QuanLyThoiGian/nhanVien/danhsachchopheduyetlan1"/>"
 							class="menu-item">Danh Sách Chờ Phê Duyệt Lần 1</a></li>
@@ -369,7 +374,8 @@
 						<li><a
 							href="<c:url value="/QuanLyThoiGian/nhanVien/danhsachbituchoi"/>"
 							class="menu-item">Danh Sách Bị Từ Chối</a></li>
-						<li><a href="<c:url value="/QuanLyThoiGian/nhanVien/danhsachnhap"/>"
+						<li><a
+							href="<c:url value="/QuanLyThoiGian/nhanVien/danhsachnhap"/>"
 							class="menu-item">Danh Sách Nháp</a></li>
 					</ul></li>
 				<li class="nav-item has-sub"><a href="#"><i class="ft-box"></i><span
