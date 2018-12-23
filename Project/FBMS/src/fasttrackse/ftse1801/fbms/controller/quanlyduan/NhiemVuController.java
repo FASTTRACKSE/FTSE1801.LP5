@@ -33,7 +33,7 @@ public class NhiemVuController {
 	private DuAnService duAnService;
 	
 	@RequestMapping(value = { "/PhanCongNhienVu/create/{maDuAn}" })
-	public String phanCongNhiemVu(@PathVariable("maDuAn") String maDuAn, Model model) {
+	public String phanCongNhiemVu(@PathVariable("maDuAn") int maDuAn, Model model) {
 		model.addAttribute("duAn", duAnService.findById(maDuAn));
 		model.addAttribute("nhiemVu", new NhiemVu());
 		model.addAttribute("vaiTro", vaiTroThanhVienService.findAll());
@@ -42,22 +42,22 @@ public class NhiemVuController {
 
 	}
 
-	@RequestMapping(value = { "/PhanCongNhiemVu/create" }, method = RequestMethod.POST)
-	public String creat(@ModelAttribute("nhiemVu") @Valid NhiemVu nhiemVu, BindingResult result,
-			RedirectAttributes redirectAttributes, Model model) {
-		if (result.hasErrors()) {
-			System.out.println(result);
-			return "redirect:/PhanCongNhiemVu/add_form";
-		}
-
-		redirectAttributes.addFlashAttribute("message", "<script>alert('Thêm thành công.');</script>");
-		nhiemVuService.add(nhiemVu);
-		String maDuAn = nhiemVu.getMaDuAn();
-		return "redirect:/QuanLyDuAn/PhanCongNhiemVu/list/" + maDuAn;
-	}
+//	@RequestMapping(value = { "/PhanCongNhiemVu/create" }, method = RequestMethod.POST)
+//	public String creat(@ModelAttribute("nhiemVu") @Valid NhiemVu nhiemVu, BindingResult result,
+//			RedirectAttributes redirectAttributes, Model model) {
+//		if (result.hasErrors()) {
+//			System.out.println(result);
+//			return "redirect:/PhanCongNhiemVu/add_form";
+//		}
+//
+//		redirectAttributes.addFlashAttribute("message", "<script>alert('Thêm thành công.');</script>");
+//		nhiemVuService.add(nhiemVu);
+//		int maDuAn = nhiemVu.getMaDuAn();
+//		return "redirect:/QuanLyDuAn/PhanCongNhiemVu/list/" + maDuAn;
+//	}
 
 	@RequestMapping(value = "/PhanCongNhiemVu/list/{maDuAn}")
-	public String listNhiemVu(Model model, @PathVariable("maDuAn") String maDuAn) {
+	public String listNhiemVu(Model model, @PathVariable("maDuAn") int maDuAn) {
 		model.addAttribute("nhiemvu", nhiemVuService.getByDuAn(maDuAn));
 		model.addAttribute("duan", duAnService.findById(maDuAn));
 
@@ -66,7 +66,7 @@ public class NhiemVuController {
 
 	@RequestMapping(value = { "/PhanCongNhiemVu/delete/{maDuAn}/{maNhanVien}/{maVaiTro}" })
 	public String phanCongNhiemVuDelete(final RedirectAttributes redirectAttributes, Model model,
-			@PathVariable("maDuAn") String maDuAn, @PathVariable("maNhanVien") int maNhanVien,
+			@PathVariable("maDuAn") int maDuAn, @PathVariable("maNhanVien") int maNhanVien,
 			@PathVariable("maVaiTro") String maVaiTro) {
 
 		nhiemVuService.delete(nhiemVuService.checkVaiTro(maNhanVien, maVaiTro, maDuAn));
@@ -75,7 +75,7 @@ public class NhiemVuController {
 	}
 
 	@RequestMapping(value = { "/PhanCongNhiemVu/edit/{maDuAn}/{maNhanVien}/{maVaiTro}" })
-	public String phanCongNhiemVuUpdate(Model model, @PathVariable("maDuAn") String maDuAn,
+	public String phanCongNhiemVuUpdate(Model model, @PathVariable("maDuAn") int maDuAn,
 			@PathVariable("maNhanVien") int maNhanVien, @PathVariable("maVaiTro") String maVaiTro) {
 
 		model.addAttribute("duAn", duAnService.findById(maDuAn));
@@ -86,19 +86,19 @@ public class NhiemVuController {
 
 	}
 
-	@RequestMapping(value = { "/PhanCongNhiemVu/update" }, method = RequestMethod.POST)
-	public String phanCongNhiemVuUpdate(final RedirectAttributes redirectAttributes, Model model,
-			@ModelAttribute("nhiemvu") NhiemVu nhiemVu, BindingResult result,
-			@RequestParam("oldVaitro") String oldVaiTro) {
-		String maDuAn = nhiemVu.getMaDuAn();
-
-		NhiemVu oldNhiemVu = new NhiemVu();
-		oldNhiemVu.setMaDuAn(maDuAn);
-		oldNhiemVu.setMaNhanVien(nhiemVu.getMaNhanVien());
-		oldNhiemVu.setMaVaiTro(oldVaiTro);
-		nhiemVuService.update(oldNhiemVu);
-		redirectAttributes.addFlashAttribute("message", "<script>alert('Sửa thành công.');</script>");
-		return "redirect:list/" + maDuAn;
-	}
+//	@RequestMapping(value = { "/PhanCongNhiemVu/update" }, method = RequestMethod.POST)
+//	public String phanCongNhiemVuUpdate(final RedirectAttributes redirectAttributes, Model model,
+//			@ModelAttribute("nhiemvu") NhiemVu nhiemVu, BindingResult result,
+//			@RequestParam("oldVaitro") String oldVaiTro) {
+//		int maDuAn = nhiemVu.getMaDuAn();
+//
+//		NhiemVu oldNhiemVu = new NhiemVu();
+//		oldNhiemVu.setMaDuAn(maDuAn);
+//		oldNhiemVu.setMaNhanVien(nhiemVu.getMaNhanVien());
+//		oldNhiemVu.setMaVaiTro(oldVaiTro);
+//		nhiemVuService.update(oldNhiemVu);
+//		redirectAttributes.addFlashAttribute("message", "<script>alert('Sửa thành công.');</script>");
+//		return "redirect:list/" + maDuAn;
+//	}
 
 }
