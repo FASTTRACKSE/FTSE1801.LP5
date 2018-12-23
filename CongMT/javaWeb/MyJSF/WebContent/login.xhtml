@@ -8,34 +8,37 @@
 	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
 	xmlns:p="http://primefaces.org/ui">
 <head>
-<meta charset="ISO-8859-1"></meta>
+<meta charset="UTF-8"></meta>
+<STYLE type="text/css">
+body {
+	background-image: url("images/css.jpg");
+}</STYLE>
 <title><h:outputText value="#{msg['DangNhap']}"/></title>
 </head>
 <body>
 <h3><h:outputText value="#{msg['DangNhap']}"></h:outputText></h3>
-        <b>#{userLogin.message}</b> <br/><br/>
+        <h:messages globalOnly="true" style="color:red;margin:8px;" />
 		<h:form id="loginForm">
-			<h:outputLabel value="#{msg['TenDangNhap']}:" />
-			<h:inputText value="#{userLogin.username}" /> <br />
-			<h:outputLabel value="#{msg['MatKhau']}:" />
-			<h:inputSecret value="#{userLogin.password}"></h:inputSecret><br/>
+		<table>
+		<tr>
+			<td><h:outputLabel value="#{msg['TenDangNhap']}:" /></td>
+			<td><h:inputText value="#{userLogin.username}" id="user" label="username" validatorMessage="Chỉ được nhập 5-10 ký tự" required="true" requiredMessage="Tên đăng nhập không được để trống" >
+			  <f:validateLength minimum="5" maximum="10"/>
+			</h:inputText><h:message for="user" style = "color:red"/>
+			</td>
+			
+		</tr>
+		<tr>
+			<td><h:outputLabel value="#{msg['MatKhau']}:" /></td>
+			<td><h:inputSecret value="#{userLogin.password}" id="password" label="password" validatorMessage="Mật khẩu chỉ chứa chữ thường và độ dài của mật khẩu phải lớn hơn 4" required="true" requiredMessage=" Mật khẩu không được để trống">
+			   <f:validateLength minimum="5" maximum="10"/>
+			</h:inputSecret>
+			<h:message for="password" style = "color:red"></h:message></td>
+		</tr>
+		</table>
 			<h:commandButton value="#{msg['DangNhap']}" action="#{userLogin.login}"></h:commandButton>
 		</h:form>
 
-		
-
-<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
-            PF('dlg').jq.effect("shake", {times:5}, 100);
-        }
-        else {
-            PF('dlg').hide();
-            $('#loginLink').fadeOut();
-        }
-    }
-    
-</script>
 
 </body>
 </html>

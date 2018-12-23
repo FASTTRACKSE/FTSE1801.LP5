@@ -11,12 +11,12 @@ import javax.faces.bean.ManagedBean;
 
 import myJSF.Student;
 
-@ManagedBean
+@ManagedBean(name="st")
 public class StudentDao {
 	
 	private static final int RECORD_IN_PAGE = 0;
 	private Connection conn;
-	private PreparedStatement statement;
+	private PreparedStatement statement =null;
 	private ResultSet result;
 	
 	public ArrayList<Student> getStudent() {
@@ -34,6 +34,7 @@ public class StudentDao {
 				student.setOld(result.getString("old"));
 				student.setAdress(result.getString("adress"));
 				student.setNumberPhone(result.getString("numberPhone"));
+				student.setImg(result.getString("img"));
 				listSv.add(student);
 			}
 		} catch (SQLException e) {
@@ -44,21 +45,19 @@ public class StudentDao {
 		return listSv;
 		}
 	
-	public boolean addStudent(Student student) {
+	public boolean addStudent(String id, String name, String old, String adress, String numberPhone,String img) {
 		boolean statusExecute = false;
 		conn = DatabasaUltil.getConnect();
-		String sql = "INSERT INTO `sinhvien`(`name`, `old`, `adress`, `numberPhone`) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO `sinhvien` VALUES (?,?,?,?,?,?)";
 		try {
 			statement = conn.prepareStatement(sql);
-		
-			statement.setString(1, student.getName());
-			statement.setString(2, student.getOld());
-			statement.setString(3, student.getAdress());
-			statement.setString(4, student.getNumberPhone());
-			
-			int count = statement.executeUpdate();
-			
-			if (count > 0) {
+			statement.setString(1, id);
+			statement.setString(2, name);
+			statement.setString(3, old);
+			statement.setString(4, adress);
+			statement.setString(5, numberPhone);
+			statement.setString(6, img);
+			if (statement.executeUpdate() > 0) {
 				statusExecute = true;
 			}
 		} catch (Exception e) {
@@ -68,18 +67,19 @@ public class StudentDao {
 		return statusExecute;
 
 	}
-	public boolean editStudent(Student student, String id) {
+	public boolean editStudent(String name, String old, String adress, String numberPhone,String img, String id) {
 		boolean statusExecute = false;
 		conn = DatabasaUltil.getConnect();
-		String sql = "UPDATE sinhvien SET name=?, old=?, adress=?, numberPhone=?  WHERE id=?";
+		String sql = "UPDATE sinhvien SET name=?, old=?, adress=?, numberPhone=?, img=?  WHERE id=?";
 		try {
 			statement = conn.prepareStatement(sql);
 
-			statement.setString(1, student.getName());
-			statement.setString(2, student.getOld());
-			statement.setString(3, student.getAdress());
-			statement.setString(4, student.getNumberPhone());
-			statement.setString(5, id);
+			statement.setString(1, name);
+			statement.setString(2, old);
+			statement.setString(3, adress);
+			statement.setString(4, numberPhone);
+			statement.setString(5, img);
+			statement.setString(6, id);
 			
 			int count = statement.executeUpdate();
 			if (count > 0) {
@@ -133,6 +133,7 @@ public class StudentDao {
 				student.setOld(result.getString("old"));
 				student.setAdress(result.getString("adress"));
 				student.setNumberPhone(result.getString("numberPhone"));
+				student.setImg(result.getString("img"));
 				
 			}
 		} catch (SQLException e) {
@@ -161,6 +162,7 @@ public class StudentDao {
 				student.setOld(result.getString("old"));
 				student.setAdress(result.getString("adress"));
 				student.setNumberPhone(result.getString("numberPhone"));
+				student.setImg(result.getString("img"));
 				listSv.add(student);
 			}
 		} catch (SQLException e) {
@@ -209,6 +211,7 @@ public class StudentDao {
 					student.setOld(result.getString("old"));
 					student.setAdress(result.getString("adress"));
 					student.setNumberPhone(result.getString("numberPhone"));
+					student.setImg(result.getString("img"));
 					listSv.add(student);
 	            }
 	        } catch (SQLException e) {
@@ -223,4 +226,5 @@ public class StudentDao {
 		return null;
 		 
 	 }
+
 }
