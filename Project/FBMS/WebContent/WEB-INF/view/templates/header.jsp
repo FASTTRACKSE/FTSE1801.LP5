@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -305,6 +305,8 @@
 				<li class=" nav-item QuanTriNhiemVu"><a
 					href="<c:url value = ""/>"><i class="fa fa-calendar"></i><span
 						data-i18n="" class="menu-title">Lịch nhiệm vụ</span></a></li>
+						
+								
 			</ul>
 		</div>
 	</div>

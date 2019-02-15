@@ -1,25 +1,30 @@
-package fasttrackse.ftse1801.fbms.entity.vang_nghi;
+package fasttrackse.ftse1801.fbms.entity.quantridanhgia;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
+@Table(name="trang_thai_danh_gia")
 @Entity
-@Table(name = "trang_thai")
-public class TrangThaiVN {
-	
+public class TrangThaiDanhGia implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ma_trang_thai")
 	private int maTrangThai;
 	
-	@NotEmpty
 	@Column(name = "ten_trang_thai")
 	private String tenTrangThai;
+	
+	@Column(name = "is_delete")
+	private int isDelete;
+
+	public TrangThaiDanhGia() {
+		super();
+	}
 
 	public int getMaTrangThai() {
 		return maTrangThai;
@@ -36,5 +41,13 @@ public class TrangThaiVN {
 	public void setTenTrangThai(String tenTrangThai) {
 		this.tenTrangThai = tenTrangThai;
 	}
-	
+
+	public int getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(int isDelete) {
+		this.isDelete = isDelete;
+	}
+
 }
