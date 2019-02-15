@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(path="/managerSale")
-public class back {
+public class test {
 	@GetMapping("/admin")
 	public String index() {
 		return "back-end/index.html";
+	}
+	@GetMapping("/")
+	public String index1() {
+		return "front-end/index.html";
 	}
 }
