@@ -15,4 +15,8 @@ public class test {
 	public String index1() {
 		return "front-end/index.html";
 	}
+	@GetMapping("/a")
+	public String index2() {
+		return "index.html";
+	}
 }
