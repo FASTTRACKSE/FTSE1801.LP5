@@ -1,3 +1,5 @@
+
+
 # CDT- autotools
 .autotools
 
@@ -43,6 +45,8 @@ local.properties
 .settings/
 .loadpath
 .recommenders/
+
+**/target/**
 
 # MacOS
 .DS_Store
@@ -159,3 +163,15 @@ Project/Servers/Tomcat v9.0 Server at localhost-config/context.xml
 Project/Servers/Tomcat v9.0 Server at localhost-config/server.xml
 Project/Servers/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
 Project/Servers/Tomcat v9.0 Server at localhost-config/web.xml
+
+
+
+Manager-sale/managerSale/target/classes/META-INF/MANIFEST.MF
+
+
+
+Manager-sale/managerSale/bin/**
+Manager-sale/managerSale/target/**
+MANIFEST.MF
+
+.gitignore

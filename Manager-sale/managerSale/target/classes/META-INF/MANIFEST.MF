@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: managerSale
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: cauch
+Built-By: TGDD
 Implementation-Vendor-Id: ftse1801
 Build-Jdk: 1.8.0_172
 Implementation-URL: http://maven.apache.org
