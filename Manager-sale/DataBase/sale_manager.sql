@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 16, 2019 lúc 04:33 AM
+-- Thời gian đã tạo: Th2 16, 2019 lúc 04:53 AM
 -- Phiên bản máy phục vụ: 10.1.37-MariaDB
 -- Phiên bản PHP: 7.2.12
 
@@ -191,11 +191,11 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ID_PRODUCT`, `ID_EMPl`, `IMAGE`, `NAME_PRODUCT`, `UNIT`, `INPUT_PRICE`, `PRICE`, `QUANTITY_INPUTS`, `REMAINING_AMOUNT`, `DATE_ADD`, `DESCRIBE`, `ID_STATUS`, `VIEW`, `ID_GROUPPRO`, `DEL_FLG`) VALUES
-(6, 2, 'D:\\manh\\lp5\\FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\1', 'Khoac nam mu logo 125', 'Cái', 150000, 210000, 10, 8, '2018-10-15', '', 1, 0, 1, 0),
-(7, 2, 'D:\\manh\\lp5\\FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\2', 'Khoac kaki nam mu 818', 'Cái', 160000, 220000, 11, 11, '2018-10-15', '', 2, 0, 1, 0),
-(8, 2, 'D:\\manh\\lp5\\FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\3', 'Khoac nam bomber 2 lop', 'Cái', 170000, 230000, 12, 2, '2018-10-15', '', 1, 0, 1, 0),
-(9, 2, 'D:\\manh\\lp5\\FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\4', 'Khoac kaki nam 801', 'Cái', 180000, 240000, 13, 6, '2018-10-15', '', 1, 0, 1, 0),
-(10, 2, 'D:\\manh\\lp5\\FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\5', 'Khoac gio CP NH.HG0211B', 'Cái', 190000, 250000, 14, 8, '2018-10-15', '', 1, 0, 1, 0);
+(6, 2, 'FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\1', 'Khoac nam mu logo 125', 'Cái', 150000, 210000, 10, 8, '2018-10-15', '', 1, 0, 1, 0),
+(7, 2, 'FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\2', 'Khoac kaki nam mu 818', 'Cái', 160000, 220000, 11, 11, '2018-10-15', '', 2, 0, 1, 0),
+(8, 2, 'FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\3', 'Khoac nam bomber 2 lop', 'Cái', 170000, 230000, 12, 2, '2018-10-15', '', 1, 0, 1, 0),
+(9, 2, 'FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\4', 'Khoac kaki nam 801', 'Cái', 180000, 240000, 13, 6, '2018-10-15', '', 1, 0, 1, 0),
+(10, 2, 'FTSE1801.LP5\\Manager-sale\\managerSale\\src\\main\\resources\\static\\front-end\\images\\AoKhoacGioNam\\5', 'Khoac gio CP NH.HG0211B', 'Cái', 190000, 250000, 14, 8, '2018-10-15', '', 1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
