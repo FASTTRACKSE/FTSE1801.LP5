@@ -55,7 +55,7 @@ public class Product {
 	private int idGrouppro;
 
 	@Column(name = "DEL_FLG")
-	private int isDell;
+	private int delFlg;
 
 	/**
 	 * @param id
@@ -71,10 +71,10 @@ public class Product {
 	 * @param idStatus
 	 * @param view
 	 * @param idGrouppro
-	 * @param isDell
+	 * @param delFlg
 	 */
 	public Product(int id, int idEmpl, String image, String nameProduct, int inputPrice, int price, int quantityInputs,
-			int remainingAmount, Date dateAdd, String describe, int idStatus, int view, int idGrouppro, int isDell) {
+			int remainingAmount, Date dateAdd, String describe, int idStatus, int view, int idGrouppro, int delFlg) {
 		super();
 		this.id = id;
 		this.idEmpl = idEmpl;
@@ -89,7 +89,7 @@ public class Product {
 		this.idStatus = idStatus;
 		this.view = view;
 		this.idGrouppro = idGrouppro;
-		this.isDell = isDell;
+		this.delFlg = delFlg;
 	}
 
 	/**
@@ -294,18 +294,18 @@ public class Product {
 	}
 
 	/**
-	 * @return the isDell
+	 * @return the delFlg
 	 */
-	public int getIsDell() {
-		return isDell;
+	public int getDelFlg() {
+		return delFlg;
 	}
 
 	/**
-	 * @param isDell
-	 *            the isDell to set
+	 * @param delFlg
+	 *            the delFlg to set
 	 */
-	public void setIsDell(int isDell) {
-		this.isDell = isDell;
+	public void setDelFlg(int delFlg) {
+		this.delFlg = delFlg;
 	}
 
 }
