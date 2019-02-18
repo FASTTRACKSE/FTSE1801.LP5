@@ -10,37 +10,59 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "status")
 public class Status {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_STATUS")
-	private int ID_STATUS;
+	private int idStatus;
 
 	@Column(name = "NAME_STATUS")
-	private String NAME_STATUS;
+	private String nameStatus;
 
-	public int getID_STATUS() {
-		return ID_STATUS;
-	}
-
-	public void setID_STATUS(int iD_STATUS) {
-		ID_STATUS = iD_STATUS;
-	}
-
-	public String getNAME_STATUS() {
-		return NAME_STATUS;
-	}
-
-	public void setNAME_STATUS(String nAME_STATUS) {
-		NAME_STATUS = nAME_STATUS;
-	}
-
-	public Status(int iD_STATUS, String nAME_STATUS) {
+	/**
+	 * @param idStatus
+	 * @param nameStatus
+	 */
+	public Status(int idStatus, String nameStatus) {
 		super();
-		ID_STATUS = iD_STATUS;
-		NAME_STATUS = nAME_STATUS;
+		this.idStatus = idStatus;
+		this.nameStatus = nameStatus;
 	}
 
+	/**
+	 * 
+	 */
 	public Status() {
+	}
+
+	/**
+	 * @return the idStatus
+	 */
+	public int getIdStatus() {
+		return idStatus;
+	}
+
+	/**
+	 * @param idStatus
+	 *            the idStatus to set
+	 */
+	public void setIdStatus(int idStatus) {
+		this.idStatus = idStatus;
+	}
+
+	/**
+	 * @return the nameStatus
+	 */
+	public String getNameStatus() {
+		return nameStatus;
+	}
+
+	/**
+	 * @param nameStatus
+	 *            the nameStatus to set
+	 */
+	public void setNameStatus(String nameStatus) {
+		this.nameStatus = nameStatus;
 	}
 
 }
