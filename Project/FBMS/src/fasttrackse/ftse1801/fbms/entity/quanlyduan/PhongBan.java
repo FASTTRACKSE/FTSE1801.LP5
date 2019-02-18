@@ -25,24 +25,32 @@ public class PhongBan {
 	private String tenPhongBan;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "phongBan",cascade=CascadeType.MERGE)
 	private Set<DuAn> duAn = new HashSet<DuAn>(0);
-	public String getMaPhongBan() {
-		return maPhongBan;
-	}
-	public void setMaPhongBan(String maPhongBan) {
-		this.maPhongBan = maPhongBan;
-	}
-	public String getTenPhongBan() {
-		return tenPhongBan;
-	}
-	public void setTenPhongBan(String tenPhongBan) {
-		this.tenPhongBan = tenPhongBan;
-	}
+
+
 	public Set<DuAn> getDuAn() {
 		return duAn;
 	}
+
+
 	public void setDuAn(Set<DuAn> duAn) {
 		this.duAn = duAn;
 	}
-	
-	
+
+
+	public String getMaPhongBan() {
+		return maPhongBan;
+	}
+
+
+	public void setMaPhongBan(String maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
+
+	public String getTenPhongBan() {
+		return tenPhongBan;
+	}
+
+	public void setTenPhongBan(String tenPhongBan) {
+		this.tenPhongBan = tenPhongBan;
+	}
 }

@@ -5,48 +5,58 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.NgonNgu;
-
+@Repository
 public class NgonNguDaoImpl implements NgonNguDao{
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@Override
 	public List<NgonNgu> getAll() {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		return session.createQuery("from NgonNgu where isDelete = 1", NgonNgu.class).list();
 	}
 
 	@Override
 	public NgonNgu getById(String maNgonNgu) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		NgonNgu ngonNgu =session.get(NgonNgu.class, maNgonNgu);
 		return ngonNgu;
 	}
 
 	@Override
 	public void add(NgonNgu ngonNgu) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(ngonNgu);
 		
 	}
 
 	@Override
 	public void update(NgonNgu ngonNgu) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		session.update(ngonNgu);
 	}
 
 	@Override
 	public void delete(String maNgonNgu) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		session.update(maNgonNgu);
 		
 	}
 
 	@Override
 	public int checkNameLanguage(String tenNgonNgu) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where tenNgonNgu = '"+tenNgonNgu+"' and isDelete = 1", NgonNgu.class).list();
 		
 		return  ngonNgu	.size();
@@ -63,14 +73,14 @@ public class NgonNguDaoImpl implements NgonNguDao{
 
 	@Override
 	public int countNgonNgu() {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where isDelete = 1", NgonNgu.class).list();
 		return  ngonNgu.size();
 	}
 
 	@Override
 	public int checkMa(String maNgonNgu) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		List<NgonNgu> ngonNgu = session.createQuery("from NgonNgu where maNgonNgu = '"+maNgonNgu+"'", NgonNgu.class).list();
 		
 		return  ngonNgu.size();

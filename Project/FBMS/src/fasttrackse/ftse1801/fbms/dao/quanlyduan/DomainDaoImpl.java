@@ -5,17 +5,24 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quanlyduan.Domain;
-
+@Repository
 public class DomainDaoImpl implements DomainDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 	@Override
 	public List<Domain> findAll() {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		return session.createQuery("from Domain where isDelete = 1", Domain.class).list();
 	}
 	@SuppressWarnings("unchecked")
@@ -30,27 +37,27 @@ public class DomainDaoImpl implements DomainDao{
 	
 	@Override
 	public int countDomain() {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		List<Domain> dm = session.createQuery("from Domain where isDelete = 1", Domain.class).list();
 		return  dm.size();
 	}
 	
 	@Override
 	public int checkNameDomain(String tenDomain) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		List<Domain> dm = session.createQuery("from Domain where tenDomain = '"+tenDomain+"' and isDelete = 1", Domain.class).list();
 		
 		return  dm.size();
 	}
 	@Override
 	public int checkMaDomain(String maDomain) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		List<Domain> dm = session.createQuery("from Domain where maDomain = '"+maDomain+"' ", Domain.class).list();
 		return  dm.size();
 	}
 	@Override
 	public Domain findById(String maDomain) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		Domain dm = session.get(Domain.class, maDomain);
 		return dm;
 

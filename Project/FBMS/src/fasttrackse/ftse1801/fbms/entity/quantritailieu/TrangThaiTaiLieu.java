@@ -19,7 +19,7 @@ public class TrangThaiTaiLieu implements Serializable{
 	private String tenTrangThai;
 
 	@Column(name = "isDelete")
-	private Integer isDelete;
+	private int isDelete;
 
 	public String getMaTrangThai() {
 		return maTrangThai;
@@ -37,12 +37,14 @@ public class TrangThaiTaiLieu implements Serializable{
 		this.tenTrangThai = tenTrangThai;
 	}
 
-	public Integer getIsDelete() {
+	public int getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(Integer isDelete) {
+	public void setIsDelete(int isDelete) {
 		this.isDelete = isDelete;
 	}
+
+	
 
 }

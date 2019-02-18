@@ -22,21 +22,21 @@ public class TaiLieu implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_tai_lieu")
-	private int taiLieu;
+	private int idTL;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Ma_Danh_Muc", referencedColumnName = "Ma_Danh_Muc", nullable = false)
 	private DanhMucTaiLieu danhMucTaiLieu;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_icon", referencedColumnName = "ma_icon", nullable = false)
 	private IconTaiLieu iconTaiLieu;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban", nullable = false)
 	private PhongBan phongBan;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_trang_thai", referencedColumnName = "ma_trang_thai", nullable = false)
 	private TrangThaiTaiLieu trangThaiTaiLieu;
 
@@ -53,14 +53,16 @@ public class TaiLieu implements Serializable{
 	private String linkTaiLieu;
 
 	@Column(name = "isDelete")
-	private Integer isDelete;
+	private int isDelete;
 
-	public int getTaiLieu() {
-		return taiLieu;
+	
+
+	public int getIdTL() {
+		return idTL;
 	}
 
-	public void setTaiLieu(int taiLieu) {
-		this.taiLieu = taiLieu;
+	public void setIdTL(int idTL) {
+		this.idTL = idTL;
 	}
 
 	public DanhMucTaiLieu getDanhMucTaiLieu() {
@@ -127,12 +129,13 @@ public class TaiLieu implements Serializable{
 		this.linkTaiLieu = linkTaiLieu;
 	}
 
-	public Integer getIsDelete() {
+	public int getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(Integer isDelete) {
+	public void setIsDelete(int isDelete) {
 		this.isDelete = isDelete;
 	}
 
+	
 }

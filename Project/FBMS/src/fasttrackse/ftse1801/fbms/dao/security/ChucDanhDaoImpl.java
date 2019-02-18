@@ -1,5 +1,6 @@
 package fasttrackse.ftse1801.fbms.dao.security;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -91,5 +92,4 @@ public class ChucDanhDaoImpl implements ChucDanhDao{
 		session.close();
 		return recordsFiltered;
 	}
-
 }

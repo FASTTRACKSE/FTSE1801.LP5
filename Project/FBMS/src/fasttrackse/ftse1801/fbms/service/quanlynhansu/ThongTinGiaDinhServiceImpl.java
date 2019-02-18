@@ -42,6 +42,11 @@ public class ThongTinGiaDinhServiceImpl implements ThongTinGiaDinhService{
 	public void delete(int id) {
 		thongTinGiaDinhDao.delete(id);
 	}
+
+	@Override
+	public ThongTinGiaDinh getById(int id) {
+		return thongTinGiaDinhDao.getById(id);
+	}
 	
 	
 }

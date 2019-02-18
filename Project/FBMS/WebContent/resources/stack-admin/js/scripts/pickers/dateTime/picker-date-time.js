@@ -67,13 +67,16 @@
 
 	//Mininum View Mode
 	$('#datetimepicker10').datetimepicker({
-		viewMode: 'years',
-		format: 'MM/YYYY'
+		useCurrent: false,
+		viewMode: 'days',
+		format: 'YYYY-MM-DD'
 	});
 
 	//Disabled Days of the Week
 	$('#datetimepicker11').datetimepicker({
-		daysOfWeekDisabled: [0, 6]
+		useCurrent: false,
+		daysOfWeekDisabled: [0, 6],
+		format: 'YYYY-MM-DD'
 	});
 
 	// Inline Picker
@@ -81,7 +84,7 @@
 		inline: true,
 		sideBySide: true
 	});
-
+	
 	/*******	Pick-a-date Picker	*****/
 	// Basic date
 	$('.pickadate').pickadate();

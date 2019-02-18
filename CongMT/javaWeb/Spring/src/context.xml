@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hinhCN" class="di.impl.ChuNhat">
+		<constructor-arg value="4"></constructor-arg>
+		<constructor-arg value="2"></constructor-arg>
+	</bean>
+	
+
+	<bean id="hinhVuong" class="di.impl.HinhVuong">
+		<constructor-arg value="4"></constructor-arg>
+	</bean>
+	<bean id="listHinh" class="di.impl.ListHinh">
+	<constructor-arg>
+	<list>
+	<ref bean="hinhCN"/>
+	<ref bean="hinhVuong"/>
+	</list>
+	</constructor-arg>
+	</bean>
+	
+	<bean id="sinhVienBiz" class="di.impl.SinhVienBiz">
+		<constructor-arg value="Mai Thanh Cong"></constructor-arg>
+		<constructor-arg value="Biz"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+	</bean>
+	<bean id="sinhVienIt" class="di.impl.SinhVienIt">
+		<constructor-arg value="van duc son"></constructor-arg>
+		<constructor-arg value="It"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+		<constructor-arg value="8"></constructor-arg>
+		<constructor-arg value="7"></constructor-arg>
+	</bean>
+	
+	<bean id="listSv" class="di.impl.ListSinhVien">
+	<constructor-arg>
+	<list>
+	<ref bean="sinhVienBiz"/>
+	<ref bean="sinhVienIt"/>
+	</list>
+	</constructor-arg>
+	</bean>
+</beans>

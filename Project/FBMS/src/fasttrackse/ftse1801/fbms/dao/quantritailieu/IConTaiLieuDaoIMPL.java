@@ -2,14 +2,14 @@ package fasttrackse.ftse1801.fbms.dao.quantritailieu;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import fasttrackse.ftse1801.fbms.entity.quantritailieu.IconTaiLieu;
-
+@Repository
 public class IConTaiLieuDaoIMPL implements IConTaiLieuDao {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -28,7 +28,7 @@ public class IConTaiLieuDaoIMPL implements IConTaiLieuDao {
 	@Override
 	public List<IconTaiLieu> getAllIcon() {
 		session = this.sessionFactory.openSession();
-		List<IconTaiLieu> listIC = session.createQuery("IconTaiLieu").list();
+		List<IconTaiLieu> listIC = session.createQuery("from IconTaiLieu").list();
 		session.close();
 		return listIC;
 	}
@@ -37,13 +37,13 @@ public class IConTaiLieuDaoIMPL implements IConTaiLieuDao {
 	@Override
 	public List<IconTaiLieu> getAllIcon(int page, int record) {
 		session = this.sessionFactory.openSession();
-		List<IconTaiLieu> listIC = session.createQuery("IconTaiLieu").setFirstResult(page).setMaxResults(record).list();
+		List<IconTaiLieu> listIC = session.createQuery("from IconTaiLieu").setFirstResult(page).setMaxResults(record).list();
 		session.close();
 		return listIC;
 	}
 
 	@Override
-	public void insertIcon(IConTaiLieuDao ic) {
+	public void insertIcon(IconTaiLieu ic) {
 
 		session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -54,7 +54,7 @@ public class IConTaiLieuDaoIMPL implements IConTaiLieuDao {
 	}
 
 	@Override
-	public void updateIcon(IConTaiLieuDao ic) {
+	public void updateIcon(IconTaiLieu ic) {
 
 		session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();

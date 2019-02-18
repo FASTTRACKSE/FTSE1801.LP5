@@ -87,23 +87,19 @@ public class HoSoNhanSu {
 	private Date ngayCap;
 
 	// ket noi 2 chieu @ManyToOne voi class ThongTinGiaDinh
-	@OneToMany(mappedBy = "hoSoNhanVien")
+	@OneToMany(mappedBy = "maNhanVien")
 	private List<ThongTinGiaDinh> thongTinGiaDinh;
 
 	// ket noi 2 chieu @ManyToOne voi class ThongTinBangCap
-	@OneToMany(mappedBy = "hoSoNhanVien")
+	@OneToMany(mappedBy = "maNhanVien")
 	private List<ThongTinBangCap> thongTinBangCap;
 
-	// ket noi 2 chieu @ManyToOne voi class ThongTinChungChi
-	@OneToMany(mappedBy = "hoSoNhanVien")
-	private List<ThongTinChungChi> thongTinChungChi;
-
 	// ket noi 2 chieu @ManyToOne voi class KyNang
-	@OneToMany(mappedBy = "hoSoNhanVien")
+	@OneToMany(mappedBy = "maNhanVien")
 	private List<KyNang> kyNang;
 
 	// ket noi 2 chieu @ManyToOne voi class HopDong
-	@OneToMany(mappedBy = "hoSoNhanVien")
+	@OneToMany(mappedBy = "maNhanVien")
 	private List<HopDong> hopDong;
 
 	public HoSoNhanSu() {
@@ -123,14 +119,6 @@ public class HoSoNhanSu {
 
 	public void setHopDong(List<HopDong> hopDong) {
 		this.hopDong = hopDong;
-	}
-
-	public List<ThongTinChungChi> getThongTinChungChi() {
-		return thongTinChungChi;
-	}
-
-	public void setThongTinChungChi(List<ThongTinChungChi> thongTinChungChi) {
-		this.thongTinChungChi = thongTinChungChi;
 	}
 
 	public List<ThongTinBangCap> getThongTinBangCap() {

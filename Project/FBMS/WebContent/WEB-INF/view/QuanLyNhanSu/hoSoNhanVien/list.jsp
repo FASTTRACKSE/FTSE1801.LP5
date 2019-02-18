@@ -49,13 +49,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách chức danh</h3>
+				<h3 class="content-header-title mb-0">Danh sách nhân viên</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách chức danh</li>
+							<li class="breadcrumb-item active">Danh sách nhân viên</li>
 						</ol>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách chức danh</h4>
+							<h4 class="card-title">Danh sách Nhân viên</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -166,46 +166,25 @@
 												<thead>
 													<tr role="row">
 														<th>Id</th>
-														<!-- <th>Phòng ban</th>
-														<th>Chức danh</th> -->
 														<th>Họ đệm</th>
 														<th>Tên</th>
 														<th>Năm sinh</th>
 														<th>Giới tính</th>
-														<!-- <th>Tình trạng hôn nhân</th>
-														<th>Quê quán</th>
-														<th>Dân tộc</th>
-														<th>Nơi tạm trú</th> -->
-														<th>SĐT</th>
-														<!-- <th>Email</th>
-														<th>CMND</th>
-														<th>Nơi cấp</th>
-														<th>Ngày cấp</th>
-														<th>Trạng thái</th> -->
+														<th>Số điện thoại</th>
 														<th>Chức năng</th>
 													</tr>
 												</thead>
 												<c:forEach var="list" items="${list}">
 													<tr>
 														<td>${list.maNhanVien}</td>
-														<%-- <td>${list.maPhongBan.tenPhongBan}</td>
-														<td>${list.maChucDanh.tenChucDanh}</td> --%>
 														<td>${list.hoDem}</td>
 														<td>${list.ten}</td>
 														<td>${list.namSinh}</td>
-														<td><c:if test="${list.gioiTinh == 1}">Nam</c:if> <c:if
+														<td><c:if test="${list.gioiTinh == 1}">Nam</c:if><c:if
 																test="${list.gioiTinh == 2}">Nữ</c:if></td>
-														<%-- <td>${list.tinhTrangHonNhan}</td>
-														<td>${list.queQuan}</td>
-														<td>${list.danToc}</td>
-														<td>${list.noiTamTru}</td> --%>
 														<td>${list.soDienThoai}</td>
-														<%-- <td>${list.email}</td>
-														<td>${list.soCMND}</td>
-														<td>${list.noiCap}</td>
-														<td>${list.ngayCap}</td>
-														<td>${list.trangThai}</td --%>
-														<td><a href="<c:url value = ""/>"><i
+														<td><a
+															href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/viewOne/${list.maNhanVien}"/>"><i
 																class="fa fa-eye"></i></a> <a
 															href="<c:url value = "/QuanLyNhanSu/hoSoNhanVien/edit/${list.maNhanVien}"/>"><i
 																class="fa fa-pencil"></i></a> <a

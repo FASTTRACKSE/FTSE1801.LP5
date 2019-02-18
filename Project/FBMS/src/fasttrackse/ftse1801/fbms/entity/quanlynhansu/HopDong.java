@@ -24,16 +24,16 @@ public class HopDong {
 	@Column(name = "ma_hop_dong", nullable = false)
 	private int maHopDong;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
-	private HoSoNhanSu hoSoNhanVien;
+	private HoSoNhanSu maNhanVien;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_loai_hop_dong", nullable = false)
-	private LoaiHopDong loaiHopDong;
+	private LoaiHopDong maLoaiHopDong;
 
 	@Column(name = "luong_thang_13", nullable = false)
-	private String luongThang13;
+	private int luongThang13;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -48,7 +48,16 @@ public class HopDong {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "hop_dong_den_ngay", nullable = false)
-	private Date hopDongdenNgay;
+	private Date hopDongDenNgay;
+
+	@Column(name = "so_ngay_phep", nullable = false)
+	private int soNgayPhep;
+
+	@Column(name = "trang_thai_hop_dong", nullable = false)
+	private int trangThai;
+
+	@Column(name = "isdelete", nullable = false)
+	private int isdelete;
 
 	public int getMaHopDong() {
 		return maHopDong;
@@ -58,28 +67,52 @@ public class HopDong {
 		this.maHopDong = maHopDong;
 	}
 
-	public HoSoNhanSu getHoSoNhanVien() {
-		return hoSoNhanVien;
+	public HoSoNhanSu getMaNhanVien() {
+		return maNhanVien;
 	}
 
-	public void setHoSoNhanVien(HoSoNhanSu hoSoNhanVien) {
-		this.hoSoNhanVien = hoSoNhanVien;
+	public void setMaNhanVien(HoSoNhanSu maNhanVien) {
+		this.maNhanVien = maNhanVien;
 	}
 
-	public LoaiHopDong getLoaiHopDong() {
-		return loaiHopDong;
+	public LoaiHopDong getMaLoaiHopDong() {
+		return maLoaiHopDong;
 	}
 
-	public void setLoaiHopDong(LoaiHopDong loaiHopDong) {
-		this.loaiHopDong = loaiHopDong;
+	public void setMaLoaiHopDong(LoaiHopDong maLoaiHopDong) {
+		this.maLoaiHopDong = maLoaiHopDong;
 	}
 
-	public String getLuongThang13() {
+	public int getLuongThang13() {
 		return luongThang13;
 	}
 
-	public void setLuongThang13(String luongThang13) {
+	public void setLuongThang13(int luongThang13) {
 		this.luongThang13 = luongThang13;
+	}
+
+	public int getSoNgayPhep() {
+		return soNgayPhep;
+	}
+
+	public void setSoNgayPhep(int soNgayPhep) {
+		this.soNgayPhep = soNgayPhep;
+	}
+
+	public int getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(int trangThai) {
+		this.trangThai = trangThai;
+	}
+
+	public int getIsdelete() {
+		return isdelete;
+	}
+
+	public void setIsdelete(int isdelete) {
+		this.isdelete = isdelete;
 	}
 
 	public Date getNgayKy() {
@@ -98,12 +131,12 @@ public class HopDong {
 		this.hopDongTuNgay = hopDongTuNgay;
 	}
 
-	public Date getHopDongdenNgay() {
-		return hopDongdenNgay;
+	public Date getHopDongDenNgay() {
+		return hopDongDenNgay;
 	}
 
-	public void setHopDongdenNgay(Date hopDongdenNgay) {
-		this.hopDongdenNgay = hopDongdenNgay;
+	public void setHopDongDenNgay(Date hopDongDenNgay) {
+		this.hopDongDenNgay = hopDongDenNgay;
 	}
 
 }

@@ -16,7 +16,7 @@
     </h:head>
     <h:body >
         <f:view >
-            <h:form >
+            <h:form enctype="multipart/form-data" >
                 <br><h1><h:outputText value="#{msg['TieuDe']}" /></h1></br>
                
                <h:outputText value="#{msg['TenDangNhap']}" />:<br>
@@ -27,7 +27,9 @@
                 <h:inputTextarea value="#{student.adress}"></h:inputTextarea></br>
                 <h:outputText value="#{msg['Sdt']}" />:<br>
                 <h:inputTextarea value="#{student.numberPhone}"></h:inputTextarea></br>
-                <h:commandButton value="#{msg['Sua']}" actionListener="#{student.updateStudent}" action="index"></h:commandButton>
+                <h:outputText value="Img" />:<br>
+               <h:inputFile value="#{student.file}"/></br>
+                <h:commandButton value="#{msg['Sua']}" actionListener="#{student.upload}" action="#{student.updateStudent}"></h:commandButton>
                 <h:commandButton value="#{msg['TroLai']}" action="index"></h:commandButton>
             </h:form>
         </f:view>

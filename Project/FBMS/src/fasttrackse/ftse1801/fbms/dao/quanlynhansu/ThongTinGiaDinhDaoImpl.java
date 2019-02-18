@@ -38,11 +38,11 @@ public class ThongTinGiaDinhDaoImpl implements ThongTinGiaDinhDao {
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	@Override
 	public List<ThongTinGiaDinh> findByMaNhanVien(int maNhanVien) {
 		Session session = sessionFactory.openSession();
-		List<ThongTinGiaDinh> list = session.createQuery("from ThongTinGiaDinh where maNhanVien = "+maNhanVien).list();
+		List<ThongTinGiaDinh> list = session.createQuery("from ThongTinGiaDinh where ma_nhan_vien = "+maNhanVien).list();
 		session.close();
 		return list;
 	}
@@ -72,6 +72,14 @@ public class ThongTinGiaDinhDaoImpl implements ThongTinGiaDinhDao {
 		session.delete(session.get(ThongTinGiaDinh.class, id));
 		tx.commit();
 		session.close();
+	}
+
+	@Override
+	public ThongTinGiaDinh getById(int id) {
+		Session session = sessionFactory.openSession();
+		ThongTinGiaDinh giaDinh = session.get(ThongTinGiaDinh.class, id);
+		session.close();
+		return giaDinh;
 	}
 
 }

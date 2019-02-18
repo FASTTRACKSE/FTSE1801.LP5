@@ -1,5 +1,7 @@
 package fasttrackse.ftse1801.fbms.service.qlnhiemvu;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import fasttrackse.ftse1801.fbms.dao.qlnhiemvu.QuanLyNhiemVuDao;
 import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.LoaiCongViec;
 import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.QuanLyNhiemVu;
-import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.TrangThai;
+import fasttrackse.ftse1801.fbms.entity.qlnhiemvu.TrangThaiNhiemVu;
+import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
+import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
 @Service
 public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
@@ -47,7 +51,7 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 	}
 
 	@Override
-	public List<TrangThai> trangThai() {
+	public List<TrangThaiNhiemVu> trangThai() {
 		return this.quanLyNhiemVuDao.trangThai();
 	}
 
@@ -56,15 +60,15 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 		return this.quanLyNhiemVuDao.loaiCongViec();
 	}
 
-//	@Override
-//	public List<DuAn> duAn() {
-//		return this.qlNhiemVuDao.duAn();
-//	}
-//
-//	@Override
-//	public List<VaiTro> vaiTro() {
-//		return this.qlNhiemVuDao.vaiTro();
-//	}
+	/*@Override
+	public List<DuAn> duAn() {
+		return this.quanLyNhiemVuDao.duAn();
+	}
+
+	@Override
+	public List<VaiTroThanhVien> vaiTro() {
+		return this.quanLyNhiemVuDao.vaiTro();
+	}*/
 
 	@Override
 	public List<QuanLyNhiemVu> getAllpage(int page, int size) {
@@ -74,6 +78,36 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 	@Override
 	public List<QuanLyNhiemVu> searchAll(String search) {
 		return this.quanLyNhiemVuDao.searchAll(search);
+	}
+
+	@Override
+	public List<HoSoNhanSu> hoSoNhanVien() {
+		return this.quanLyNhiemVuDao.hoSoNhanVien();
+	}
+
+	@Override
+	public List<PhongBan> phongBan() {
+		return this.quanLyNhiemVuDao.phongBan();
+	}
+
+	@Override
+	public String toJson(List<QuanLyNhiemVu> list) {
+				int j= list.size();
+				int i=0;
+				String y="[";
+				
+				for(QuanLyNhiemVu x :list) {
+					i++;
+					String tenCongviec = x.getTenCongViec();
+					Date tgBatdau =x.getThoiGianBatDau();
+					Date tgKetthuc = x.getThoiGianKetThuc();
+					if(i==j) {
+							y += "{\"title\": \"" + tenCongviec + "\", \"start\": \"" + tgBatdau + "\", \"end\":\"" + tgKetthuc + "\"}";
+					}else {
+						y+= "{\"title\": \"" + tenCongviec + "\",\"start\": \"" + tgBatdau + "\", \"end\": \"" + tgKetthuc + "\"}"+",";
+					}
+				}
+				return y + "]" ;
 	}
 
 }

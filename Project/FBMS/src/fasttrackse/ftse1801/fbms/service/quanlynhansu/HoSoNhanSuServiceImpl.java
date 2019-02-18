@@ -11,41 +11,41 @@ import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
 @Service
 public class HoSoNhanSuServiceImpl implements HoSoNhanSuService{
 	@Autowired
-	private HoSoNhanSuDao hoSoNhanVienDao;
+	private HoSoNhanSuDao hoSoNhanSuDao;
 	
 	@Override
 	public List<HoSoNhanSu> getAll() {
-		return hoSoNhanVienDao.getAll();
+		return hoSoNhanSuDao.getAll();
 	}
 
 	@Override
 	public List<HoSoNhanSu> getByPaging(int fistResult, int maxResult) {
-		return hoSoNhanVienDao.getByPaging(fistResult, maxResult);
+		return hoSoNhanSuDao.getByPaging(fistResult, maxResult);
 	}
 
 	@Override
 	public HoSoNhanSu getById(int id) {
-		return hoSoNhanVienDao.getById(id);
+		return hoSoNhanSuDao.getById(id);
 	}
 
 	@Override
 	public List<HoSoNhanSu> getByPhongBan(String maPhongBan) {
-		return hoSoNhanVienDao.getByPhongBan(maPhongBan);
+		return hoSoNhanSuDao.getByPhongBan(maPhongBan);
 	}
 
 	@Override
 	public void addNew(HoSoNhanSu nhanVien) {
-		hoSoNhanVienDao.addNew(nhanVien);
+		hoSoNhanSuDao.addNew(nhanVien);
 	}
 
 	@Override
 	public void update(HoSoNhanSu nhanVien) {
-		hoSoNhanVienDao.update(nhanVien);
+		hoSoNhanSuDao.update(nhanVien);
 	}
 
 	@Override
 	public void delete(int id) {
-		hoSoNhanVienDao.delete(id);
+		hoSoNhanSuDao.delete(id);
 	}
 
 }

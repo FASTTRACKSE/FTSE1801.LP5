@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -19,237 +21,233 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import fasttrackse.ftse1801.fbms.entity.quanlynhansu.HoSoNhanSu;
+import fasttrackse.ftse1801.fbms.entity.security.PhongBan;
 
-	@Entity
-	@Table(name="du_an")
-	public class DuAn implements Serializable {
-		
-		private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "du_an")
+public class DuAn implements Serializable {
 
-		@Id
-		@NotEmpty(message="Mã Dự án bắt buộc nhập")
-		@Size(min=6,max=10,message="Mã dự án 6 đến 10 kí tự")
-		@Column(name="ma_du_an")
-		private String maDuAn;
-		
-		@Column(name="ten_du_an")
-		@NotEmpty(message="Tên Dự án bắt buộc nhập")
-		private String tenDuAn;
-		
-		@Column(name="mo_ta_du_an")
-		@NotEmpty(message="Không được để trống")
-		private String moTaDuAn;
-		
+	private static final long serialVersionUID = 1L;
 
-		@Column(name="is_delete")
-		private int isDelete;
-		
-		@Column (name="start_date")
-		@DateTimeFormat(pattern="yyyy-MM-dd")
-		@Temporal(TemporalType.DATE)
-		@NotNull(message="thời gian Dự án bắt buộc nhập")
-		private Date startDate;
-		
-		@Column (name="end_date")
-		@Temporal(TemporalType.DATE)
-		@DateTimeFormat(pattern="yyyy-MM-dd")
-		@NotNull(message="thời gian Dự án bắt buộc nhập")
-		private Date endDate;
-		
-		@ManyToMany(targetEntity = Database.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "database_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_database", referencedColumnName = "ma_database", nullable = true, updatable = false,insertable=true) })
-		private Set<Database> database;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ma_du_an")
+	private int maDuAn;
 
-		@ManyToMany(targetEntity = CongNghe.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "cong_nghe_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_cong_nghe", referencedColumnName = "ma_cong_nghe", nullable = true, updatable = false,insertable=true) })
-		private Set<CongNghe> congNghe;
-		
-		@ManyToMany(targetEntity = Framework.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "framework_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_framework", referencedColumnName = "ma_framework", nullable = true, updatable = false,insertable=true) })
-		private Set<Framework> framework;
-		
-		@ManyToMany(targetEntity = NgonNgu.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "ngon_ngu_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_ngon_ngu", referencedColumnName = "ma_ngon_ngu", nullable = true, updatable = false,insertable=true) })
-		private Set<NgonNgu> ngonNgu;
+	@Column(name = "ten_du_an")
+	@NotEmpty(message = "Tên Dự án bắt buộc nhập")
+	private String tenDuAn;
 
+	@Column(name = "mo_ta_du_an")
+	@NotEmpty(message = "Không được để trống")
+	private String moTaDuAn;
 
-		@ManyToMany(targetEntity = Contact.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		@JoinTable(name = "contact_du_an", joinColumns = {
-		@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an",  updatable = true,insertable=true) }, inverseJoinColumns = {
-		@JoinColumn(name = "ma_contact", referencedColumnName = "ma_contact", nullable = true, updatable = false,insertable=true) })
-		private Set<Contact> contact;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_trang_thai",referencedColumnName="ma_trang_thai", insertable=true, updatable=true)
-		@NotNull(message="Bạn chưa chọn Trạng thái")
-		private TrangThai trangThai;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_nghiep_vu",referencedColumnName="ma_nghiep_vu", insertable=true, updatable=true)
-		@NotNull(message="Bạn chưa chọn nghiệp vụ")
-		private Domain domain;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_phong_ban",referencedColumnName="ma_phong_ban", insertable=true, updatable=true)
-		@NotNull(message="Không được để trống")
-		private PhongBan phongBan;
-		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="ma_pm",referencedColumnName="ma_nhan_vien", insertable=true, updatable=true)
-		@NotNull(message="Bạn chưa chon PM")
-		private HoSoNhanVien pM;
-		
-		@OneToMany(mappedBy = "duAn")
-		private Set<NhiemVu> nhiemVu;
-		
-		
+	@Column(name = "is_delete")
+	private int isDelete;
 
-		public Set<NhiemVu> getNhiemVu() {
-			return nhiemVu;
-		}
+	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	@NotNull(message = "thời gian Dự án bắt buộc nhập")
+	private Date startDate;
 
-		public void setNhiemVu(Set<NhiemVu> nhiemVu) {
-			this.nhiemVu = nhiemVu;
-		}
+	@Column(name = "end_date")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message = "thời gian Dự án bắt buộc nhập")
+	private Date endDate;
+	
+	// many-to-one
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "ma_khach_hang", referencedColumnName = "ma_khach_hang", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Contact")
+	private KhachHang khachHang;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "phong_du_an", referencedColumnName = "ma_phong_ban", insertable = true, updatable = true)
+	@NotNull(message = "Không được để trống")
+	private PhongBan phongDuAn;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "ma_trang_thai", referencedColumnName = "ma_trang_thai", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn Trạng thái")
+	private TrangThai trangThai;
 
-		public Set<NgonNgu> getNgonNgu() {
-			return ngonNgu;
-		}
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "ma_nghiep_vu", referencedColumnName = "ma_nghiep_vu", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chọn nghiệp vụ")
+	private Domain domain;
 
-		public void setNgonNgu(Set<NgonNgu> ngonNgu) {
-			this.ngonNgu = ngonNgu;
-		}
-		public Set<CongNghe> getCongNghe() {
-			return congNghe;
-		}
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "pm", referencedColumnName = "ma_nhan_vien", insertable = true, updatable = true)
+	@NotNull(message = "Bạn chưa chon PM")
+	private HoSoNhanSu pM;
 
-		public void setcongNghe(Set<CongNghe> congNghe) {
-			this.congNghe = congNghe;
-		}
+	// many-to-many
+	@ManyToMany(targetEntity = CongNghe.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "cong_nghe_du_an", joinColumns = {
+	@JoinColumn(name = "ma_cong_nghe") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<CongNghe> congNghe;
+	
+	@ManyToMany(targetEntity = Framework.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "framework_du_an", joinColumns = {
+	@JoinColumn(name = "ma_framework") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<Framework> framework;
+	
+	@ManyToMany(targetEntity = Database.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "database_du_an", joinColumns = {
+	@JoinColumn(name = "ma_database") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<Database> database;
+	
+	@ManyToMany(targetEntity = NgonNgu.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "ngon_ngu_du_an", joinColumns = {
+	@JoinColumn(name = "ma_ngon_ngu") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<NgonNgu> ngonNgu;
+	
+	@ManyToMany(targetEntity = Vendor.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "vendor_du_an", joinColumns = {
+	@JoinColumn(name = "ma_vendor") }, inverseJoinColumns = {
+	@JoinColumn(name = "ma_du_an") })
+	private Set<Vendor> vendor;
+	
+	@OneToMany(mappedBy = "duAn")
+	private Set<NhiemVu> nhiemVu;
 
-		public Set<Framework> getFramework() {
-			return framework;
-		}
+	
+	public int getMaDuAn() {
+		return maDuAn;
+	}
 
-		public HoSoNhanVien getpM() {
-			return pM;
-		}
+	public void setMaDuAn(int maDuAn) {
+		this.maDuAn = maDuAn;
+	}
 
-		public void setpM(HoSoNhanVien pM) {
-			this.pM = pM;
-		}
+	public String getTenDuAn() {
+		return tenDuAn;
+	}
 
-		public void setFramework(Set<Framework> framework) {
-			this.framework = framework;
-		}
+	public void setTenDuAn(String tenDuAn) {
+		this.tenDuAn = tenDuAn;
+	}
 
-		public Set<Contact> getContact() {
-			return contact;
-		}
+	public String getMoTaDuAn() {
+		return moTaDuAn;
+	}
 
-		public void setVendor(Set<Contact> contact) {
-			this.contact = contact;
-		}
+	public void setMoTaDuAn(String moTaDuAn) {
+		this.moTaDuAn = moTaDuAn;
+	}
 
-		public TrangThai getTrangThai() {
-			return trangThai;
-		}
+	public int getIsDelete() {
+		return isDelete;
+	}
 
-		public void setTrangThai(TrangThai trangThai) {
-			this.trangThai = trangThai;
-		}
+	public void setIsDelete(int isDelete) {
+		this.isDelete = isDelete;
+	}
 
-		public Domain getDomain() {
-			return domain;
-		}
+	public Date getStartDate() {
+		return startDate;
+	}
 
-		public void setDomain(Domain domain) {
-			this.domain = domain;
-		}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 
-		public String getMaDuAn() {
-			return maDuAn;
-		}
+	public Date getEndDate() {
+		return endDate;
+	}
 
-		public void setMaDuAn(String maDuAn) {
-			this.maDuAn = maDuAn;
-		}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
-		public Set<Database> getDatabase() {
-			return database;
-		}
+	public KhachHang getKhachHang() {
+		return khachHang;
+	}
 
-		public void setDatabase(Set<Database> database) {
-			this.database = database;
-		}
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
+	}
 
-		public String getTenDuAn() {
-			return tenDuAn;
-		}
+	public PhongBan getPhongDuAn() {
+		return phongDuAn;
+	}
 
-		public void setTenDuAn(String tenDuAn) {
-			this.tenDuAn = tenDuAn;
-		}
+	public void setPhongDuAn(PhongBan phongDuAn) {
+		this.phongDuAn = phongDuAn;
+	}
 
-		public String getMoTaDuAn() {
-			return moTaDuAn;
-		}
+	public TrangThai getTrangThai() {
+		return trangThai;
+	}
 
-		public void setMoTaDuAn(String moTaDuAn) {
-			this.moTaDuAn = moTaDuAn;
-		}
+	public void setTrangThai(TrangThai trangThai) {
+		this.trangThai = trangThai;
+	}
 
-		public int getIsDelete() {
-			return isDelete;
-		}
+	public Domain getDomain() {
+		return domain;
+	}
 
-		public void setIsDelete(int isDelete) {
-			this.isDelete = isDelete;
-		}
+	public void setDomain(Domain domain) {
+		this.domain = domain;
+	}
 
-		public Date getStartDate() {
-			return startDate;
-		}
+	public HoSoNhanSu getpM() {
+		return pM;
+	}
 
-		public void setStartDate(Date startDate) {
-			this.startDate = startDate;
-		}
+	public void setpM(HoSoNhanSu pM) {
+		this.pM = pM;
+	}
 
-		public Date getEndDate() {
-			return endDate;
-		}
+	public Set<CongNghe> getCongNghe() {
+		return congNghe;
+	}
 
-		public void setEndDate(Date endDate) {
-			this.endDate = endDate;
-		}
+	public void setCongNghe(Set<CongNghe> congNghe) {
+		this.congNghe = congNghe;
+	}
 
-		public PhongBan getPhongBan() {
-			return phongBan;
-		}
+	public Set<Framework> getFramework() {
+		return framework;
+	}
 
-		public void setPhongBan(PhongBan phongBan) {
-			this.phongBan = phongBan;
-		}
+	public void setFramework(Set<Framework> framework) {
+		this.framework = framework;
+	}
 
-		@Override
-		public String toString() {
-			return "DuAn [maDuAn=" + maDuAn + ", tenDuAn=" + tenDuAn + ", moTaDuAn=" + moTaDuAn + ", isDelete="
-					+ isDelete + ", startDate=" + startDate + ", endDate=" + endDate + ", database=" + database
-					+ ", congNghe=" + congNghe + ", framework=" + framework + ", ngonNgu=" + ngonNgu + ", vendor="
-					+ contact + ", khachHang=" + contact + ", trangThai=" + trangThai + ", domain=" + domain
-					+ ", phongBan=" + phongBan + ", pM=" + pM + ", nhiemVu=" + nhiemVu + "]";
-		}
+	public Set<Database> getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(Set<Database> database) {
+		this.database = database;
+	}
+
+	public Set<NgonNgu> getNgonNgu() {
+		return ngonNgu;
+	}
+
+	public void setNgonNgu(Set<NgonNgu> ngonNgu) {
+		this.ngonNgu = ngonNgu;
+	}
+
+	public Set<NhiemVu> getNhiemVu() {
+		return nhiemVu;
+	}
+
+	public void setNhiemVu(Set<NhiemVu> nhiemVu) {
+		this.nhiemVu = nhiemVu;
+	}
 
 }

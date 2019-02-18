@@ -8,12 +8,15 @@ public interface HopDongDao {
 	public List<HopDong> getAll();
 
 	public List<HopDong> getByPaging(int fistResult, int maxResult);
-	
-	public HopDong findByMaNhanVien(int maNhanVien);
+
+	public List<HopDong> getByType(int maLoaiHopDong);
+
+	public List<HopDong> findByMaNhanVien(int maNhanVien);
 
 	public void addNew(HopDong hopDong);
 
 	public void update(HopDong hopDong);
 
-	public void delete(int id);
+	public HopDong getById(int id);
+
 }
